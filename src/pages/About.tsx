@@ -1,6 +1,10 @@
+import { Navbar } from "../components/navbar/Navbar"
 
 export const About = () => {
   return (
-    <div>About</div>
+    <>
+      <Navbar />
+      <div>About Page</div>
+    </>
   )
 }

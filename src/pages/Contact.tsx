@@ -1,7 +1,11 @@
+import { Navbar } from "../components/navbar/Navbar"
 
 
 export const Contact = () => {
   return (
-    <div>Contact</div>
+    <>
+      <Navbar />
+      <div>Contact Page</div>
+    </>
   )
 }
