@@ -20,7 +20,7 @@ export const Hero = () => {
               </a>
             </div>
           </div>
-          <div className="md:w-1/2 flex justify-center">
+          <div className="w-full md:w-1/2 flex justify-center">
             <img
               src="https://i.pinimg.com/736x/50/87/0b/50870b77b0ab6ed969a9a43b2d4ddfbc.jpg"
               alt="Delicious Dessert"

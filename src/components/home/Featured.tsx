@@ -5,8 +5,9 @@ export const Featured = () => {
       name: "Chocolate Ganache Dream",
       description:
         "Rich chocolate cake with silky ganache frosting, topped with fresh raspberries and chocolate shavings",
-      price: "$45",
-      image:  "https://i.pinimg.com/736x/9d/25/93/9d2593780fe22eba7acf1ea6e9e57110.jpg",
+      price: "ksh 35,00",
+      image:
+        "https://i.pinimg.com/736x/9d/25/93/9d2593780fe22eba7acf1ea6e9e57110.jpg",
       category: "ready-made" as const,
     },
     {
@@ -14,21 +15,21 @@ export const Featured = () => {
       name: "Elegant Wedding Tier",
       description:
         "Classic white fondant wedding cake with delicate lace patterns and fresh florals",
-      price: "$250",
-      image:"https://i.pinimg.com/736x/5b/d1/a2/5bd1a2689ac916f9b24b83e3a1136112.jpg",
+      price: "ksh 23,000",
+      image:
+        "https://i.pinimg.com/736x/5b/d1/a2/5bd1a2689ac916f9b24b83e3a1136112.jpg",
       category: "ready-made" as const,
-    },  
+    },
     {
       id: 3,
       name: "Strawberry Shortcake",
       description:
         "Light and fluffy vanilla cake layered with fresh strawberries and whipped cream",
-      price: "$38",
+      price: "ksh 15,999",
       image:
         "https://i.pinimg.com/736x/9c/15/b0/9c15b08d019a99dd1703de44a570068b.jpg",
       category: "ready-made" as const,
     },
-  
   ];
   return (
     <>
