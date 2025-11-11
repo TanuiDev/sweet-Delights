@@ -1,11 +1,10 @@
-import { Navbar } from "../components/navbar/Navbar"
-
+import { Navbar } from "../components/navbar/Navbar";
 
 export const Orders = () => {
   return (
     <>
-    <Navbar />
-    <div>Orders Page</div>
+      <Navbar />
+      <div>Orders Page</div>
     </>
-  )
-}
+  );
+};

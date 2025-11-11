@@ -1,11 +1,10 @@
-import { Navbar } from "../components/navbar/Navbar"
-
+import { Navbar } from "../components/navbar/Navbar";
 
 export const Ready = () => {
   return (
     <>
-        <Navbar />
-        <div>Ready Page</div>
+      <Navbar />
+      <div>Ready Page</div>
     </>
-  )
-}
+  );
+};

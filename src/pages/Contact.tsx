@@ -1,5 +1,4 @@
-import { Navbar } from "../components/navbar/Navbar"
-
+import { Navbar } from "../components/navbar/Navbar";
 
 export const Contact = () => {
   return (
@@ -7,5 +6,5 @@ export const Contact = () => {
       <Navbar />
       <div>Contact Page</div>
     </>
-  )
-}
+  );
+};

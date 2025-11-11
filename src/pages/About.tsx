@@ -1,4 +1,4 @@
-import { Navbar } from "../components/navbar/Navbar"
+import { Navbar } from "../components/navbar/Navbar";
 
 export const About = () => {
   return (
@@ -6,5 +6,5 @@ export const About = () => {
       <Navbar />
       <div>About Page</div>
     </>
-  )
-}
+  );
+};
