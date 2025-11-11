@@ -18,7 +18,7 @@ export const Featured = () => {
       price: "ksh 23,000",
       image:
         "https://i.pinimg.com/736x/5b/d1/a2/5bd1a2689ac916f9b24b83e3a1136112.jpg",
-      category: "ready-made" as const,
+      category: "ready-made",
     },
     {
       id: 3,
