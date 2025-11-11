@@ -40,9 +40,9 @@ export const Register = () => {
   const onsubmit: SubmitHandler<inputData> = async (data) => {
     try {
       const response = await createUser(data).unwrap();
-      console.log("Registration successful:", response);
+      console.log("User registered successfully:", response);
     } catch (error) {
-      console.log("Registration error:", error);
+      console.error("Failed to register user:", error);
     }
   };
 
