@@ -1,30 +1,73 @@
 export const Featured = () => {
-  // const featuredDesserts = [
-
-  // ];
+  const cakes = [
+    {
+      id: 1,
+      name: "Chocolate Ganache Dream",
+      description:
+        "Rich chocolate cake with silky ganache frosting, topped with fresh raspberries and chocolate shavings",
+      price: "$45",
+      image:  "https://i.pinimg.com/736x/9d/25/93/9d2593780fe22eba7acf1ea6e9e57110.jpg",
+      category: "ready-made" as const,
+    },
+    {
+      id: 2,
+      name: "Elegant Wedding Tier",
+      description:
+        "Classic white fondant wedding cake with delicate lace patterns and fresh florals",
+      price: "$250",
+      image:"https://i.pinimg.com/736x/5b/d1/a2/5bd1a2689ac916f9b24b83e3a1136112.jpg",
+      category: "ready-made" as const,
+    },  
+    {
+      id: 3,
+      name: "Strawberry Shortcake",
+      description:
+        "Light and fluffy vanilla cake layered with fresh strawberries and whipped cream",
+      price: "$38",
+      image:
+        "https://i.pinimg.com/736x/9c/15/b0/9c15b08d019a99dd1703de44a570068b.jpg",
+      category: "ready-made" as const,
+    },
+  
+  ];
   return (
     <>
       <div className="py-10 bg-gray-50 dark:bg-gray-800">
         <h2 className="text-3xl font-bold text-gray-800 dark:text-white text-center mb-8">
           Our Featured <span className="text-pink-500 text-3xl">Desserts</span>
         </h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
-            <img
-              src="https://www.thespruceeats.com/thmb/1J1YkYJX1j6u0bX3F4Z3Z5v6j5E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-cheesecake-recipe-995524-hero-01-5c7b1f2c46e0fb0001f3d4d6.jpg"
-              alt="Cheesecake"
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                Classic Cheesecake
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                A rich and creamy cheesecake with a buttery graham cracker
-                crust.
-              </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-12 lg:px-24">
+          {cakes.map((cake) => (
+            <div
+              key={cake.id}
+              className="max-w-sm mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden mb-6"
+            >
+              <img
+                className="w-full h-48 object-cover"
+                src={cake.image}
+                alt={cake.name}
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+                  {cake.name}
+                </h3>
+                <p className="mt-2 text-gray-600 dark:text-gray-300">
+                  {cake.description}
+                </p>
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-pink-500 font-bold text-lg">
+                    {cake.price}
+                  </span>
+                  <a
+                    href="#order"
+                    className="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600"
+                  >
+                    Order Now
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </>
