@@ -12,7 +12,7 @@ export type Tuser = {
   updatedAt: string;
 };
 
-export const userApi = createApi({
+const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
     baseUrl: ApiUrl,
@@ -29,3 +29,7 @@ export const userApi = createApi({
     }),
   }),
 });
+
+
+export const { useCreateUserMutation } = userApi;
+export default userApi;
