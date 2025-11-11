@@ -1,3 +1,5 @@
+import { FaOpencart } from "react-icons/fa6";
+
 import { NavLink } from "react-router";
 
 export const Navbar = () => {
@@ -79,9 +81,9 @@ export const Navbar = () => {
           </li>
         </ul>
       </div>
-      {/* <div className="navbar-end">
-        <a className="btn">Order now</a>
-      </div> */}
+      <div className="navbar-end">
+        <FaOpencart className="text-3xl font-bold text-purple-500 hover:text-purple-700 cursor-pointer" />
+      </div>
     </div>
   );
 };

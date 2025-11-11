@@ -1,10 +1,14 @@
+import { Footer } from "../components/footer/Footer";
 import { Navbar } from "../components/navbar/Navbar";
 
 export const Templates = () => {
   return (
     <>
       <Navbar />
-      <div>Templates Page</div>
+      <section>
+        <div>Templates Page</div>
+      </section>
+      <Footer />
     </>
   );
 };
