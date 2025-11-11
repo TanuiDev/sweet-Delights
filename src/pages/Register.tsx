@@ -2,6 +2,7 @@ import { Footer } from "../components/footer/Footer";
 import { Navbar } from "../components/navbar/Navbar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import userApi from "../features/Auth/userApi";
 
 import * as yup from "yup";
 
@@ -28,6 +29,7 @@ const schema = yup.object().shape({
   address: yup.string().required("Address is required"),
 });
 export const Register = () => {
+  const [createUser] = userApi.useCreateUserMutation();
   const {
     register,
     handleSubmit,
@@ -35,8 +37,13 @@ export const Register = () => {
   } = useForm<inputData>({
     resolver: yupResolver(schema),
   });
-  const onsubmit: SubmitHandler<inputData> = (data) => {
-    console.log(data);
+  const onsubmit: SubmitHandler<inputData> = async (data) => {
+    try {
+      const response = await createUser(data).unwrap();
+      console.log("Registration successful:", response);
+    } catch (error) {
+      console.log("Registration error:", error);
+    }
   };
 
   return (
