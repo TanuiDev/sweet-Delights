@@ -4,6 +4,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import userApi from "../features/Auth/userApi";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 import * as yup from "yup";
 
@@ -31,6 +32,7 @@ const schema = yup.object().shape({
 });
 export const Register = () => {
   const [createUser, { isLoading }] = userApi.useCreateUserMutation();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -46,6 +48,7 @@ export const Register = () => {
       const response = await createUser(data).unwrap();
       console.log("User registered successfully:", response);
       toast.success("User registered successfully!");
+      navigate("/verify");
     } catch (error) {
       console.error("Failed to register user:", error);
     }
