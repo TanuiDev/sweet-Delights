@@ -3,7 +3,7 @@ import { Navbar } from "../components/navbar/Navbar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import userApi from "../features/Auth/userApi";
-import {toast} from 'sonner'
+import { toast } from "sonner";
 
 import * as yup from "yup";
 
@@ -30,7 +30,7 @@ const schema = yup.object().shape({
   address: yup.string().required("Address is required"),
 });
 export const Register = () => {
-  const [createUser,{isLoading}] = userApi.useCreateUserMutation();
+  const [createUser, { isLoading }] = userApi.useCreateUserMutation();
 
   const {
     register,
@@ -115,12 +115,20 @@ export const Register = () => {
             </span>
             <button
               type="submit"
-              disabled={isLoading}
               className="w-full rounded-md bg-indigo-500 px-3 py-1.5 text-base  hover:bg-indigo-600 focus:outline-2 focus:outline-indigo-500 sm:text-sm/6"
+              style={
+                isLoading ? { cursor: "not-allowed" } : { cursor: "pointer" }
+              }
+              disabled={isLoading}
             >
-              {isLoading ?
-              <span>Registering...</span>              
-              : "Register"}
+              {isLoading ? (
+                <>
+                  <span className="loading loading-dots loading-xs pr-3" />{" "}
+                  Registering
+                </>
+              ) : (
+                "Register"
+              )}
             </button>
           </form>
         </div>

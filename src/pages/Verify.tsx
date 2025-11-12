@@ -20,7 +20,7 @@ const schema = yup.object().shape({
     .required("Verification code is required"),
 });
 export const Verify = () => {
-  const [verifyUser,{isLoading}] = userApi.useVerifyUserMutation();
+  const [verifyUser, { isLoading }] = userApi.useVerifyUserMutation();
 
   const {
     register,
@@ -75,8 +75,18 @@ export const Verify = () => {
               type="submit"
               className="w-full rounded-md bg-indigo-500 px-3 py-1.5 text-base  hover:bg-indigo-600 focus:outline-2 focus:outline-indigo-500 sm:text-sm/6"
               disabled={isLoading}
+              style={
+                isLoading ? { cursor: "not-allowed" } : { cursor: "pointer" }
+              }
             >
-              {isLoading ? "Verifying..." : "Verify Account"}
+              {isLoading ? (
+                <>
+                  <span className="loading loading-dots loading-xs" />{" "}
+                  Verifying...
+                </>
+              ) : (
+                "Verify Account"
+              )}
             </button>
           </form>
         </div>

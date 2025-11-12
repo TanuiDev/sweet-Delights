@@ -27,7 +27,10 @@ const userApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
-    verifyUser: builder.mutation<{message:string}, { email: string; verification_code: string }>({
+    verifyUser: builder.mutation<
+      { message: string },
+      { email: string; verification_code: string }
+    >({
       query: (body) => ({
         url: "/users/verify",
         method: "POST",
@@ -35,7 +38,6 @@ const userApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
-
   }),
 });
 
