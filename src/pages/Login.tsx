@@ -3,8 +3,10 @@ import { Navbar } from "../components/navbar/Navbar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // import userApi from "../features/Auth/userApi";
+import loginApi from "../features/Auth/loginApi";
 
 import * as yup from "yup";
+import { toast } from "sonner";
 
 type inputData = {
   email: string;
@@ -18,6 +20,7 @@ const schema = yup.object().shape({
     .required("Password is required"),
 });
 export const Login = () => {
+  const [loginUser, { isLoading }] = loginApi.useLoginMutation();
   const {
     register,
     handleSubmit,
@@ -29,8 +32,13 @@ export const Login = () => {
   const onsubmit: SubmitHandler<inputData> = async (data) => {
     try {
       console.log("Form Data:", data);
-    } catch (error) {
+      const response = await loginUser(data).unwrap();
+      console.log("User logged in successfully:", response);
+      toast.success("User logged in successfully!");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       console.error("Failed to login user:", error);
+      toast.error(error?.data?.message);
     }
   };
 
@@ -66,8 +74,16 @@ export const Login = () => {
             <button
               type="submit"
               className="w-full rounded-md bg-indigo-500 px-3 py-1.5 text-base  hover:bg-indigo-600 focus:outline-2 focus:outline-indigo-500 sm:text-sm/6"
+              disabled={isLoading}
             >
-              Login
+              {isLoading ? (
+                <>
+                  <span className="loading loading-dots loading-xs"></span>
+                  Loading...
+                </>
+              ) : (
+                "Login"
+              )}
             </button>
           </form>
         </div>
