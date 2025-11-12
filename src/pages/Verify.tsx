@@ -2,14 +2,16 @@ import { Footer } from "../components/footer/Footer";
 import { Navbar } from "../components/navbar/Navbar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import userApi from "../features/Auth/userApi";
+import userApi from "../features/Auth/userApi";
 
 import * as yup from "yup";
+import { toast } from "sonner";
 
 type inputData = {
   email: string;
   verification_code: string;
 };
+
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   verification_code: yup
@@ -18,6 +20,8 @@ const schema = yup.object().shape({
     .required("Verification code is required"),
 });
 export const Verify = () => {
+  const [verifyUser,{isLoading}] = userApi.useVerifyUserMutation();
+
   const {
     register,
     handleSubmit,
@@ -29,8 +33,12 @@ export const Verify = () => {
   const onsubmit: SubmitHandler<inputData> = async (data) => {
     try {
       console.log("Form Data:", data);
+      const response = await verifyUser(data).unwrap();
+      console.log("User verified successfully:", response);
+      toast.success("User verified successfully!");
     } catch (error) {
-      console.error("Failed to login user:", error);
+      console.error("Failed to verify user:", error);
+      toast.error("Failed to verify user.");
     }
   };
 
@@ -66,8 +74,9 @@ export const Verify = () => {
             <button
               type="submit"
               className="w-full rounded-md bg-indigo-500 px-3 py-1.5 text-base  hover:bg-indigo-600 focus:outline-2 focus:outline-indigo-500 sm:text-sm/6"
+              disabled={isLoading}
             >
-              Verify Account
+              {isLoading ? "Verifying..." : "Verify Account"}
             </button>
           </form>
         </div>

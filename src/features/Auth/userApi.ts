@@ -27,8 +27,17 @@ const userApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
+    verifyUser: builder.mutation<{message:string}, { email: string; verification_code: string }>({
+      query: (body) => ({
+        url: "/users/verify",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+
   }),
 });
 
-export const { useCreateUserMutation } = userApi;
+export const { useCreateUserMutation, useVerifyUserMutation } = userApi;
 export default userApi;

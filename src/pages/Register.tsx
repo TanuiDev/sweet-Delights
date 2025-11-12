@@ -3,6 +3,7 @@ import { Navbar } from "../components/navbar/Navbar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import userApi from "../features/Auth/userApi";
+import {toast} from 'sonner'
 
 import * as yup from "yup";
 
@@ -44,6 +45,7 @@ export const Register = () => {
       console.log("Form Data:", data);
       const response = await createUser(data).unwrap();
       console.log("User registered successfully:", response);
+      toast.success("User registered successfully!");
     } catch (error) {
       console.error("Failed to register user:", error);
     }
