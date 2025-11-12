@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/es/storage'
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/es/storage";
 
 import userApi from "../features/Auth/userApi";
 
