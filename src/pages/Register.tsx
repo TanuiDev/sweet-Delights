@@ -30,6 +30,7 @@ const schema = yup.object().shape({
 });
 export const Register = () => {
   const [createUser] = userApi.useCreateUserMutation();
+
   const {
     register,
     handleSubmit,
@@ -37,10 +38,14 @@ export const Register = () => {
   } = useForm<inputData>({
     resolver: yupResolver(schema),
   });
+
   const onsubmit: SubmitHandler<inputData> = async (data) => {
+
     try {
+      console.log("Form Data:", data);
       const response = await createUser(data).unwrap();
       console.log("User registered successfully:", response);
+   
     } catch (error) {
       console.error("Failed to register user:", error);
     }
