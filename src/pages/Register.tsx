@@ -29,7 +29,7 @@ const schema = yup.object().shape({
   address: yup.string().required("Address is required"),
 });
 export const Register = () => {
-  const [createUser] = userApi.useCreateUserMutation();
+  const [createUser,{isLoading}] = userApi.useCreateUserMutation();
 
   const {
     register,
@@ -113,9 +113,12 @@ export const Register = () => {
             </span>
             <button
               type="submit"
+              disabled={isLoading}
               className="w-full rounded-md bg-indigo-500 px-3 py-1.5 text-base  hover:bg-indigo-600 focus:outline-2 focus:outline-indigo-500 sm:text-sm/6"
             >
-              Register
+              {isLoading ?
+              <span>Registering...</span>              
+              : "Register"}
             </button>
           </form>
         </div>

@@ -51,9 +51,12 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <Toaster position="top-right" richColors />
+      <Toaster position="top-right"
+        className=""
+      />
     </>
   );
 }
 
 export default App;
+

@@ -38,7 +38,7 @@ export const Verify = () => {
     <>
       <Navbar />
       <div className="mt-10 mb-10 w-full md:w-1/2 sm:mx-auto  py-6 rounded-b-lg shadow-lg p-6">
-        <h1 className="text-center text-2xl font-bold">Login Page</h1>
+        <h1 className="text-center text-2xl font-bold">Verify your account</h1>
         <div className="mt-6 px-6 bg-gray-100 rounded-md py-6">
           <form
             onSubmit={handleSubmit(onsubmit)}
@@ -67,7 +67,7 @@ export const Verify = () => {
               type="submit"
               className="w-full rounded-md bg-indigo-500 px-3 py-1.5 text-base  hover:bg-indigo-600 focus:outline-2 focus:outline-indigo-500 sm:text-sm/6"
             >
-              Login
+              Verify Account
             </button>
           </form>
         </div>
