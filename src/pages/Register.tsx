@@ -48,7 +48,7 @@ export const Register = () => {
       const response = await createUser(data).unwrap();
       console.log("User registered successfully:", response);
       toast.success("User registered successfully!");
-      navigate("/verify");
+      navigate("/verify", { state: { email: data.email } });
     } catch (error) {
       console.error("Failed to register user:", error);
     }

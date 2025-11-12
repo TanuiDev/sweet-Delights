@@ -3,6 +3,7 @@ import { Navbar } from "../components/navbar/Navbar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import userApi from "../features/Auth/userApi";
+import { useLocation } from "react-router-dom";
 
 import * as yup from "yup";
 import { toast } from "sonner";
@@ -21,6 +22,8 @@ const schema = yup.object().shape({
 });
 export const Verify = () => {
   const [verifyUser, { isLoading }] = userApi.useVerifyUserMutation();
+  const location = useLocation();
+  const state = (location.state as { email: string }) || "";
 
   const {
     register,
@@ -28,6 +31,9 @@ export const Verify = () => {
     formState: { errors },
   } = useForm<inputData>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      email: state.email || "",
+    },
   });
 
   const onsubmit: SubmitHandler<inputData> = async (data) => {
