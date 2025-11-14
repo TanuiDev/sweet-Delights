@@ -60,12 +60,12 @@ export const About = () => {
           </p>
           <p className="text-sm sm:text-sm md:text-2xl mt-4">
             Our team of passionate bakers is committed to quality, creativity,
-            and exceptional service. Whether you’re celebrating a birthday, a
+            and exceptional service. Whether you're celebrating a birthday, a
             wedding, or simply craving something sweet, SweetDelights brings
             your ideas to life with flavors you'll love and designs that stand
             out.
           </p>
-        </div>
+        </div>      
 
         <div className="mt-3 p-4">
           <h3 className="text-2xl font-bold text-secondary">Why choose us?</h3>
