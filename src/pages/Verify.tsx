@@ -10,14 +10,14 @@ import { toast } from "sonner";
 
 type inputData = {
   email: string;
-  verification_code: string;
+  code: string;
 };
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
-  verification_code: yup
+  code: yup
     .string()
-    .min(8, "Verification code must be at least 6 characters")
+    .min(6, "Verification code must be at least 6 characters")
     .required("Verification code is required"),
 });
 export const Verify = () => {
@@ -71,11 +71,11 @@ export const Verify = () => {
             <input
               type="text"
               placeholder="Enter Verification Code"
-              {...register("verification_code")}
+              {...register("code")}
               className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
             />
             <span className="text-red-500 text-xs">
-              {errors.verification_code?.message}
+              {errors.code?.message}
             </span>
             <button
               type="submit"

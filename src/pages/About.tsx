@@ -65,7 +65,7 @@ export const About = () => {
             your ideas to life with flavors you'll love and designs that stand
             out.
           </p>
-        </div>      
+        </div>
 
         <div className="mt-3 p-4">
           <h3 className="text-2xl font-bold text-secondary">Why choose us?</h3>

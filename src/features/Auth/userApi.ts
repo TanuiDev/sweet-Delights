@@ -29,7 +29,7 @@ const userApi = createApi({
     }),
     verifyUser: builder.mutation<
       { message: string },
-      { email: string; verification_code: string }
+      { email: string; code: string }
     >({
       query: (body) => ({
         url: "/users/verify",
