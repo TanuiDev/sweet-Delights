@@ -3,6 +3,7 @@ import { Navbar } from "../components/navbar/Navbar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // import userApi from "../features/Auth/userApi";
+import { useNavigate } from "react-router-dom";
 import loginApi from "../features/Auth/loginApi";
 
 import * as yup from "yup";
@@ -21,6 +22,7 @@ const schema = yup.object().shape({
 });
 export const Login = () => {
   const [loginUser, { isLoading }] = loginApi.useLoginMutation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -35,7 +37,10 @@ export const Login = () => {
       const response = await loginUser(data).unwrap();
       console.log("User logged in successfully:", response);
       toast.success("User logged in successfully!");
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+      navigate("/");
+    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error("Failed to login user:", error);
       toast.error(error?.data?.message);

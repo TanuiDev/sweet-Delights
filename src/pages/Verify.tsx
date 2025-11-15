@@ -3,6 +3,8 @@ import { Navbar } from "../components/navbar/Navbar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import userApi from "../features/Auth/userApi";
+import { useNavigate } from "react-router-dom";
+
 import { useLocation } from "react-router-dom";
 
 import * as yup from "yup";
@@ -24,6 +26,7 @@ export const Verify = () => {
   const [verifyUser, { isLoading }] = userApi.useVerifyUserMutation();
   const location = useLocation();
   const state = (location.state as { email: string }) || "";
+  const navigate = useNavigate();
 
   const {
     register,
@@ -42,6 +45,7 @@ export const Verify = () => {
       const response = await verifyUser(data).unwrap();
       console.log("User verified successfully:", response);
       toast.success("User verified successfully!");
+      navigate("/login");
     } catch (error) {
       console.error("Failed to verify user:", error);
       toast.error("Failed to verify user.");
