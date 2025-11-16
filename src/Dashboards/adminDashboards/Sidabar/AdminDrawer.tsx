@@ -5,8 +5,7 @@ export const AdminDrawer = () => {
   return (
     <>
       <div>
-        <h1 className="welcome">Welcome back Admin</h1>
-        <ul>
+        <ul className="text-lg md:text-xl gap-y-2 pl-3">
           {adminData.map((item) => (
             <li key={item.id}>
               <Link to={item.link}>{item.name}</Link>
