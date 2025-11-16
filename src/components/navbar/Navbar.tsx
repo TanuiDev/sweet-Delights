@@ -32,11 +32,11 @@ export const Navbar = () => {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/ready">Ready made</NavLink>
+              <NavLink to="/admin/dashboard/ready">Dashboard</NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/templates ">Templates</NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink to="/about">About</NavLink>
             </li>
@@ -61,11 +61,14 @@ export const Navbar = () => {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/ready">Ready made</NavLink>
           </li>
           <li>
             <NavLink to="/templates">Templates</NavLink>
+          </li> */}
+          <li>
+            <NavLink to="/admin/dashboard/ready">Dashboard</NavLink>
           </li>
           <li>
             <NavLink to="/about">About</NavLink>
