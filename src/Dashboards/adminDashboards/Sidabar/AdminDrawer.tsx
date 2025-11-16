@@ -4,7 +4,7 @@ import { adminData } from "../Sidabar/sideBar/drawer";
 export const AdminDrawer = () => {
   return (
     <>
-      <div>
+      <div className="">
         <ul className="text-lg md:text-xl gap-y-2 pl-3">
           {adminData.map((item) => (
             <li key={item.id}>
