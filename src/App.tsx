@@ -11,6 +11,7 @@ import { About } from "./pages/About";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Verify } from "./pages/Verify";
+import { AdminDashboard } from "./Dashboards/adminDashboards/content/AdminDashboard";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,14 +19,7 @@ function App() {
       path: "/",
       element: <Home />,
     },
-    {
-      path: "/ready",
-      element: <Ready />,
-    },
-    {
-      path: "/templates",
-      element: <Templates />,
-    },
+
     {
       path: "/contact",
       element: <Contact />,
@@ -33,6 +27,32 @@ function App() {
     {
       path: "/about",
       element: <About />,
+    },
+    {
+      path: "/admin/dashboard/",
+      element: <AdminDashboard />,
+      children: [
+        {
+          path: "ready",
+          element: <Ready />,
+        },
+        {
+          path: "templates",
+          element: <Templates />,
+        },
+        {
+          path: "orders",
+          element: <h1>Orders</h1>,
+        },
+        {
+          path: "users",
+          element: <h1>Users</h1>,
+        },
+        {
+          path: "profile",
+          element: <h1>Profile</h1>,
+        },
+      ],
     },
     {
       path: "/login",

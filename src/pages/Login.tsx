@@ -39,8 +39,8 @@ export const Login = () => {
       toast.success("User logged in successfully!");
 
       navigate("/");
-    
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error("Failed to login user:", error);
       toast.error(error?.data?.message);

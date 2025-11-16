@@ -78,9 +78,7 @@ export const Verify = () => {
               {...register("code")}
               className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
             />
-            <span className="text-red-500 text-xs">
-              {errors.code?.message}
-            </span>
+            <span className="text-red-500 text-xs">{errors.code?.message}</span>
             <button
               type="submit"
               className="w-full rounded-md bg-indigo-500 px-3 py-1.5 text-base  hover:bg-indigo-600 focus:outline-2 focus:outline-indigo-500 sm:text-sm/6"
