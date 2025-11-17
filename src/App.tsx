@@ -13,8 +13,12 @@ import { Register } from "./pages/Register";
 import { Verify } from "./pages/Verify";
 import { AdminDashboard } from "./Dashboards/adminDashboards/content/AdminDashboard";
 import { UserDashboard } from "./Dashboards/userDashboards/content/UserDashboard";
+import { useSelector } from "react-redux";
+import type {RootState } from "./app/store";
 
 function App() {
+  const isCustomerLoggedIn = useSelector((state: RootState) => state.user.user?.role === "customer");
+  const isAdminLoggedIn = useSelector((state: RootState) => state.user.user?.role === "admin");
   const router = createBrowserRouter([
     {
       path: "/",
@@ -31,7 +35,7 @@ function App() {
     },
     {
       path: "/admin/dashboard/ready",
-      element: <AdminDashboard />,
+      element: isAdminLoggedIn ? <AdminDashboard /> : <Login />,
       children: [
         {
           path: "ready",
@@ -57,7 +61,7 @@ function App() {
     },
     {
       path: "/customer/dashboard/",
-      element: <UserDashboard />,
+      element: isCustomerLoggedIn ? <UserDashboard /> : <Login />,
       children: [
         {
           path: "ready",
