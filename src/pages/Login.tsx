@@ -2,13 +2,13 @@ import { Footer } from "../components/footer/Footer";
 import { Navbar } from "../components/navbar/Navbar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import userApi from "../features/Auth/userApi";
 import { useNavigate } from "react-router-dom";
+import  { useDispatch } from "react-redux";
 import loginApi from "../features/Auth/loginApi";
-
 
 import * as yup from "yup";
 import { toast } from "sonner";
+import { loginSuccess } from "../features/Auth/userSlice";
 
 type inputData = {
   email: string;
@@ -23,6 +23,7 @@ const schema = yup.object().shape({
 });
 export const Login = () => {
   const [loginUser, { isLoading }] = loginApi.useLoginMutation();
+  const dispatch = useDispatch();
   
   const navigate = useNavigate();
   const {
@@ -39,7 +40,7 @@ export const Login = () => {
       const response = await loginUser(data).unwrap();
       console.log("User logged in successfully:", response);
       toast.success("User logged in successfully!");
-      
+      dispatch(loginSuccess(response));      
 
       if(response.user.role === "customer"){
         navigate("/customer/dashboard/myorders");
