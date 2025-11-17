@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import loginApi from "../features/Auth/loginApi";
 
+
 import * as yup from "yup";
 import { toast } from "sonner";
 
@@ -22,6 +23,7 @@ const schema = yup.object().shape({
 });
 export const Login = () => {
   const [loginUser, { isLoading }] = loginApi.useLoginMutation();
+  
   const navigate = useNavigate();
   const {
     register,
@@ -37,6 +39,7 @@ export const Login = () => {
       const response = await loginUser(data).unwrap();
       console.log("User logged in successfully:", response);
       toast.success("User logged in successfully!");
+      
 
       if(response.user.role === "customer"){
         navigate("/customer/dashboard/myorders");
