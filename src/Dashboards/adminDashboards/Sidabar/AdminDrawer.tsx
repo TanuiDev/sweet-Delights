@@ -5,10 +5,12 @@ export const AdminDrawer = () => {
   return (
     <>
       <div className="">
-        <ul className="text-lg md:text-xl gap-y-2 pl-3">
+        <h3 className="text-white text-xl font-semibold p-2 bg-gray-500 ">Admin Menu</h3>
+        <div className="border-b border-gray-400"></div>
+        <ul className="p-2 space-y-4  text-white text-lg"> 
           {adminData.map((item) => (
-            <li key={item.id}>
-              <Link to={item.link}>{item.name}</Link>
+            <li key={item.id} className="  p-2 rounded-md">
+              <Link to={item.link} className="">{item.name}</Link>
             </li>
           ))}
         </ul>

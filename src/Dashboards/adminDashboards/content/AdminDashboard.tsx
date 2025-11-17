@@ -15,20 +15,26 @@ export const AdminDashboard = () => {
   return (
     <>
       <Navbar />
-      <div>
-     <button onClick={handleToggle} className="m-2 p-2 text-2xl lg:hidden">
-          {isOpen ? <IoCloseOutline /> : <FaBars />}
+      <div className=" flex justify-between items-center mr-4  p-2  w-full bg-gray-500 text-white  lg:hidden">
+     <button onClick={handleToggle} className="text-3xl">
+          {isOpen ? "" : <FaBars />}
      </button>
-        
+      <div className="text-lg font-semibold">Admin Dashboard</div>
       </div>
       <div className="flex lg:flex-row">
         <aside className={`
-        fixed  top-0 z-40 w-40 bg-gray-500
+        fixed   z-40 w-40 bg-gray-500
+          ${isOpen ? " " : 'hidden'}
         lg:static lg:block lg:w-40         
           `}
       style={{minHeight:'100vh'}}
           >
-          <AdminDrawer />
+          <div>
+            <button onClick={handleToggle} className="absolute right-1  top-3 text-3xl text-white lg:hidden">
+              <IoCloseOutline  />
+            </button>
+            <AdminDrawer />
+          </div>
         </aside>
         <main>
           <Outlet />
