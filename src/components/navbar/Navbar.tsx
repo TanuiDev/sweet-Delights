@@ -1,12 +1,16 @@
 import { FaOpencart } from "react-icons/fa6";
 import { useSelector } from "react-redux";
-import type {RootState } from "../../app/store";
+import type { RootState } from "../../app/store";
 
 import { NavLink } from "react-router";
 
 export const Navbar = () => {
-  const isCustomerLoggedIn = useSelector((state: RootState) => state.user.user?.role === "customer");
-    const isAdminLoggedIn = useSelector((state: RootState) => state.user.user?.role === "admin");
+  const isCustomerLoggedIn = useSelector(
+    (state: RootState) => state.user.user?.role === "customer",
+  );
+  const isAdminLoggedIn = useSelector(
+    (state: RootState) => state.user.user?.role === "admin",
+  );
   return (
     <div className="navbar  bg-white dark:bg-gray-400 shadow-md px-4 md:px-8">
       <div className="navbar-start">
@@ -35,14 +39,16 @@ export const Navbar = () => {
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
-           {
-            isCustomerLoggedIn ? <li>
-              <NavLink to="/customer/dashboard/myorders">Dashboard</NavLink>
-            </li> : isAdminLoggedIn ? <li>
-              <NavLink to="/admin/dashboard/ready">Dashboard</NavLink>
-            </li> : null
-           }               
-           
+            {isCustomerLoggedIn ? (
+              <li>
+                <NavLink to="/customer/dashboard/myorders">Dashboard</NavLink>
+              </li>
+            ) : isAdminLoggedIn ? (
+              <li>
+                <NavLink to="/admin/dashboard/ready">Dashboard</NavLink>
+              </li>
+            ) : null}
+
             <li>
               <NavLink to="/about">About</NavLink>
             </li>
@@ -67,14 +73,16 @@ export const Navbar = () => {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          
-           {
-            isCustomerLoggedIn ? <li>
+
+          {isCustomerLoggedIn ? (
+            <li>
               <NavLink to="/customer/dashboard/myorders">Dashboard</NavLink>
-            </li> : isAdminLoggedIn ? <li>
+            </li>
+          ) : isAdminLoggedIn ? (
+            <li>
               <NavLink to="/admin/dashboard/ready">Dashboard</NavLink>
-            </li> : null
-           }  
+            </li>
+          ) : null}
           <li>
             <NavLink to="/about">About</NavLink>
           </li>

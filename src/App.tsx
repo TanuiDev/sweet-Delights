@@ -14,11 +14,15 @@ import { Verify } from "./pages/Verify";
 import { AdminDashboard } from "./Dashboards/adminDashboards/content/AdminDashboard";
 import { UserDashboard } from "./Dashboards/userDashboards/content/UserDashboard";
 import { useSelector } from "react-redux";
-import type {RootState } from "./app/store";
+import type { RootState } from "./app/store";
 
 function App() {
-  const isCustomerLoggedIn = useSelector((state: RootState) => state.user.user?.role === "customer");
-  const isAdminLoggedIn = useSelector((state: RootState) => state.user.user?.role === "admin");
+  const isCustomerLoggedIn = useSelector(
+    (state: RootState) => state.user.user?.role === "customer",
+  );
+  const isAdminLoggedIn = useSelector(
+    (state: RootState) => state.user.user?.role === "admin",
+  );
   const router = createBrowserRouter([
     {
       path: "/",

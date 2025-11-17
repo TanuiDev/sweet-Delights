@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/es/storage";
-import userSlice from "../features/Auth/userSlice"
+import userSlice from "../features/Auth/userSlice";
 import userApi from "../features/Auth/userApi";
 // import { useLocation } from "react-router-dom";
 import loginApi from "../features/Auth/loginApi";
@@ -10,7 +10,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  whitelist: ['user'], // Add the names of the slices you want to persist
+  whitelist: ["user"], // Add the names of the slices you want to persist
 };
 
 const rootReducer = combineReducers({
