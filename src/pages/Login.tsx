@@ -38,8 +38,11 @@ export const Login = () => {
       console.log("User logged in successfully:", response);
       toast.success("User logged in successfully!");
 
-      navigate("/");
-
+      if(response.user.role === "customer"){
+        navigate("/customer/dashboard/myorders");
+      }else if(response.user.role === "admin"){
+        navigate("/admin/dashboard/ready");
+      }    
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error("Failed to login user:", error);
