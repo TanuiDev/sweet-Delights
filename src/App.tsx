@@ -15,6 +15,7 @@ import { AdminDashboard } from "./Dashboards/adminDashboards/content/AdminDashbo
 import { UserDashboard } from "./Dashboards/userDashboards/content/UserDashboard";
 import { useSelector } from "react-redux";
 import type { RootState } from "./app/store";
+import { Users } from "./Dashboards/adminDashboards/content/Users";
 
 function App() {
   const isCustomerLoggedIn = useSelector(
@@ -55,7 +56,7 @@ function App() {
         },
         {
           path: "users",
-          element: <h1>Users</h1>,
+          element: <Users />,
         },
         {
           path: "profile",

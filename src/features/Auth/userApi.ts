@@ -1,5 +1,7 @@
+
 import { ApiUrl } from "../../utils/apiUrl";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import type { RootState } from "../../app/store";
 
 export type Tuser = {
   user_id: number;
@@ -10,12 +12,21 @@ export type Tuser = {
   address: string;
   createdAt: string;
   updatedAt: string;
+  is_verified: boolean;
 };
 
 const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
     baseUrl: ApiUrl,
+    prepareHeaders:(headers,{getState}) => {
+      const token = (getState() as RootState).user.token
+      if(token){
+        headers.set('Authorization',`Bearer${token}`)
+        headers.set('Content-Type','application/json')
+      }
+      return
+    }
   }),
   tagTypes: ["User"],
   endpoints: (builder) => ({
@@ -38,8 +49,15 @@ const userApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
+    getUsers: builder.query<Tuser[], void>({
+      query: () => ({
+        url: "/users",
+        method: "GET",
+      }),
+      providesTags: ["User"],
+    }),
   }),
 });
 
-export const { useCreateUserMutation, useVerifyUserMutation } = userApi;
+export const { useCreateUserMutation, useVerifyUserMutation, useGetUsersQuery } = userApi;
 export default userApi;
