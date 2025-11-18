@@ -1,7 +1,3 @@
-
-
 export const ReadyMade = () => {
-  return (
-    <div>ReadyMade</div>
-  )
-}
+  return <div>ReadyMade</div>;
+};

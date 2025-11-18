@@ -1,6 +1,3 @@
-
 export const Templates = () => {
-  return (
-    <div>Templates</div>
-  )
-}
+  return <div>Templates</div>;
+};
