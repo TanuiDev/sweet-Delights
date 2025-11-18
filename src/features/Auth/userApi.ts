@@ -22,7 +22,7 @@ const userApi = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).user.token;
       if (token) {
-        headers.set("Authorization", `Bearer${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
         headers.set("Content-Type", "application/json");
       }
       return;
