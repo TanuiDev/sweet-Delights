@@ -10,6 +10,7 @@ export type Tuser = {
   password: string;
   phone: string;
   address: string;
+  role: string;
   createdAt: string;
   updatedAt: string;
   is_verified: boolean;
@@ -49,7 +50,7 @@ const userApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
-    getUsers: builder.query<Tuser[], void>({
+    getUsers: builder.query<{ data: Tuser[] }, void>({
       query: () => ({
         url: "/users",
         method: "GET",
