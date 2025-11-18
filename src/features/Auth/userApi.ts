@@ -11,8 +11,8 @@ export type Tuser = {
   phone: string;
   address: string;
   role: string;
-  createdAt: string;
-  updatedAt: string;
+  Created_At: string;
+  Updated_At: string;
   is_verified: boolean;
 };
 
