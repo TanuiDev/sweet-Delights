@@ -72,7 +72,6 @@ const userApi = createApi({
       invalidatesTags: ["User"],
     }),
   }),
-  
 });
 
 export const {

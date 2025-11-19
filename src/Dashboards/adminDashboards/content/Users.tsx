@@ -1,8 +1,12 @@
-import userApi from "../../../features/Auth/userApi";
+import userApi, { type Tuser } from "../../../features/Auth/userApi";
 import { CiEdit } from "react-icons/ci";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { DeleteUser } from "./DeleteUser";
+import { useState } from "react";
 
 export const Users = () => {
+  const [selectedUser, setSelectedUser] = useState<Tuser | null>(null);
+
   const {
     data: usersData,
     isLoading: loadingUsers,
@@ -11,7 +15,13 @@ export const Users = () => {
   console.log("Users data:", usersData?.data);
   return (
     <div>
-      {loadingUsers && <p className="text-xl ">Loading users...</p>}
+      <DeleteUser user={selectedUser} />
+
+      {loadingUsers && (
+        <p className="text-xl ">
+          <span className="loading loading-spinner loading-2xl"></span>
+        </p>
+      )}
       {userError && (
         <p className="text-xl text-red-500 ">Error loading users.</p>
       )}
@@ -69,7 +79,17 @@ export const Users = () => {
                     <button className="btn btn-sm btn-primary ">
                       <CiEdit size={20} />
                     </button>
-                    <button className="btn btn-sm btn-danger bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700">
+                    <button
+                      className="btn btn-sm btn-danger bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700"
+                      onClick={() => {
+                        setSelectedUser(user);
+                        (
+                          document.getElementById(
+                            "delete_modal",
+                          ) as HTMLDialogElement
+                        )?.showModal();
+                      }}
+                    >
                       <RiDeleteBinLine size={20} />
                     </button>
                   </td>
