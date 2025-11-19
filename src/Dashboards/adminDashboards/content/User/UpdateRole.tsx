@@ -7,11 +7,11 @@ import { toast } from "sonner";
 import userApi, { type Tuser } from "../../../../features/Auth/userApi";
 
 const schema = yup.object({
-  role: yup.string().oneOf(["user", "admin"]).required("Role is required"),
+  role: yup.string().oneOf(["customer", "admin"]).required("Role is required"),
 });
 
 type ChangeRoleInputs = {
-  role: "user" | "admin";
+  role: "customer" | "admin";
 };
 
 type ChangeRoleProps = {
@@ -33,7 +33,7 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
 
   useEffect(() => {
     if (user) {
-      setValue("role", user.role as "user" | "admin");
+      setValue("role", user.role as "customer" | "admin");
     } else {
       reset();
     }
@@ -41,13 +41,14 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
 
   const onSubmit: SubmitHandler<ChangeRoleInputs> = async (data) => {
     try {
+      console.log("Submitting data:", data);
       if (!user) {
         toast.error("No user selected for role change.");
         return;
       }
       const res = await updateUser({ user_Id: user.user_Id, ...data });
       console.log(res);
-      // toast.success(res.data?.message);
+      toast.success("User role updated Successfully");
       (document.getElementById("role_modal") as HTMLDialogElement)?.close();
     } catch (error) {
       console.error("Error updating role:", error);
@@ -55,7 +56,7 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
     }
   };
   return (
-    <dialog id="role_modal" className="modal sm:modal-middle">
+    <dialog id="role" className="modal sm:modal-middle">
       <div className="modal-box bg-gray-600 text-white w-full max-w-xs sm:max-w-lg mx-auto rounded-lg">
         <h3 className="font-bold text-lg mb-4">Change Role for {user?.name}</h3>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -64,7 +65,7 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
             {...register("role")}
             className="select select-bordered w-full bg-white text-black dark:bg-gray-200 dark:text-black"
           >
-            <option value="user">User</option>
+            <option value="customer">Customer</option>
             <option value="admin">Admin</option>
           </select>
           {errors.role && (

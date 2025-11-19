@@ -8,6 +8,8 @@ import { UpdateRole } from "./UpdateRole";
 export const Users = () => {
   const [deleteUser, setDeleteUser] = useState<Tuser | null>(null);
 
+  const [updateUser, setUpdateUser] = useState<Tuser | null>(null);
+
   const {
     data: usersData,
     isLoading: loadingUsers,
@@ -16,8 +18,7 @@ export const Users = () => {
 
   return (
     <div>
-      <DeleteUser user={deleteUser} />
-      <UpdateRole user={deleteUser} />
+      <DeleteUser user={updateUser} />
 
       {loadingUsers && (
         <p className="text-xl ">
@@ -81,7 +82,7 @@ export const Users = () => {
                     <button
                       className="btn btn-sm btn-primary "
                       onClick={() => {
-                        setDeleteUser(user);
+                        setUpdateUser(user);
                         (
                           document.getElementById("role") as HTMLDialogElement
                         )?.showModal();
@@ -107,6 +108,7 @@ export const Users = () => {
               </tbody>
             ))}
           </table>
+          <UpdateRole user={deleteUser} />
         </div>
       ) : (
         <p>No users found.</p>
