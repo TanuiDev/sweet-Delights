@@ -13,11 +13,11 @@ export const DeleteUser = ({ user }: DeleteUserProps) => {
       if (!user) {
         toast.error("No user selected for deletion.");
         return;
-      }
-      console.log("Deleting user with ID:", user.user_Id);
+        }
       await deleteUser(user.user_Id);
       toast.success("User deleted Successfully");
       (document.getElementById("delete_modal") as HTMLDialogElement)?.close();
+      
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.log(error);

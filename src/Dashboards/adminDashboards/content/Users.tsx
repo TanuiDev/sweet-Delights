@@ -12,7 +12,7 @@ export const Users = () => {
     isLoading: loadingUsers,
     error: userError,
   } = userApi.useGetUsersQuery();
-  console.log("Users data:", usersData?.data);
+ 
   return (
     <div>
       <DeleteUser user={deleteUser} />
