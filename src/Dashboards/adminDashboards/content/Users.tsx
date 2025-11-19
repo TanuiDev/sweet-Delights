@@ -5,7 +5,7 @@ import { DeleteUser } from "./DeleteUser";
 import { useState } from "react";
 
 export const Users = () => {
-  const [selectedUser, setSelectedUser] = useState<Tuser | null>(null);
+  const [deleteUser, setDeleteUser] = useState<Tuser | null>(null);
 
   const {
     data: usersData,
@@ -15,7 +15,7 @@ export const Users = () => {
   console.log("Users data:", usersData?.data);
   return (
     <div>
-      <DeleteUser user={selectedUser} />
+      <DeleteUser user={deleteUser} />
 
       {loadingUsers && (
         <p className="text-xl ">
@@ -82,7 +82,7 @@ export const Users = () => {
                     <button
                       className="btn btn-sm btn-danger bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700"
                       onClick={() => {
-                        setSelectedUser(user);
+                        setDeleteUser(user);
                         (
                           document.getElementById(
                             "delete_modal",

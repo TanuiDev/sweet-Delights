@@ -64,13 +64,15 @@ const userApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
-    deleteUser: builder.mutation<{ message: string }, { user_id: number }>({
-      query: ({ user_id }) => ({
-        url: `/users/${user_id}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: ["User"],
-    }),
+    deleteUser: builder.mutation<{ success: boolean; user_id: number }, number>(
+      {
+        query: (user_id) => ({
+          url: `/users/${user_id}`,
+          method: "DELETE",
+        }),
+        invalidatesTags: ["User"],
+      },
+    ),
   }),
 });
 
