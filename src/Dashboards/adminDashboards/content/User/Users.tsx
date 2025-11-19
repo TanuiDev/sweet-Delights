@@ -88,7 +88,7 @@ export const Users = () => {
                         )?.showModal();
                       }}
                     >
-                      <CiEdit size={20} />
+                      <CiEdit size={20} /> Change Role
                     </button>
                     <button
                       className="btn btn-sm btn-danger bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700"
