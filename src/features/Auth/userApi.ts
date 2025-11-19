@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { RootState } from "../../app/store";
 
 export type Tuser = {
-  user_id: number;
+  user_Id: number;
   name: string;
   email: string;
   password: string;
@@ -56,18 +56,18 @@ const userApi = createApi({
       }),
       providesTags: ["User"],
     }),
-    updateUser: builder.mutation<Tuser, Partial<Tuser> & { user_id: number }>({
-      query: ({ user_id, ...body }) => ({
-        url: `/users/${user_id}`,
+    updateUser: builder.mutation<Tuser, Partial<Tuser> & { user_Id: number }>({
+      query: ({ user_Id, ...body }) => ({
+        url: `/users/${user_Id}`,
         method: "PUT",
         body,
       }),
       invalidatesTags: ["User"],
     }),
-    deleteUser: builder.mutation<{ success: boolean; user_id: number }, number>(
+    deleteUser: builder.mutation<{ success: boolean; user_Id: number }, number>(
       {
-        query: (user_id) => ({
-          url: `/users/${user_id}`,
+        query: (user_Id) => ({
+          url: `/users/${user_Id}`,
           method: "DELETE",
         }),
         invalidatesTags: ["User"],

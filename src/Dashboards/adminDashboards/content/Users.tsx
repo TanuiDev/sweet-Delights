@@ -44,7 +44,7 @@ export const Users = () => {
             {usersData.data.map((user) => (
               <tbody>
                 <tr
-                  key={user.user_id}
+                  key={user.user_Id}
                   className="hover:bg-base-300 border-b border-gray-300 lg:text-md"
                 >
                   <td className="px-4 py-2 border-r border-gray-900">

@@ -14,8 +14,8 @@ export const DeleteUser = ({ user }: DeleteUserProps) => {
         toast.error("No user selected for deletion.");
         return;
       }
-
-      await deleteUser(user.user_id);
+      console.log("Deleting user with ID:", user.user_Id);
+      await deleteUser(user.user_Id);
       toast.success("User deleted Successfully");
       (document.getElementById("delete_modal") as HTMLDialogElement)?.close();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
