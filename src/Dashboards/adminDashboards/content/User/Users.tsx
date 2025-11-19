@@ -1,4 +1,4 @@
-import userApi, { type Tuser } from "../../../features/Auth/userApi";
+import userApi, { type Tuser } from "../../../../features/Auth/userApi";
 import { CiEdit } from "react-icons/ci";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { DeleteUser } from "./DeleteUser";
@@ -12,7 +12,7 @@ export const Users = () => {
     isLoading: loadingUsers,
     error: userError,
   } = userApi.useGetUsersQuery();
- 
+
   return (
     <div>
       <DeleteUser user={deleteUser} />

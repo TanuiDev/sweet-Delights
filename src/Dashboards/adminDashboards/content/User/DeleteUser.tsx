@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import userApi, { type Tuser } from "../../../features/Auth/userApi";
+import userApi, { type Tuser } from "../../../../features/Auth/userApi";
 
 type DeleteUserProps = {
   user: Tuser | null;
@@ -13,11 +13,11 @@ export const DeleteUser = ({ user }: DeleteUserProps) => {
       if (!user) {
         toast.error("No user selected for deletion.");
         return;
-        }
+      }
       await deleteUser(user.user_Id);
       toast.success("User deleted Successfully");
       (document.getElementById("delete_modal") as HTMLDialogElement)?.close();
-      
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.log(error);
