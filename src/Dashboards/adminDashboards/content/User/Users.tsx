@@ -3,6 +3,7 @@ import { CiEdit } from "react-icons/ci";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { DeleteUser } from "./DeleteUser";
 import { useState } from "react";
+import { UpdateRole } from "./UpdateRole";
 
 export const Users = () => {
   const [deleteUser, setDeleteUser] = useState<Tuser | null>(null);
@@ -16,6 +17,7 @@ export const Users = () => {
   return (
     <div>
       <DeleteUser user={deleteUser} />
+      <UpdateRole user={deleteUser} />
 
       {loadingUsers && (
         <p className="text-xl ">
@@ -76,7 +78,15 @@ export const Users = () => {
                     {user.role}
                   </td>
                   <td className="px-4 py-2 flex gap-x-2">
-                    <button className="btn btn-sm btn-primary ">
+                    <button
+                      className="btn btn-sm btn-primary "
+                      onClick={() => {
+                        setDeleteUser(user);
+                        (
+                          document.getElementById("role") as HTMLDialogElement
+                        )?.showModal();
+                      }}
+                    >
                       <CiEdit size={20} />
                     </button>
                     <button
