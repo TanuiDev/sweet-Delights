@@ -56,7 +56,23 @@ const userApi = createApi({
       }),
       providesTags: ["User"],
     }),
+    updateUser: builder.mutation<Tuser, Partial<Tuser> & { user_id: number }>({
+      query: ({ user_id, ...body }) => ({
+        url: `/users/${user_id}`,
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    deleteUser: builder.mutation<{ message: string }, { user_id: number }>({
+      query: ({ user_id }) => ({
+        url: `/users/${user_id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
+  
 });
 
 export const {
