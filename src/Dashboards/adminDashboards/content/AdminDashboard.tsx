@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import { Navbar } from "../../../components/navbar/Navbar";
 import { Footer } from "../../../components/footer/Footer";
-import { AdminDrawer } from "../Sidabar/AdminDrawer";
+import { AdminDrawer } from "../Sidebar/AdminDrawer";
 import { FaBars } from "react-icons/fa";
 import { IoCloseOutline } from "react-icons/io5";
 import { useState } from "react";

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { adminData } from "../Sidabar/sideBar/drawer";
+import { adminData } from "./sideBar/drawer";
 
 export const AdminDrawer = () => {
   return (

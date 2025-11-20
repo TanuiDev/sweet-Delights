@@ -1,28 +1,6 @@
-// import { CiEdit } from "react-icons/ci";
-// import { RiDeleteBinLine } from "react-icons/ri";
-// Id: number;
-// UserId: number;
-// DesignId?: number;
-// Size: string;
-// Flavor: string;
-// Message: string;
-// Status: string;
-// DeliveryDate: string;
-// Price: number;
-// Notes: string;
-// ExtendedDescription: string;
-// SampleImages: string[];
-// ColorPreferences: string;
-// CreatedAt: string;
-// UpdatedAt: string;
-
 import orderApi, { type Torders } from "../../../../features/Auth/orderAPI";
 
 export const Orders = () => {
-  // const [deleteUser, setDeleteUser] = useState<Tuser | null>(null);
-
-  // const [updateUser, setUpdateUser] = useState<Tuser | null>(null);
-
   const {
     data: orderDetails,
     isLoading: loadingOrders,
