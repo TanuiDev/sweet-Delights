@@ -28,11 +28,8 @@ export const Orders = () => {
     isLoading: loadingOrders,
     isError: orderError,
   } = orderApi.useGetOrdersQuery();
-
-  console.log("orderDetails", orderDetails);
-
   return (
-    <div>
+    <div className="px-3 w-full">
       {loadingOrders && (
         <p className="text-xl ">
           <span className="loading loading-spinner loading-2xl"></span>
@@ -43,33 +40,65 @@ export const Orders = () => {
       )}
       {!loadingOrders && !orderError && orderDetails && (
         <div>
-          <h2 className="text-xl md:text-2xl text-center text">All Orders</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-4">
+          <h2 className="text-xl md:text-2xl text-center text-purple-500 font-bold">
+            All Orders
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 md:p-8">
             {orderDetails.data.length === 0 ? (
               <p className="text-xl ">No orders found.</p>
             ) : (
               orderDetails.data.map((data: Torders) => (
                 <div
                   key={data.Id}
-                  className="card bg-base-100 w-96 shadow-sm border border-gray-200 sm:w-full"
+                  className="card bg-base-100 w-full h-96 shadow-sm border border-gray-200"
                 >
-                  <figure className="px-10 pt-10">
+                  <figure className="px-2 pt-2">
                     <img
-                      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                      alt="Shoes"
-                      className="rounded-xl"
+                      src={
+                        !data?.SampleImages?.[0]
+                          ? "https://i.pinimg.com/736x/00/ff/08/00ff085a771bf7891878900694e677bf.jpg"
+                          : data.SampleImages[0]
+                      }
+                      alt="Cakes"
+                      className=" h-40 w-40 object-cover"
                     />
                   </figure>
-                  <div className="card-body items-center text-center">
-                    <h2 className="card-title">
+                  <div className="card-body  ">
+                    <h2 className="card-title text-purple-500">
                       {data.Flavor || "Card Title"}
                     </h2>
                     <p>
-                      {data.ExtendedDescription ||
-                        "A card component has a figure, a body part, and inside body there are title and actions parts"}
+                      <span className="font-bold    ">
+                        Extended Description:{" "}
+                      </span>{" "}
+                      {data.ExtendedDescription}
                     </p>
-                    <div className="card-actions">
-                      <button className="btn btn-primary">View</button>
+                    <p>
+                      <span className="font-bold   ">Message: </span>{" "}
+                      {data.Message}
+                    </p>
+                    <p>
+                      <span className="font-bold   ">Price: </span> ksh
+                      {data.Price}
+                    </p>
+                    <p>
+                      <span className="font-bold   ">Status: </span>{" "}
+                      {data.Status}
+                    </p>
+                    <p>
+                      <span className="font-bold   ">To be delivered on: </span>
+                      {new Date(data.DeliveryDate).toLocaleDateString()}
+                    </p>
+                    <p>
+                      <span className="font-bold   ">Notes: </span> {data.Notes}
+                    </p>
+                    <div className="card-actions justify-between gap-2">
+                      <button className="btn btn-active btn-error">
+                        delete
+                      </button>
+                      <button className="btn btn-active btn-success">
+                        Success
+                      </button>
                     </div>
                   </div>
                 </div>
