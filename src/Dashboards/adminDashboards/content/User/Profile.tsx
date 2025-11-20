@@ -1,3 +1,6 @@
 export const Profile = () => {
-  return <div>Profile</div>;
+  return;
+  <div>
+    <h1>User Profile Page</h1>
+  </div>;
 };

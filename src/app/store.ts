@@ -5,6 +5,7 @@ import userSlice from "../features/Auth/userSlice";
 import userApi from "../features/Auth/userApi";
 // import { useLocation } from "react-router-dom";
 import loginApi from "../features/Auth/loginApi";
+import orderApi from "../features/Auth/orderAPI";
 
 const persistConfig = {
   key: "root",
@@ -16,6 +17,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   [loginApi.reducerPath]: loginApi.reducer,
+  [orderApi.reducerPath]: orderApi.reducer,
   user: userSlice,
 });
 
@@ -28,7 +30,8 @@ export const store = configureStore({
       serializableCheck: false,
     })
       .concat(userApi.middleware)
-      .concat(loginApi.middleware),
+      .concat(loginApi.middleware)
+      .concat(orderApi.middleware),
 });
 export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
