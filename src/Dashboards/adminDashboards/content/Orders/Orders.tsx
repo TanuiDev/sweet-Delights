@@ -50,7 +50,7 @@ export const Orders = () => {
               orderDetails.data.map((data: Torders) => (
                 <div
                   key={data.Id}
-                  className="card bg-base-100 w-full h-96 shadow-sm border border-gray-200"
+                  className="card bg-base-100 w-full h-96 shadow-sm border border-gray-200 bg-purple-100"
                 >
                   <figure className="px-2 pt-2">
                     <img
@@ -93,12 +93,17 @@ export const Orders = () => {
                       <span className="font-bold   ">Notes: </span> {data.Notes}
                     </p>
                     <div className="card-actions justify-between gap-2">
-                      <button className="btn btn-active btn-error">
-                        delete
-                      </button>
-                      <button className="btn btn-active btn-success">
-                        Success
-                      </button>
+                      <select
+                        defaultValue="Pick a Framework"
+                        className="select select-info"
+                      >
+                        <option disabled={true}>Update the order Status</option>
+                        <option> Pending</option>
+                        <option>In Progress</option>
+                        <option>Completed</option>
+                        <option>Delivered</option>
+                        <option value="">Cancelled</option>
+                      </select>
                     </div>
                   </div>
                 </div>
