@@ -3,7 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { RootState } from "../../app/store";
 
 export type Torders = {
-  UserI: number;
+  Id: number;
+  UserId: number;
   DesignId?: number;
   Size: string;
   Flavor: string;
