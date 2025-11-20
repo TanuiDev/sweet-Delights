@@ -57,10 +57,10 @@ const userApi = createApi({
       providesTags: ["User"],
     }),
     updateUser: builder.mutation<Tuser, Partial<Tuser> & { user_Id: number }>({
-      query: ({ user_Id, ...body }) => ({
-        url: `/users/${user_Id}`,
+      query: (user) => ({
+        url: `/users/${user.user_Id}`,
         method: "PUT",
-        body,
+        body: user,
       }),
       invalidatesTags: ["User"],
     }),

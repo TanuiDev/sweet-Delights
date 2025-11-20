@@ -41,13 +41,12 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
 
   const onSubmit: SubmitHandler<ChangeRoleInputs> = async (data) => {
     try {
-      console.log("Update response:", data);
       if (!user) {
         toast.error("No user selected for role change.");
         return;
       }
 
-      await updateUser({ user_Id: user.user_Id, ...data });
+      await updateUser({ user_Id: user?.user_Id, ...data });
 
       toast.success("User role updated Successfully");
       (document.getElementById("role") as HTMLDialogElement)?.close();
@@ -56,6 +55,7 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
       toast.error("Failed to update role. Please try again.");
     }
   };
+
   return (
     <dialog id="role" className="modal sm:modal-middle">
       <div className="modal-box bg-gray-600 text-white w-full max-w-xs sm:max-w-lg mx-auto rounded-lg">

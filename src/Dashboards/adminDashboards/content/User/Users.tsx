@@ -18,7 +18,8 @@ export const Users = () => {
 
   return (
     <div>
-      <DeleteUser user={updateUser} />
+      <DeleteUser user={deleteUser} />
+      <UpdateRole user={updateUser} />
 
       {loadingUsers && (
         <p className="text-xl ">
@@ -108,7 +109,6 @@ export const Users = () => {
               </tbody>
             ))}
           </table>
-          <UpdateRole user={deleteUser} />
         </div>
       ) : (
         <p>No users found.</p>
