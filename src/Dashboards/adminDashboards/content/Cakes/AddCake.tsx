@@ -1,7 +1,6 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useEffect } from "react";
 
 import { toast } from "sonner";
 import cakeApi from "../../../../features/Cakes/cakeAPI";
@@ -44,74 +43,120 @@ export const AddCake = () => {
   };
   return (
     <dialog id="newcake" className="modal sm:modal-middle">
-      <div className="modal-box bg-gray-600 text-white w-full max-w-xs sm:max-w-lg mx-auto rounded-lg">
-        <h3 className="font-bold text-lg mb-4">Add New Cake</h3>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-          <input
-            id="cakeName"
-            type="text"
-            {...register("cakeName")}
-            className="input input-bordered w-full"
-            placeholder="Cake Name"
-          />
-          {errors.cakeName && (
-            <span className="text-sm text-red-700">
-              {errors.cakeName.message}
-            </span>
-          )}
-          <input
-            type="text"
-            {...register("flavorsUsed")}
-            className="input input-bordered w-full"
-            placeholder="Flavors Used"
-          />
-          {errors.flavorsUsed && (
-            <span className="text-sm text-red-700">
-              {errors.flavorsUsed.message}
-            </span>
-          )}
-          <input
-            type="text"
-            {...register("size")}
-            className="input input-bordered w-full"
-            placeholder="Size"
-          />
-          {errors.size && (
-            <span className="text-sm text-red-700">{errors.size.message}</span>
-          )}
-          <input
-            type="file"
-            {...register("imageURL")}
-            className="input input-bordered w-full"
-            placeholder="Image URL"
-          />
-          {errors.imageURL && (
-            <span className="text-sm text-red-700">
-              {errors.imageURL.message}
-            </span>
-          )}
-          <input
-            type="number"
-            {...register("quantityAvailable")}
-            className="input input-bordered w-full"
-            placeholder="Quantity Available"
-          />
-          {errors.quantityAvailable && (
-            <span className="text-sm text-red-700">
-              {errors.quantityAvailable.message}
-            </span>
-          )}
-          <button
-            type="submit"
-            className="btn btn-primary w-full"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <span className="loading loading-spinner text-primary" />
-            ) : (
-              "Add Cake"
+      <div className="modal-box w-full max-w-2xl bg-white px-0 py-0 text-gray-900">
+        <div className="bg-linear-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-2xl">
+          <p className="text-sm uppercase tracking-widest text-white/80">
+            Inventory
+          </p>
+          <h3 className="text-2xl font-semibold">Add New Cake</h3>
+          <p className="text-sm text-white/80">
+            Provide details for the ready-made cake you want to stock.
+          </p>
+        </div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-6 px-6 py-6"
+        >
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
+              Cake name
+              <input
+                id="cakeName"
+                type="text"
+                {...register("cakeName")}
+                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                placeholder="e.g. Velvet Berry Bliss"
+              />
+              {errors.cakeName && (
+                <span className="text-xs font-normal text-red-600">
+                  {errors.cakeName.message}
+                </span>
+              )}
+            </label>
+            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
+              Flavors used
+              <input
+                type="text"
+                {...register("flavorsUsed")}
+                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                placeholder="Strawberry • Vanilla • White chocolate"
+              />
+              {errors.flavorsUsed && (
+                <span className="text-xs font-normal text-red-600">
+                  {errors.flavorsUsed.message}
+                </span>
+              )}
+            </label>
+            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
+              Size
+              <input
+                type="text"
+                {...register("size")}
+                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                placeholder="8-inch round, serves 10"
+              />
+              {errors.size && (
+                <span className="text-xs font-normal text-red-600">
+                  {errors.size.message}
+                </span>
+              )}
+            </label>
+            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
+              Quantity available
+              <input
+                type="number"
+                min={0}
+                {...register("quantityAvailable")}
+                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                placeholder="12"
+              />
+              {errors.quantityAvailable && (
+                <span className="text-xs font-normal text-red-600">
+                  {errors.quantityAvailable.message}
+                </span>
+              )}
+            </label>
+          </div>
+          <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
+            Select Images
+            <input
+              type="file"
+              {...register("imageURL")}
+              className="file:mr-5 file:py-1 file:px-3 
+              file:border-gray-300 file:rounded-md file:text-xs file:font-medium file:bg-stone-50 file:text-stone-700 hover:file:cursor-pointer hover:file:bg-blue-50 hover:file:text-blue-700"
+              multiple
+            />
+            {errors.imageURL && (
+              <span className="text-xs font-normal text-red-600">
+                {errors.imageURL.message}
+              </span>
             )}
-          </button>
+          </label>
+          <div className="flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:justify-end">
+            <button
+              className="btn btn-ghost order-2 w-full sm:order-1 sm:w-auto"
+              type="button"
+              onClick={() => {
+                (
+                  document.getElementById("newcake") as HTMLDialogElement
+                )?.close();
+              }}
+              disabled={isLoading}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="btn btn-primary order-1 w-full sm:order-2 sm:w-auto"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <span className="loading loading-spinner text-primary" />
+              ) : (
+                "Save cake"
+              )}
+            </button>
+          </div>
         </form>
       </div>
     </dialog>
