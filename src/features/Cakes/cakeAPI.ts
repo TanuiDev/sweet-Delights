@@ -36,9 +36,37 @@ const cakeApi = createApi({
       }),
       providesTags: ["Cakes"],
     }),
+    addCake: builder.mutation<{ data: Tcakes }, Partial<Tcakes>>({
+      query: (cake) => ({
+        url: "/readycakes",
+        method: "POST",
+        body: cake,
+      }),
+      invalidatesTags: ["Cakes"],
+    }),
+    updateCake: builder.mutation<{ data: Tcakes }, Tcakes>({
+      query: (cake) => ({
+        url: `/readycakes/${cake.cakeId}`,
+        method: "PUT",
+        body: cake,
+      }),
+      invalidatesTags: ["Cakes"],
+    }),
+    deleteCake: builder.mutation<{ data: Tcakes }, number>({
+      query: (cakeId) => ({
+        url: `/readycakes/${cakeId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Cakes"],
+    }),
   }),
 });
 
-export const { useGetCakesQuery } = cakeApi;
+export const {
+  useGetCakesQuery,
+  useAddCakeMutation,
+  useUpdateCakeMutation,
+  useDeleteCakeMutation,
+} = cakeApi;
 
 export default cakeApi;
