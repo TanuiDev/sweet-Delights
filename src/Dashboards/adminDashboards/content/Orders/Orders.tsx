@@ -24,7 +24,7 @@ export const Orders = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8">
       {loadingOrders && (
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="flex flex-col items-center gap-4">
@@ -47,7 +47,7 @@ export const Orders = () => {
       {!loadingOrders && !orderError && orderDetails && (
         <div className="max-w-7xl mx-auto">
           <div className="mb-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
               All Orders
             </h2>
             <p className="text-gray-600 text-sm md:text-base">
@@ -74,7 +74,7 @@ export const Orders = () => {
                   className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1"
                 >
                   {/* Image Section */}
-                  <div className="relative h-48 bg-gradient-to-br from-purple-100 to-pink-100 overflow-hidden">
+                  <div className="relative h-48 bg-linear-to-br from-purple-100 to-pink-100 overflow-hidden">
                     <img
                       src={
                         !data?.SampleImages?.[0]
@@ -100,7 +100,7 @@ export const Orders = () => {
                       <h3 className="text-xl font-bold text-gray-800 mb-1 line-clamp-1">
                         {data.Flavor || "Custom Order"}
                       </h3>
-                      <div className="h-1 w-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                      <div className="h-1 w-12 bg-linear-to-r from-purple-500 to-pink-500 rounded-full"></div>
                     </div>
 
                     <div className="space-y-3 text-sm">
@@ -130,7 +130,7 @@ export const Orders = () => {
                         <span className="font-semibold text-gray-700 min-w-[140px]">
                           Price:
                         </span>
-                        <span className="text-lg font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                        <span className="text-lg font-bold bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                           KSh {data.Price?.toLocaleString() || "0"}
                         </span>
                       </div>
