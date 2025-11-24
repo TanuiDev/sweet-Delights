@@ -51,14 +51,24 @@ export const ReadyMade = () => {
                       {cake.flavorsUsed}
                     </p>
                     <div className="text-lg font-semibold text-purple-600">
-                      <span>Ksh </span>
+                      <span className=" text-lg ">Ksh </span>
                       {cake.price}
                     </div>
-                  </div>
-                  <div className="">
-                    <div>{cake.isactive}</div>
-                    <div>{cake.size}</div>
-                    <div className=""></div>
+                    <div className="">
+                      <div>
+                        <span>Availability</span> {cake.isactive}
+                      </div>
+                      <div>
+                        {" "}
+                        <span>Size </span> {cake.size}
+                      </div>
+                      <div className=" text-sm font-medium text-gray-700 p-4 border-t border-gray-200 bg-gray-50">
+                        <span className="text-2xl font-bold text-purple-600">
+                          Qty
+                        </span>
+                        {cake.quantityAvailable}
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))
