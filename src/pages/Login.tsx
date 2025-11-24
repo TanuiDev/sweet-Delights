@@ -145,7 +145,6 @@ export const Login = () => {
                 )}
               </div>
 
-              {/* Password Field */}
               <div>
                 <label
                   htmlFor="password"
@@ -197,7 +196,6 @@ export const Login = () => {
                 )}
               </div>
 
-              {/* Forgot Password Link */}
               <div className="flex items-center justify-end">
                 <a
                   href="#"
@@ -207,7 +205,6 @@ export const Login = () => {
                 </a>
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isLoading}
@@ -239,7 +236,6 @@ export const Login = () => {
                 <div className="absolute inset-0 bg-linear-to-r from-rose-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
 
-              {/* Divider */}
               <div className="relative my-6">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
@@ -251,7 +247,6 @@ export const Login = () => {
                 </div>
               </div>
 
-              {/* Register Link */}
               <div className="text-center">
                 <a
                   href="/register"
@@ -276,42 +271,6 @@ export const Login = () => {
         </div>
       </div>
       <Footer />
-
-      <style>{`
-        @keyframes blob {
-          0%, 100% {
-            transform: translate(0, 0) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.6s ease-out;
-        }
-      `}</style>
     </>
   );
 };

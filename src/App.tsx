@@ -4,7 +4,6 @@ import { Toaster } from "sonner";
 
 import "./App.css";
 import { Home } from "./pages/Home";
-import { Ready } from "./pages/Ready";
 import { Templates } from "./pages/Templates";
 import { Contact } from "./pages/Contact";
 import { About } from "./pages/About";
@@ -17,6 +16,7 @@ import { useSelector } from "react-redux";
 import type { RootState } from "./app/store";
 import { Users } from "./Dashboards/adminDashboards/content/User/Users";
 import { Orders } from "./Dashboards/adminDashboards/content/Orders/Orders";
+import { ReadyMade } from "./Dashboards/adminDashboards/content/Cakes/ReadyMade";
 
 function App() {
   const isCustomerLoggedIn = useSelector(
@@ -45,7 +45,7 @@ function App() {
       children: [
         {
           path: "ready",
-          element: <Ready />,
+          element: <ReadyMade />,
         },
         {
           path: "templates",
@@ -71,7 +71,7 @@ function App() {
       children: [
         {
           path: "ready",
-          element: <Ready />,
+          element: <ReadyMade />,
         },
         {
           path: "templates",
