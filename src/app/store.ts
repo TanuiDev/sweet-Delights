@@ -6,6 +6,7 @@ import userApi from "../features/Auth/userApi";
 // import { useLocation } from "react-router-dom";
 import loginApi from "../features/Auth/loginApi";
 import orderApi from "../features/Auth/orderAPI";
+import cakeApi from "../features/Cakes/cakeAPI";
 
 const persistConfig = {
   key: "root",
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   [loginApi.reducerPath]: loginApi.reducer,
   [orderApi.reducerPath]: orderApi.reducer,
+  [cakeApi.reducerPath]: cakeApi.reducer,
   user: userSlice,
 });
 
@@ -31,7 +33,8 @@ export const store = configureStore({
     })
       .concat(userApi.middleware)
       .concat(loginApi.middleware)
-      .concat(orderApi.middleware),
+      .concat(orderApi.middleware)
+      .concat(cakeApi.middleware),
 });
 export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
