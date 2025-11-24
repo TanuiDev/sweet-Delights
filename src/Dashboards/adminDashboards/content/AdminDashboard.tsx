@@ -25,7 +25,9 @@ export const AdminDashboard = () => {
           >
             {isOpen ? <IoCloseOutline /> : <FaBars />}
           </button>
-          <div className="text-lg font-semibold tracking-wide">Admin Dashboard</div>
+          <div className="text-lg font-semibold tracking-wide">
+            Admin Dashboard
+          </div>
         </div>
 
         {isOpen && (
