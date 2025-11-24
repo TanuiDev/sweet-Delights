@@ -31,7 +31,7 @@ export const AdminDashboard = () => {
         </div>
 
         {isOpen && (
-          <aside className="lg:hidden border-b border-slate-800 shadow-inner">
+          <aside className="lg:hidden border-b border-slate-800 shadow-inner ">
             <AdminDrawer />
           </aside>
         )}

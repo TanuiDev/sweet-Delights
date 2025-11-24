@@ -45,7 +45,7 @@ export const Login = () => {
       if (response.user.role === "customer") {
         navigate("/customer/dashboard/myorders");
       } else if (response.user.role === "admin") {
-        navigate("/admin/dashboard/ready");
+        navigate("/admin/dashboard/orders");
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {

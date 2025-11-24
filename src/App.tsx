@@ -40,7 +40,7 @@ function App() {
       element: <About />,
     },
     {
-      path: "/admin/dashboard/ready",
+      path: "/admin/dashboard/",
       element: isAdminLoggedIn ? <AdminDashboard /> : <Login />,
       children: [
         {

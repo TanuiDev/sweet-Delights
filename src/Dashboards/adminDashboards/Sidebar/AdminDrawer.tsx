@@ -4,7 +4,7 @@ import { adminData } from "./sideBar/drawer";
 export const AdminDrawer = () => {
   return (
     <>
-      <div className="h-full w-full bg-slate-900 text-slate-100 border-r border-slate-800 shadow-lg">
+      <div className="h-full w-full bg-slate-900 text-slate-100 border-r  border-slate-800 shadow-lg">
         <h3 className="text-2xl font-semibold tracking-wide px-4 py-5 bg-slate-950 border-b border-slate-800">
           Admin Menu
         </h3>
