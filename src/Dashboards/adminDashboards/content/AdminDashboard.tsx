@@ -15,34 +15,33 @@ export const AdminDashboard = () => {
   return (
     <>
       <Navbar />
-      <div className=" flex justify-between items-center mr-4  p-2  w-full bg-gray-500 text-white  lg:hidden">
-        <button onClick={handleToggle} className="text-3xl">
-          {isOpen ? "" : <FaBars />}
-        </button>
-        <div className="text-lg font-semibold">Admin Dashboard</div>
-      </div>
-      <div className="flex lg:flex-row">
-        <aside
-          className={`
-        fixed   z-40 w-40 bg-gray-500
-          ${isOpen ? " " : "hidden"}
-        lg:static lg:block lg:w-40         
-          `}
-          style={{ minHeight: "100vh" }}
-        >
-          <div>
-            <button
-              onClick={handleToggle}
-              className="absolute right-1  top-3 text-3xl text-white lg:hidden"
-            >
-              <IoCloseOutline />
-            </button>
+      <div className="bg-slate-100 min-h-screen">
+        <div className="flex justify-between items-center px-5 py-4 w-full bg-slate-900 text-white shadow lg:hidden">
+          <button
+            onClick={handleToggle}
+            className="text-3xl"
+            aria-label="Toggle admin menu"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <IoCloseOutline /> : <FaBars />}
+          </button>
+          <div className="text-lg font-semibold tracking-wide">Admin Dashboard</div>
+        </div>
+
+        {isOpen && (
+          <aside className="lg:hidden border-b border-slate-800 shadow-inner">
             <AdminDrawer />
-          </div>
-        </aside>
-        <main>
-          <Outlet />
-        </main>
+          </aside>
+        )}
+
+        <div className="flex lg:flex-row">
+          <aside className="hidden lg:block lg:w-64 bg-slate-900 text-white min-h-screen">
+            <AdminDrawer />
+          </aside>
+          <main className="flex-1 px-4 py-6 lg:px-10">
+            <Outlet />
+          </main>
+        </div>
       </div>
 
       <Footer />
