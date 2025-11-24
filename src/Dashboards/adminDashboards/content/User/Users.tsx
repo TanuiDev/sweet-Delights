@@ -27,13 +27,13 @@ export const Users = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-8  sm:px-6 lg:px-8">
       <DeleteUser user={deleteUser} />
       <UpdateRole user={updateUser} />
 
       {/* Header */}
       <div className="mb-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+        <h2 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
           User Management
         </h2>
         <p className="text-gray-600 text-sm md:text-base">
@@ -65,35 +65,35 @@ export const Users = () => {
       {usersData && usersData.data && usersData.data.length > 0 ? (
         <div className="max-w-7xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
-            <div className="overflow-x-auto">
-              <table className="w-full">
+            <div className="">
+              <table className="overflow-x-auto">
                 <thead>
-                  <tr className="bg-gradient-to-r from-purple-600 via-gray-600 to-cyan-600">
-                    <th className="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">
+                  <tr className="bg-linear-to-r from-purple-600 via-gray-600 to-cyan-600">
+                    <th className="px-4 py-2 text-left text-sm font-bold text-white uppercase tracking-wider">
                       Name
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">
+                    <th className="px-4 py-2 text-left text-sm font-bold text-white uppercase tracking-wider">
                       Email
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">
+                    <th className="px-4 py-2text-left text-sm font-bold text-white uppercase tracking-wider">
                       Phone
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">
+                    <th className="px-4 py-2 text-left text-sm font-bold text-white uppercase tracking-wider">
                       Address
                     </th>
-                    <th className="px-6 py-4 text-center text-sm font-bold text-white uppercase tracking-wider">
+                    <th className="px-4 py-2 text-center text-sm font-bold text-white uppercase tracking-wider">
                       Verified
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">
+                    <th className="px-4 py-2 text-left text-sm font-bold text-white uppercase tracking-wider">
                       Created At
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">
+                    <th className="px-4 py-2 text-left text-sm font-bold text-white uppercase tracking-wider">
                       Updated At
                     </th>
-                    <th className="px-6 py-4 text-center text-sm font-bold text-white uppercase tracking-wider">
+                    <th className="px-4 py-2 text-center text-sm font-bold text-white uppercase tracking-wider">
                       Role
                     </th>
-                    <th className="px-6 py-4 text-center text-sm font-bold text-white uppercase tracking-wider">
+                    <th className="px-4 py-2 text-center text-sm font-bold text-white uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
@@ -102,29 +102,29 @@ export const Users = () => {
                   {usersData.data.map((user) => (
                     <tr
                       key={user.user_Id}
-                      className="hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 transition-all duration-200"
+                      className="hover:bg-linear-to-r hover:from-purple-50 hover:to-pink-50 transition-all duration-200"
                     >
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-2 py-1 whitespace-nowrap">
                         <div className="text-sm font-semibold text-gray-900">
                           {user.name}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-2 py-1 whitespace-nowrap">
                         <div className="text-sm text-gray-700">
                           {user.email}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-2 py-1 whitespace-nowrap">
                         <div className="text-sm text-gray-700">
                           {user.phone}
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-2 py-1">
                         <div className="text-sm text-gray-700 max-w-xs truncate">
                           {user.address}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-center">
+                      <td className="px-2 py-1 whitespace-nowrap text-center">
                         {user.is_verified ? (
                           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-300">
                             Verified
@@ -135,7 +135,7 @@ export const Users = () => {
                           </span>
                         )}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-2 py-1 whitespace-nowrap">
                         <div className="text-sm text-gray-600">
                           {new Date(user.Created_At).toLocaleDateString(
                             "en-US",
@@ -147,7 +147,7 @@ export const Users = () => {
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-2 py-1 whitespace-nowrap">
                         <div className="text-sm text-gray-600">
                           {new Date(user.Updated_At).toLocaleDateString(
                             "en-US",
@@ -159,7 +159,7 @@ export const Users = () => {
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-center">
+                      <td className="px-2 py-1 whitespace-nowrap text-center">
                         <span
                           className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${getRoleBadgeColor(
                             user.role,
@@ -168,10 +168,10 @@ export const Users = () => {
                           {user.role}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-center">
+                      <td className="px-4 py-2 whitespace-nowrap text-center">
                         <div className="flex items-center justify-center gap-2">
                           <button
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-linear-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
                             onClick={() => {
                               setUpdateUser(user);
                               (
@@ -184,7 +184,7 @@ export const Users = () => {
                             <CiEdit size={16} /> Change Role
                           </button>
                           <button
-                            className="inline-flex items-center justify-center p-1.5 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-semibold rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+                            className="inline-flex items-center justify-center p-1.5 bg-linear-to-r from-red-500 to-red-600 text-white text-xs font-semibold rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
                             onClick={() => {
                               setDeleteUser(user);
                               (
