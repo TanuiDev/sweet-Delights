@@ -29,7 +29,9 @@ export const Orders = () => {
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="flex flex-col items-center gap-4">
             <span className="loading loading-spinner loading-lg text-purple-600"></span>
-            <p className="text-lg text-gray-600 font-medium">Loading orders...</p>
+            <p className="text-lg text-gray-600 font-medium">
+              Loading orders...
+            </p>
           </div>
         </div>
       )}
@@ -46,8 +48,8 @@ export const Orders = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
-            All Orders
-          </h2>
+              All Orders
+            </h2>
             <p className="text-gray-600 text-sm md:text-base">
               Manage and track all customer orders
             </p>
@@ -85,7 +87,7 @@ export const Orders = () => {
                     <div className="absolute top-3 right-3">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusBadgeColor(
-                          data.Status
+                          data.Status,
                         )} backdrop-blur-sm bg-opacity-90`}
                       >
                         {data.Status}
@@ -111,8 +113,8 @@ export const Orders = () => {
                             Description:
                           </span>
                           <p className="text-gray-600 flex-1 line-clamp-2">
-                      {data.ExtendedDescription}
-                    </p>
+                            {data.ExtendedDescription}
+                          </p>
                         </div>
                       )}
 
@@ -122,8 +124,8 @@ export const Orders = () => {
                             Message:
                           </span>
                           <p className="text-gray-600 flex-1 line-clamp-2">
-                      {data.Message}
-                    </p>
+                            {data.Message}
+                          </p>
                         </div>
                       )}
 
@@ -142,12 +144,15 @@ export const Orders = () => {
                         </span>
                         <span className="text-gray-600 flex items-center gap-1">
                           <span>📅</span>
-                          {new Date(data.DeliveryDate).toLocaleDateString("en-US", {
-                            weekday: "short",
-                            year: "numeric",
-                            month: "short",
-                            day: "numeric",
-                          })}
+                          {new Date(data.DeliveryDate).toLocaleDateString(
+                            "en-US",
+                            {
+                              weekday: "short",
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                            },
+                          )}
                         </span>
                       </div>
 

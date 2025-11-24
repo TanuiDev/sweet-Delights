@@ -45,7 +45,9 @@ export const Users = () => {
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="flex flex-col items-center gap-4">
             <span className="loading loading-spinner loading-lg text-purple-600"></span>
-            <p className="text-lg text-gray-600 font-medium">Loading users...</p>
+            <p className="text-lg text-gray-600 font-medium">
+              Loading users...
+            </p>
           </div>
         </div>
       )}
@@ -108,10 +110,14 @@ export const Users = () => {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-700">{user.email}</div>
+                        <div className="text-sm text-gray-700">
+                          {user.email}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-700">{user.phone}</div>
+                        <div className="text-sm text-gray-700">
+                          {user.phone}
+                        </div>
                       </td>
                       <td className="px-6 py-4">
                         <div className="text-sm text-gray-700 max-w-xs truncate">
@@ -121,36 +127,42 @@ export const Users = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-center">
                         {user.is_verified ? (
                           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-300">
-                             Verified
+                            Verified
                           </span>
                         ) : (
                           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-300">
-                             Pending
+                            Pending
                           </span>
                         )}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-600">
-                          {new Date(user.Created_At).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "short",
-                            day: "numeric",
-                          })}
+                          {new Date(user.Created_At).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                            },
+                          )}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-600">
-                          {new Date(user.Updated_At).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "short",
-                            day: "numeric",
-                          })}
+                          {new Date(user.Updated_At).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                            },
+                          )}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-center">
                         <span
                           className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${getRoleBadgeColor(
-                            user.role
+                            user.role,
                           )}`}
                         >
                           {user.role}
@@ -163,7 +175,9 @@ export const Users = () => {
                             onClick={() => {
                               setUpdateUser(user);
                               (
-                                document.getElementById("role") as HTMLDialogElement
+                                document.getElementById(
+                                  "role",
+                                ) as HTMLDialogElement
                               )?.showModal();
                             }}
                           >
@@ -195,9 +209,7 @@ export const Users = () => {
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="text-center">
             <div className="text-6xl mb-4">👥</div>
-            <p className="text-xl text-gray-600 font-medium">
-              No users found.
-            </p>
+            <p className="text-xl text-gray-600 font-medium">No users found.</p>
             <p className="text-sm text-gray-500 mt-2">
               Users will appear here once they register.
             </p>

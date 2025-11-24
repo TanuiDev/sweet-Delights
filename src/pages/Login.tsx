@@ -92,10 +92,7 @@ export const Login = () => {
             </div>
 
             {/* Form */}
-            <form
-              onSubmit={handleSubmit(onsubmit)}
-              className="space-y-6"
-            >
+            <form onSubmit={handleSubmit(onsubmit)} className="space-y-6">
               {/* Email Field */}
               <div>
                 <label

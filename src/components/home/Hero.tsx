@@ -22,7 +22,7 @@ export const Hero = () => {
                   <span className="text-gray-800 dark:text-white">
                     Sweet Delights
                   </span>
-            </h1>
+                </h1>
                 <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                   Indulge in the finest selection of desserts crafted with{" "}
                   <span className="text-pink-600 dark:text-pink-400 font-semibold">
@@ -37,8 +37,8 @@ export const Hero = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a
-                href="#explore"
+                <a
+                  href="#explore"
                   className="group relative px-8 py-4 bg-linear-to-r from-pink-500 to-rose-500 text-white rounded-full font-semibold text-lg shadow-lg shadow-pink-500/50 hover:shadow-xl hover:shadow-pink-500/60 transform hover:scale-105 transition-all duration-300 overflow-hidden"
                 >
                   <span className="relative z-10">Explore Our Menu</span>
@@ -55,16 +55,28 @@ export const Hero = () => {
               {/* Stats or Features */}
               <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200 dark:border-gray-700">
                 <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-pink-600 dark:text-pink-400">100+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Delicious Cakes</div>
+                  <div className="text-3xl font-bold text-pink-600 dark:text-pink-400">
+                    100+
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    Delicious Cakes
+                  </div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">5K+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Happy Customers</div>
+                  <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">
+                    5K+
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    Happy Customers
+                  </div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-rose-600 dark:text-rose-400">10+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
+                  <div className="text-3xl font-bold text-rose-600 dark:text-rose-400">
+                    10+
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    Years Experience
+                  </div>
                 </div>
               </div>
             </div>
@@ -74,12 +86,12 @@ export const Hero = () => {
               <div className="relative group">
                 {/* Glow effect */}
                 <div className="absolute -inset-4 bg-linear-to-r from-pink-400 to-purple-400 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-                
+
                 {/* Image container */}
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
-            <img
-              src="https://i.pinimg.com/736x/50/87/0b/50870b77b0ab6ed969a9a43b2d4ddfbc.jpg"
-              alt="Delicious Dessert"
+                  <img
+                    src="https://i.pinimg.com/736x/50/87/0b/50870b77b0ab6ed969a9a43b2d4ddfbc.jpg"
+                    alt="Delicious Dessert"
                     className="w-full max-w-lg h-auto object-cover"
                   />
                   {/* Overlay gradient */}
@@ -109,8 +121,6 @@ export const Hero = () => {
           </svg>
         </div>
       </section>
-
-     
     </>
   );
 };

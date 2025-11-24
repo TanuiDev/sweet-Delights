@@ -92,10 +92,7 @@ export const Register = () => {
             </div>
 
             {/* Form */}
-          <form
-            onSubmit={handleSubmit(onsubmit)}
-              className="space-y-5"
-            >
+            <form onSubmit={handleSubmit(onsubmit)} className="space-y-5">
               {/* Name Field */}
               <div>
                 <label
@@ -118,11 +115,11 @@ export const Register = () => {
                       <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
                   </div>
-            <input
+                  <input
                     id="name"
-              type="text"
+                    type="text"
                     placeholder="Enter your full name"
-              {...register("name")}
+                    {...register("name")}
                     className={`block w-full pl-12 pr-4 py-3.5 rounded-xl border-2 transition-all duration-200 ${
                       errors.name
                         ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
@@ -172,11 +169,11 @@ export const Register = () => {
                         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                       </svg>
                     </div>
-            <input
+                    <input
                       id="email"
-              type="email"
+                      type="email"
                       placeholder="Enter your email"
-              {...register("email")}
+                      {...register("email")}
                       className={`block w-full pl-12 pr-4 py-3.5 rounded-xl border-2 transition-all duration-200 ${
                         errors.email
                           ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
@@ -224,11 +221,11 @@ export const Register = () => {
                         <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                       </svg>
                     </div>
-            <input
+                    <input
                       id="phone"
-              type="text"
+                      type="text"
                       placeholder="Enter your phone"
-              {...register("phone")}
+                      {...register("phone")}
                       className={`block w-full pl-12 pr-4 py-3.5 rounded-xl border-2 transition-all duration-200 ${
                         errors.phone
                           ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
@@ -278,11 +275,11 @@ export const Register = () => {
                       <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
                   </div>
-            <input
+                  <input
                     id="address"
-              type="text"
+                    type="text"
                     placeholder="Enter your address"
-              {...register("address")}
+                    {...register("address")}
                     className={`block w-full pl-12 pr-4 py-3.5 rounded-xl border-2 transition-all duration-200 ${
                       errors.address
                         ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
@@ -332,11 +329,11 @@ export const Register = () => {
                         <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                       </svg>
                     </div>
-            <input
+                    <input
                       id="password"
-              type="password"
+                      type="password"
                       placeholder="Create password"
-              {...register("password")}
+                      {...register("password")}
                       className={`block w-full pl-12 pr-4 py-3.5 rounded-xl border-2 transition-all duration-200 ${
                         errors.password
                           ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
@@ -384,11 +381,11 @@ export const Register = () => {
                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
                     </div>
-            <input
+                    <input
                       id="confirmPassword"
-              type="password"
+                      type="password"
                       placeholder="Confirm password"
-              {...register("confirmPassword")}
+                      {...register("confirmPassword")}
                       className={`block w-full pl-12 pr-4 py-3.5 rounded-xl border-2 transition-all duration-200 ${
                         errors.confirmPassword
                           ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
@@ -416,18 +413,18 @@ export const Register = () => {
               </div>
 
               {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isLoading}
+              <button
+                type="submit"
+                disabled={isLoading}
                 className="w-full group relative px-6 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-xl font-semibold text-lg shadow-lg shadow-pink-500/50 hover:shadow-xl hover:shadow-pink-500/60 transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none mt-6"
-            >
+              >
                 <span className="relative z-10 flex items-center justify-center gap-2">
-              {isLoading ? (
-                <>
+                  {isLoading ? (
+                    <>
                       <span className="loading loading-spinner loading-sm"></span>
                       Creating Account...
-                </>
-              ) : (
+                    </>
+                  ) : (
                     <>
                       Create Account
                       <svg
@@ -445,7 +442,7 @@ export const Register = () => {
                   )}
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-rose-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
+              </button>
 
               {/* Divider */}
               <div className="relative my-6">
@@ -479,11 +476,11 @@ export const Register = () => {
                   </svg>
                 </a>
               </div>
-          </form>
+            </form>
           </div>
         </div>
       </div>
-      <Footer />     
+      <Footer />
     </>
   );
 };

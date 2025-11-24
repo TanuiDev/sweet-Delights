@@ -74,17 +74,21 @@ export const About = () => {
             <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
               <div className="space-y-6">
                 <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                  Founded in 2025, <span className="font-semibold text-purple-600">SweetDelights</span> began with one goal: to create
-                  delicious, beautifully crafted cakes and pastries that make every
-                  moment memorable. What started as a small home bakery has grown into
-                  a trusted go-to spot for custom cakes, desserts, and sweet treats.
+                  Founded in 2025,{" "}
+                  <span className="font-semibold text-purple-600">
+                    SweetDelights
+                  </span>{" "}
+                  began with one goal: to create delicious, beautifully crafted
+                  cakes and pastries that make every moment memorable. What
+                  started as a small home bakery has grown into a trusted go-to
+                  spot for custom cakes, desserts, and sweet treats.
                 </p>
                 <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                  Our team of passionate bakers is committed to quality, creativity,
-                  and exceptional service. Whether you're celebrating a birthday, a
-                  wedding, or simply craving something sweet, SweetDelights brings
-                  your ideas to life with flavors you'll love and designs that stand
-                  out.
+                  Our team of passionate bakers is committed to quality,
+                  creativity, and exceptional service. Whether you're
+                  celebrating a birthday, a wedding, or simply craving something
+                  sweet, SweetDelights brings your ideas to life with flavors
+                  you'll love and designs that stand out.
                 </p>
               </div>
             </div>
@@ -97,7 +101,8 @@ export const About = () => {
                 Why Choose Us?
               </h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Discover what makes SweetDelights the perfect choice for your sweet cravings
+                Discover what makes SweetDelights the perfect choice for your
+                sweet cravings
               </p>
               <div className="h-1.5 w-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mt-4"></div>
             </div>
@@ -108,7 +113,9 @@ export const About = () => {
                   key={service.name}
                   className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-2"
                 >
-                  <div className={`bg-gradient-to-br ${service.color} p-6 text-white`}>
+                  <div
+                    className={`bg-gradient-to-br ${service.color} p-6 text-white`}
+                  >
                     <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
                       {service.icon}
                     </div>
@@ -136,10 +143,10 @@ export const About = () => {
                   Our Commitment
                 </h3>
                 <p className="text-lg md:text-xl leading-relaxed text-center max-w-3xl mx-auto">
-                  At SweetDelights, we are dedicated to giving our customers the best
-                  experience with every order. We stand by the quality of our cakes
-                  and pastries and are always here to help you choose the perfect
-                  treat for any occasion.
+                  At SweetDelights, we are dedicated to giving our customers the
+                  best experience with every order. We stand by the quality of
+                  our cakes and pastries and are always here to help you choose
+                  the perfect treat for any occasion.
                 </p>
               </div>
             </div>
