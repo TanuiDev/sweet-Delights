@@ -95,9 +95,7 @@ export const Orders = () => {
                     </div>
                   </div>
 
-                  {/* Card Body */}
                   <div className="p-5 space-y-4">
-                    {/* Title */}
                     <div>
                       <h3 className="text-xl font-bold text-gray-800 mb-1 line-clamp-1">
                         {data.Flavor || "Custom Order"}
@@ -105,7 +103,6 @@ export const Orders = () => {
                       <div className="h-1 w-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
                     </div>
 
-                    {/* Order Details */}
                     <div className="space-y-3 text-sm">
                       {data.ExtendedDescription && (
                         <div className="flex gap-2">
@@ -168,7 +165,6 @@ export const Orders = () => {
                       )}
                     </div>
 
-                    {/* Status Update Select */}
                     <div className="pt-4 border-t border-gray-100">
                       <select
                         defaultValue={data.Status}
