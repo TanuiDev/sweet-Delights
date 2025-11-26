@@ -59,7 +59,7 @@ const cakeApi = createApi({
       }),
       invalidatesTags: ["Cakes"],
     }),
-    deleteCake: builder.mutation<{ data: Tcakes }, number>({
+    deleteCake: builder.mutation<{ success: boolean; cakeId: number }, number>({
       query: (cakeId) => ({
         url: `/readycakes/${cakeId}`,
         method: "DELETE",
