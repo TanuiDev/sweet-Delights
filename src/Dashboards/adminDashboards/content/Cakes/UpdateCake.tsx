@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { toast } from "sonner";
-import cakeApi from "../../../../features/Cakes/cakeAPI";
+import cakeApi, { type Tcakes } from "../../../../features/Cakes/cakeAPI";
 
 // type UpdateCakeProps = {
 //   cake: Tcakes | null;
@@ -25,7 +25,10 @@ const schema = yup.object({
   quantityAvailable: yup.number().required("Quantity Available is required"),
 });
 
-export const UpdateCake = () => {
+type ChangeCakeProps = {
+    cake: Tcakes ;
+};
+export const UpdateCake = ({ cake }: ChangeCakeProps) => {
   const [updateCake, { isLoading }] = cakeApi.useUpdateCakeMutation();
   
   
@@ -38,11 +41,12 @@ export const UpdateCake = () => {
     resolver: yupResolver(schema),
   });
 
-//   await updateCake({ cakeId: cake?.cakeId, ...data });
+
 
   const onSubmit: SubmitHandler<UpdateCakeInputs> = async (data) => {
     try {
       await updateCake(data).unwrap();
+        await updateCake({ cakeId: cake?.cakeId, ...data });
       toast.success("Cake updated successfully");
       (document.getElementById("updatecake") as HTMLDialogElement)?.close();
     } catch (error) {
