@@ -5,6 +5,10 @@ import * as yup from "yup";
 import { toast } from "sonner";
 import cakeApi from "../../../../features/Cakes/cakeAPI";
 
+// type UpdateCakeProps = {
+//   cake: Tcakes | null;
+// };
+
 type UpdateCakeInputs = {
   cakeName: string;
   flavorsUsed: string;
@@ -23,11 +27,9 @@ const schema = yup.object({
 
 export const UpdateCake = () => {
   const [updateCake, { isLoading }] = cakeApi.useUpdateCakeMutation();
-  const cakeId = Number();
-  const { data: cakeDetails } = cakeApi.useGetCakeByIdQuery(cakeId);
+  
+  
 
-  const cakeData = cakeDetails?.data;
-  console.log("cakeData", cakeData);
   const {
     register,
     handleSubmit,
@@ -35,6 +37,8 @@ export const UpdateCake = () => {
   } = useForm<UpdateCakeInputs>({
     resolver: yupResolver(schema),
   });
+
+//   await updateCake({ cakeId: cake?.cakeId, ...data });
 
   const onSubmit: SubmitHandler<UpdateCakeInputs> = async (data) => {
     try {
