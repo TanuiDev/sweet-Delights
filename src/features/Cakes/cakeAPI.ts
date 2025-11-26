@@ -44,7 +44,7 @@ const cakeApi = createApi({
       }),
       invalidatesTags: ["Cakes"],
     }),
-    updateCake: builder.mutation<{ data: Tcakes }, Tcakes>({
+    updateCake: builder.mutation<{ data: Tcakes }, Partial<Tcakes>>({
       query: (cake) => ({
         url: `/readycakes/${cake.cakeId}`,
         method: "PUT",

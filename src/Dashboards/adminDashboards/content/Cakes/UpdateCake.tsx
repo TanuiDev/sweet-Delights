@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { toast } from "sonner";
 import cakeApi from "../../../../features/Cakes/cakeAPI";
 
-type AddCakeInputs = {
+type UpdateCakeInputs = {
   cakeName: string;
   flavorsUsed: string;
   size: string;
@@ -22,23 +22,23 @@ const schema = yup.object({
 });
 
 export const UpdateCake = () => {
-  const [addCake, { isLoading }] = cakeApi.useAddCakeMutation();
+  const [updateCake, { isLoading }] = cakeApi.useUpdateCakeMutation();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AddCakeInputs>({
+  } = useForm<UpdateCakeInputs>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<AddCakeInputs> = async (data) => {
+  const onSubmit: SubmitHandler<UpdateCakeInputs> = async (data) => {
     try {
-      await addCake(data).unwrap();
-      toast.success("Cake added successfully");
-      (document.getElementById("newcake") as HTMLDialogElement)?.close();
+      await updateCake(data).unwrap();
+      toast.success("Cake updated successfully");
+      (document.getElementById("updatecake") as HTMLDialogElement)?.close();
     } catch (error) {
-      console.error("Error adding cake:", error);
+      console.error("Error updating cake:", error);
     }
   };
   return (
@@ -48,9 +48,9 @@ export const UpdateCake = () => {
           <p className="text-sm uppercase tracking-widest text-white/80">
             Inventory
           </p>
-          <h3 className="text-2xl font-semibold">Add New Cake</h3>
+          <h3 className="text-2xl font-semibold">Update Cake</h3>
           <p className="text-sm text-white/80">
-            Provide details for the ready-made cake you want to stock.
+            Provide details for the ready-made cake you want to update.
           </p>
         </div>
         <form
@@ -63,6 +63,7 @@ export const UpdateCake = () => {
               <input
                 id="cakeName"
                 type="text"
+                defaultValue={""}
                 {...register("cakeName")}
                 className="input input-bordered w-full bg-gray-50 focus:bg-white"
                 placeholder="e.g. Velvet Berry Bliss"
