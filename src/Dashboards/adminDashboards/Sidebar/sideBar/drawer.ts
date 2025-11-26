@@ -19,9 +19,9 @@ export const adminData = [
     name: "users",
     link: "users",
   },
-  {
-    id: "profile",
-    name: "profile",
-    link: "profile",
-  },
+  // {
+  //   id: "profile",
+  //   name: "profile",
+  //   link: "profile",
+  // },
 ];

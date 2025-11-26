@@ -1,6 +1,7 @@
 import cakeApi from "../../../../features/Cakes/cakeAPI";
 import { MdAdd } from "react-icons/md";
 import { AddCake } from "./AddCake";
+import { UpdateCake } from "./UpdateCake";
 
 export const ReadyMade = () => {
   const {
@@ -73,6 +74,7 @@ export const ReadyMade = () => {
                     key={cake.cakeId}
                     className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1 group"
                   >
+                    <UpdateCake />
                     <div className="relative h-52 bg-linear-to-br from-purple-100 to-pink-100 overflow-hidden">
                       <img
                         src={cake.imageURL}
@@ -130,7 +132,16 @@ export const ReadyMade = () => {
                       <button className="w-full bg-rose-500 text-white px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300">
                         delete
                       </button>
-                      <button className="w-full bg-purple-500 text-white px-4 py-2 rounded-xl hover:bg-purple-600 transition-colors duration-300">
+                      <button
+                        className="w-full bg-purple-500 text-white px-4 py-2 rounded-xl hover:bg-purple-600 transition-colors duration-300"
+                        onClick={() => {
+                          (
+                            document.getElementById(
+                              "updatecake",
+                            ) as HTMLDialogElement
+                          )?.showModal();
+                        }}
+                      >
                         edit
                       </button>
                     </div>
