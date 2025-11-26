@@ -23,7 +23,11 @@ const schema = yup.object({
 
 export const UpdateCake = () => {
   const [updateCake, { isLoading }] = cakeApi.useUpdateCakeMutation();
+  const cakeId = Number();
+  const { data: cakeDetails } = cakeApi.useGetCakeByIdQuery(cakeId);
 
+  const cakeData = cakeDetails?.data;
+  console.log("cakeData", cakeData);
   const {
     register,
     handleSubmit,
