@@ -26,12 +26,10 @@ const schema = yup.object({
 });
 
 type ChangeCakeProps = {
-    cake: Tcakes ;
+  cake: Tcakes;
 };
 export const UpdateCake = ({ cake }: ChangeCakeProps) => {
   const [updateCake, { isLoading }] = cakeApi.useUpdateCakeMutation();
-  
-  
 
   const {
     register,
@@ -41,12 +39,10 @@ export const UpdateCake = ({ cake }: ChangeCakeProps) => {
     resolver: yupResolver(schema),
   });
 
-
-
   const onSubmit: SubmitHandler<UpdateCakeInputs> = async (data) => {
     try {
       await updateCake(data).unwrap();
-        await updateCake({ cakeId: cake?.cakeId, ...data });
+      await updateCake({ cakeId: cake?.cakeId, ...data });
       toast.success("Cake updated successfully");
       (document.getElementById("updatecake") as HTMLDialogElement)?.close();
     } catch (error) {

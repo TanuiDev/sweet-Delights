@@ -2,15 +2,12 @@ import cakeApi, { type Tcakes } from "../../../../features/Cakes/cakeAPI";
 import { MdAdd } from "react-icons/md";
 import { AddCake } from "./AddCake";
 import { UpdateCake } from "./UpdateCake";
-import {  useState } from "react";
+import { useState } from "react";
 import { DeleteCake } from "./DeleteCake";
-
-
-
 
 export const ReadyMade = () => {
   const [updateCakeData, setUpdateCake] = useState<Tcakes | null>(null);
-  const [deleteCakeData ,setDeleteCake] = useState<Tcakes | null>(null);
+  const [deleteCakeData, setDeleteCake] = useState<Tcakes | null>(null);
   const {
     data: cakeDetails,
     isLoading: loading,
@@ -82,7 +79,7 @@ export const ReadyMade = () => {
                     className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1 group"
                   >
                     {updateCakeData && <UpdateCake cake={updateCakeData} />}
-                      {deleteCakeData && <DeleteCake cake={deleteCakeData} />}
+                    {deleteCakeData && <DeleteCake cake={deleteCakeData} />}
                     <div className="relative h-52 bg-linear-to-br from-purple-100 to-pink-100 overflow-hidden">
                       <img
                         src={cake.imageURL}
@@ -137,11 +134,11 @@ export const ReadyMade = () => {
                       </div>
                     </div>
                     <div className="flex mt-2 px-4 gap-2 pb-2">
-                      <button className="w-full bg-rose-500 text-white px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
-                      onClick={() => {
+                      <button
+                        className="w-full bg-rose-500 text-white px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
+                        onClick={() => {
                           setDeleteCake(cake);
                           (
-
                             document.getElementById(
                               "delete_cake",
                             ) as HTMLDialogElement
@@ -155,7 +152,6 @@ export const ReadyMade = () => {
                         onClick={() => {
                           setUpdateCake(cake);
                           (
-
                             document.getElementById(
                               "updatecake",
                             ) as HTMLDialogElement

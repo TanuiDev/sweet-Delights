@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import cakeApi,{type Tcakes} from "../../../../features/Cakes/cakeAPI";
+import cakeApi, { type Tcakes } from "../../../../features/Cakes/cakeAPI";
 
 type DeleteProps = {
   cake: Tcakes | null;
@@ -65,4 +65,3 @@ export const DeleteCake = ({ cake }: DeleteProps) => {
     </dialog>
   );
 };
-
