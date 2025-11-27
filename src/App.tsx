@@ -4,7 +4,6 @@ import { Toaster } from "sonner";
 
 import "./App.css";
 import { Home } from "./pages/Home";
-import { Templates } from "./pages/Templates";
 import { Contact } from "./pages/Contact";
 import { About } from "./pages/About";
 import { Login } from "./pages/Login";
@@ -17,6 +16,7 @@ import type { RootState } from "./app/store";
 import { Users } from "./Dashboards/adminDashboards/content/User/Users";
 import { Orders } from "./Dashboards/adminDashboards/content/Orders/Orders";
 import { ReadyMade } from "./Dashboards/adminDashboards/content/Cakes/ReadyMade";
+import { Templates } from "./Dashboards/adminDashboards/content/Cakes/Templates";
 
 function App() {
   const isCustomerLoggedIn = useSelector(

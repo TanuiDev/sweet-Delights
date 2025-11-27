@@ -42,6 +42,7 @@ export const UpdateCake = ({ cake }: ChangeCakeProps) => {
   const onSubmit: SubmitHandler<UpdateCakeInputs> = async (data) => {
     try {
       await updateCake(data).unwrap();
+      console.log("Cake Id", { cakeId: cake?.cakeId, ...data });
       await updateCake({ cakeId: cake?.cakeId, ...data });
       toast.success("Cake updated successfully");
       (document.getElementById("updatecake") as HTMLDialogElement)?.close();
