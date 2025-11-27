@@ -20,6 +20,7 @@ const rootReducer = combineReducers({
   [loginApi.reducerPath]: loginApi.reducer,
   [orderApi.reducerPath]: orderApi.reducer,
   [cakeApi.reducerPath]: cakeApi.reducer,
+
   user: userSlice,
 });
 
