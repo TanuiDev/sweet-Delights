@@ -78,3 +78,5 @@ export const {
   useUpdateDesignMutation,
   useDeleteDesignMutation,
 } = templatesApi;
+
+export default templatesApi;
