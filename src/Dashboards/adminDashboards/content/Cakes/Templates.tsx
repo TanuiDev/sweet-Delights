@@ -66,10 +66,16 @@ export const Templates = () => {
                       </span>
                     </div>
                     <div className="flex  items-center">
-                      {/* <h3>Layers: </h3>
+                      <h3 className="flex  gap-2 items-center">Category: </h3>
+                      <span className="text-purple-600 font-bold">
+                        {template.Category}
+                      </span>
+                    </div>
+                    <div className="flex  items-center">
+                      <h3>Price: </h3>
                         <span className="text-purple-600 font-bold">
-                           {template.Layers}
-                        </span>                         */}
+                           {template.BasePrice}
+                        </span>                        
                     </div>
                     <div className="flex  items-center">
                       <h3>Size: </h3>
@@ -77,6 +83,13 @@ export const Templates = () => {
                         {template.Size}
                       </span>
                     </div>
+                    <div className="flex  items-center">
+                      <h3>Availability: </h3>
+                      <span className="text-purple-600 font-bold">
+                        {template.Availability}
+                      </span>
+                    </div>
+
                   </div>
                 </div>
               ))
