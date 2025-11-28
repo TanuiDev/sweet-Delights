@@ -1,16 +1,30 @@
 import { ApiUrl } from "../../utils/apiUrl";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { RootState } from "../../app/store";
+// "DesignID": 1,
+//         "DesignName": "Birthday Bliss",
+//         "Description": "Colorful birthday cake with sprinkles.",
+//         "BaseFlavor": "Vanilla",
+//         "Size": "Small",
+//         "BasePrice": 1000,
+//         "ImageUrl": "birthday.jpg",
+//         "Category": "Birthday",
+//         "Availability": true,
+//         "CreatedAt": "2025-10-28T11:54:47.847Z",
+//         "UpdatedAt": "2025-10-28T11:54:47.847Z"
 
 export type Tdesigns = {
-  designId: number;
-  designName: string;
-  description: string;
-  price: number;
-  imageURL: string;
-  isactive: boolean;
-  createdAt: string;
-  updatedAt: string;
+  DesignID: number;
+  DesignName: string;
+  Description: string;
+  BaseFlavor: string;
+  Size: string;
+  BasePrice: number;
+  ImageUrl: string;
+  Category: string;
+  Availability: boolean;
+  CreatedAt: string;
+  UpdatedAt: string;
 };
 
 const templatesApi = createApi({
@@ -30,21 +44,21 @@ const templatesApi = createApi({
   endpoints: (builder) => ({
     getDesigns: builder.query<{ data: Tdesigns[] }, void>({
       query: () => ({
-        url: "/teamplates",
+        url: "/designs",
         method: "GET",
       }),
       providesTags: ["Designs"],
     }),
     getDesignById: builder.query<{ data: Tdesigns }, number>({
-      query: (designId) => ({
-        url: `/teamplates/${designId}`,
+      query: (DesignID) => ({
+        url: `/designs/${DesignID}`,
         method: "GET",
       }),
       providesTags: ["Designs"],
     }),
     addDesign: builder.mutation<{ data: Tdesigns }, Partial<Tdesigns>>({
       query: (design) => ({
-        url: "/teamplates",
+        url: "/designs",
         method: "POST",
         body: design,
       }),
@@ -52,7 +66,7 @@ const templatesApi = createApi({
     }),
     updateDesign: builder.mutation<{ data: Tdesigns }, Partial<Tdesigns>>({
       query: (design) => ({
-        url: `/teamplates/${design.designId}`,
+        url: `/designs/${design.DesignID}`,
         method: "PUT",
         body: design,
       }),
@@ -62,8 +76,8 @@ const templatesApi = createApi({
       { success: boolean; designId: number },
       number
     >({
-      query: (designId) => ({
-        url: `/teamplates/${designId}`,
+      query: (DesignID) => ({
+        url: `/designs/${DesignID}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Designs"],

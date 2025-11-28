@@ -1,43 +1,20 @@
-import cakeApi, { type Tcakes } from "../../../../features/Cakes/cakeAPI";
-import { MdAdd } from "react-icons/md";
-import { AddCake } from "./AddCake";
-import { UpdateCake } from "./UpdateCake";
-import { useState } from "react";
-import { DeleteCake } from "./DeleteCake";
+import templatesApi from "../../../../features/Cakes/templatesAPI";
 
 export const Templates = () => {
-  const [updateCakeData, setUpdateCake] = useState<Tcakes | null>(null);
-  const [deleteCakeData, setDeleteCake] = useState<Tcakes | null>(null);
   const {
-    data: cakeDetails,
-    isLoading: loading,
-    isError: error,
-  } = cakeApi.useGetCakesQuery();
+    data: templatesDetails,
+    isLoading: templatesLoading,
+    isError: templatesError,
+  } = templatesApi.useGetDesignsQuery();
 
-  const res = cakeDetails?.data || [];
+  const res = templatesDetails?.data || [];
 
-  const formatPrice = (price: number | string) =>
-    new Intl.NumberFormat("en-KE", {
-      style: "currency",
-      currency: "KES",
-      maximumFractionDigits: 0,
-    }).format(Number(price) || 0);
-
-  const getAvailabilityBadge = (isActive?: boolean) =>
-    isActive
-      ? {
-          label: "In stock",
-          className: "bg-emerald-100 text-emerald-700 border-emerald-200",
-        }
-      : {
-          label: "Out of stock",
-          className: "bg-rose-100 text-rose-700 border-rose-200",
-        };
+  console.log("Data", res);
 
   return (
     <>
-      <div className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-4 px-1 sm:px-3 lg:px-4">
-        <div className="max-w-3xl mx-auto text-center">
+      <div className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-2 px-1 sm:px-2 lg:px-2">
+        <div>
           <h2 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-4">
             Ready Made Cakes
           </h2>
@@ -55,115 +32,54 @@ export const Templates = () => {
               }
               className="bg-pink-500 text-white px-4 py-2 rounded-md w-fit flex items-center gap-2 "
             >
-              <MdAdd size={20} />
-              Add New Cake
+              Add New Cake Template
             </button>
           </div>
-          <AddCake />
-          <div className="grid grid-cols-1 justify-between max-w-full sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {loading ? (
-              <p>Loading cakes...</p>
-            ) : error ? (
-              <p>Error loading cakes. Please try again later.</p>
-            ) : res.length === 0 ? (
-              <p>No ready-made cakes available at the moment.</p>
-            ) : (
-              res.map((cake) => {
-                const availability = getAvailabilityBadge(
-                  Boolean(cake.isactive),
-                );
 
-                return (
-                  <div
-                    key={cake.cakeId}
-                    className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1 group"
-                  >
-                    {updateCakeData && <UpdateCake cake={updateCakeData} />}
-                    {deleteCakeData && <DeleteCake cake={deleteCakeData} />}
-                    <div className="relative h-52 bg-linear-to-br from-purple-100 to-pink-100 overflow-hidden">
-                      <img
-                        src={cake.imageURL}
-                        alt="ready made cake"
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <span
-                        className={`absolute top-4 right-4 rounded-full border px-3 py-1 text-xs font-semibold tracking-wide uppercase ${availability.className}`}
-                      >
-                        {availability.label}
+          <div className="grid grid-cols-1  max-w-full sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+            {templatesLoading ? (
+              <p>Loading...</p>
+            ) : templatesError ? (
+              <p>Error loading templates.</p>
+            ) : (
+              res.map((template) => (
+                <div
+                  key={template.DesignID}
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                >
+                  <img
+                    src={template.ImageUrl}
+                    alt={template.DesignName}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold mb-2">
+                      {template.DesignName}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4">
+                      {template.Description}
+                    </p>
+                    <div className="flex  items-center">
+                      <h3>Flavor: </h3>
+                      <span className="text-purple-600 font-bold">
+                        {template.BaseFlavor}
                       </span>
                     </div>
-                    <div className="p-5 space-y-4">
-                      <div className="flex items-center justify-between gap-3">
-                        <h3 className="text-base font-semibold text-gray-900 flex-1">
-                          {cake.cakeName}
-                        </h3>
-                        <div className="text-right">
-                          <p className="text-xs uppercase text-gray-400 tracking-wide">
-                            Starting at
-                          </p>
-                          <p className="text-lg font-bold text-purple-600">
-                            {formatPrice(cake.price)}
-                          </p>
-                        </div>
-                      </div>
-
-                      <p className="text-sm text-gray-600 leading-relaxed">
-                        <span className="font-semibold text-purple-600">
-                          Flavours:
-                        </span>{" "}
-                        {cake.flavorsUsed || "Chef's selection"}
-                      </p>
-
-                      <div className="grid grid-cols-2 gap-3 text-sm">
-                        <div className="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
-                          <p className="text-xs uppercase text-gray-400 tracking-wide">
-                            Size
-                          </p>
-                          <p className="text-base font-semibold text-gray-900">
-                            {cake.size || "Standard"}
-                          </p>
-                        </div>
-                        <div className="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
-                          <p className="text-xs uppercase text-gray-400 tracking-wide">
-                            Qty
-                          </p>
-                          <p className="text-base font-semibold text-gray-900">
-                            {cake.quantityAvailable ?? "—"}
-                          </p>
-                        </div>
-                      </div>
+                    <div className="flex  items-center">
+                      {/* <h3>Layers: </h3>
+                        <span className="text-purple-600 font-bold">
+                           {template.Layers}
+                        </span>                         */}
                     </div>
-                    <div className="flex mt-2 px-4 gap-2 pb-2">
-                      <button
-                        className="w-full bg-rose-500 text-white px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
-                        onClick={() => {
-                          setDeleteCake(cake);
-                          (
-                            document.getElementById(
-                              "delete_cake",
-                            ) as HTMLDialogElement
-                          )?.showModal();
-                        }}
-                      >
-                        delete
-                      </button>
-                      <button
-                        className="w-full bg-purple-500 text-white px-4 py-2 rounded-xl hover:bg-purple-600 transition-colors duration-300"
-                        onClick={() => {
-                          setUpdateCake(cake);
-                          (
-                            document.getElementById(
-                              "updatecake",
-                            ) as HTMLDialogElement
-                          )?.showModal();
-                        }}
-                      >
-                        edit
-                      </button>
+                    <div className="flex  items-center">
+                      <h3>Size: </h3>
+                      <span className="text-purple-600 font-bold">
+                        {template.Size}
+                      </span>
                     </div>
                   </div>
-                );
-              })
+                </div>
+              ))
             )}
           </div>
         </div>
