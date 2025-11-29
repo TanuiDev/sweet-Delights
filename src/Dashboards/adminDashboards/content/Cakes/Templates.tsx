@@ -1,4 +1,5 @@
 import templatesApi from "../../../../features/Cakes/templatesAPI";
+import { MdOutlineAutoDelete } from "react-icons/md";
 
 const formatPrice = (price: number | string) => {
   const value =
@@ -208,11 +209,13 @@ export const Templates = () => {
                               {formatPrice(template.BasePrice)}
                             </p>
                           </div>
+                        </div>
+                        <div className="flex justify-between gap-4">
                           <button className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-pink-500 via-fuchsia-500 to-indigo-500 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl">
                             Customize
                           </button>
-                          <button className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-pink-500 via-fuchsia-500 to-indigo-500 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl">
-                            Delete
+                          <button className="inline-flex items-center gap-2  text-red-600 px-4 py-2 text-sm font-bold uppercase tracking-wide   transition hover:translate-y-0.5 hover:shadow-xl">
+                            <MdOutlineAutoDelete size={28} />
                           </button>
                         </div>
                       </div>
