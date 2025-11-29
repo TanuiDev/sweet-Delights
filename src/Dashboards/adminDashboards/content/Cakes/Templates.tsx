@@ -1,5 +1,9 @@
-import templatesApi from "../../../../features/Cakes/templatesAPI";
+import { useState } from "react";
+import templatesApi, {
+  type Tdesigns,
+} from "../../../../features/Cakes/templatesAPI";
 import { MdOutlineAutoDelete } from "react-icons/md";
+import { DeleteDesign } from "./DeleteDesign";
 
 const formatPrice = (price: number | string) => {
   const value =
@@ -17,6 +21,8 @@ const formatPrice = (price: number | string) => {
 const loadingPlaceholders = Array.from({ length: 6 });
 
 export const Templates = () => {
+  const [deleteDesign, setDeleteDesign] = useState<Tdesigns | null>(null);
+
   const {
     data: templatesDetails,
     isLoading: templatesLoading,
@@ -139,6 +145,8 @@ export const Templates = () => {
                       key={template.DesignID}
                       className="group relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-2xl shadow-purple-100/70 ring-1 ring-transparent transition-all duration-300 hover:-translate-y-1 hover:border-pink-200 hover:shadow-pink-200/70 hover:ring-pink-100"
                     >
+                      <DeleteDesign design={deleteDesign} />
+
                       <div className="relative h-56 overflow-hidden">
                         <img
                           src={template.ImageUrl}
@@ -214,7 +222,17 @@ export const Templates = () => {
                           <button className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-pink-500 via-fuchsia-500 to-indigo-500 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl">
                             Customize
                           </button>
-                          <button className="inline-flex items-center gap-2  text-red-600 px-4 py-2 text-sm font-bold uppercase tracking-wide   transition hover:translate-y-0.5 hover:shadow-xl">
+                          <button
+                            className="inline-flex items-center gap-2  text-red-600 px-4 py-2 text-sm font-bold uppercase tracking-wide   transition hover:translate-y-0.5 hover:shadow-xl"
+                            onClick={() => {
+                              setDeleteDesign(template);
+                              (
+                                document.getElementById(
+                                  "delete_design",
+                                ) as HTMLDialogElement
+                              )?.showModal();
+                            }}
+                          >
                             <MdOutlineAutoDelete size={28} />
                           </button>
                         </div>
