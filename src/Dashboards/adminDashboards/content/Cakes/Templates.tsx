@@ -208,9 +208,11 @@ export const Templates = () => {
                               {formatPrice(template.BasePrice)}
                             </p>
                           </div>
-                          <button className="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-700">
-                            View Details
-                            <span aria-hidden="true">→</span>
+                          <button className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-pink-500 via-fuchsia-500 to-indigo-500 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl">
+                            Customize
+                          </button>
+                          <button className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-pink-500 via-fuchsia-500 to-indigo-500 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl">
+                            Delete
                           </button>
                         </div>
                       </div>
