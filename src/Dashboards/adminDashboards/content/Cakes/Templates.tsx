@@ -4,6 +4,7 @@ import templatesApi, {
 } from "../../../../features/Cakes/templatesAPI";
 import { MdOutlineAutoDelete } from "react-icons/md";
 import { DeleteDesign } from "./DeleteDesign";
+import { FaEdit } from "react-icons/fa";
 
 const formatPrice = (price: number | string) => {
   const value =
@@ -219,8 +220,8 @@ export const Templates = () => {
                           </div>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <button className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-pink-500 via-fuchsia-500 to-indigo-500 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl">
-                            Customize
+                          <button className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl">
+                            <FaEdit size={28} />
                           </button>
                           <button
                             className="inline-flex items-center gap-2  text-red-600 px-4 py-2 text-sm font-bold uppercase tracking-wide   transition hover:translate-y-0.5 hover:shadow-xl"
