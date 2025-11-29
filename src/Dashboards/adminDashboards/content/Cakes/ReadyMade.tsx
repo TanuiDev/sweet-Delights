@@ -1,5 +1,7 @@
 import cakeApi, { type Tcakes } from "../../../../features/Cakes/cakeAPI";
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdOutlineAutoDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+
 import { AddCake } from "./AddCake";
 import { UpdateCake } from "./UpdateCake";
 import { useState } from "react";
@@ -37,7 +39,7 @@ export const ReadyMade = () => {
   return (
     <>
       <div className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-4 px-1 sm:px-3 lg:px-4">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="">
           <h2 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-4">
             Ready Made Cakes
           </h2>
@@ -133,9 +135,9 @@ export const ReadyMade = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex mt-2 px-4 gap-2 pb-2">
+                    <div className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2">
                       <button
-                        className="w-full bg-rose-500 text-white px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
+                        className=" text-red-800 px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
                         onClick={() => {
                           setDeleteCake(cake);
                           (
@@ -145,10 +147,10 @@ export const ReadyMade = () => {
                           )?.showModal();
                         }}
                       >
-                        delete
+                        <MdOutlineAutoDelete size={28} />
                       </button>
                       <button
-                        className="w-full bg-purple-500 text-white px-4 py-2 rounded-xl hover:bg-purple-600 transition-colors duration-300"
+                        className=" text-green-500 px-4 py-2 rounded-xl hover:bg-green-600 transition-colors duration-300"
                         onClick={() => {
                           setUpdateCake(cake);
                           (
@@ -158,7 +160,7 @@ export const ReadyMade = () => {
                           )?.showModal();
                         }}
                       >
-                        edit
+                        <FaEdit size={28} />
                       </button>
                     </div>
                   </div>

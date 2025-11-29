@@ -16,7 +16,7 @@ export const DeleteCake = ({ cake }: DeleteProps) => {
       }
       await deleteCake(cake.cakeId);
       toast.success("Cake deleted Successfully");
-      (document.getElementById("delete_modal") as HTMLDialogElement)?.close();
+      (document.getElementById("delete_cake") as HTMLDialogElement)?.close();
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
