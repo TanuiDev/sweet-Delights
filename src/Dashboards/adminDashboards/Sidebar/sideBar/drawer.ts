@@ -6,17 +6,17 @@ export const adminData = [
   },
   {
     id: "templates",
-    name: "templates",
+    name: "Templates",
     link: "templates",
   },
   {
     id: "orders",
-    name: "orders",
+    name: "Orders",
     link: "orders",
   },
   {
     id: "users",
-    name: "users",
+    name: "Users",
     link: "users",
   },
   // {
