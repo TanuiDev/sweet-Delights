@@ -61,7 +61,6 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
     resolver: yupResolver(schema),
   });
 
-  // popilate the form with the data to update
   useEffect(() => {
     if (design) {
       setValue("DesignName", design.DesignName);

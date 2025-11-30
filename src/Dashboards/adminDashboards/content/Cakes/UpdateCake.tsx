@@ -4,10 +4,7 @@ import * as yup from "yup";
 
 import { toast } from "sonner";
 import cakeApi, { type Tcakes } from "../../../../features/Cakes/cakeAPI";
-
-// type UpdateCakeProps = {
-//   cake: Tcakes | null;
-// };
+import { useEffect } from "react";
 
 type UpdateCakeInputs = {
   cakeName: string;
@@ -34,16 +31,31 @@ export const UpdateCake = ({ cake }: ChangeCakeProps) => {
   const {
     register,
     handleSubmit,
+    setValue,
+    reset,
     formState: { errors },
   } = useForm<UpdateCakeInputs>({
     resolver: yupResolver(schema),
   });
+  useEffect(() => {
+    if (cake) {
+      setValue("cakeName", cake.cakeName);
+      setValue("flavorsUsed", cake.flavorsUsed);
+      setValue("size", cake.size);
+      setValue("imageURL", cake.imageURL);
+      setValue("quantityAvailable", cake.quantityAvailable);
+    } else {
+      reset();
+    }
+  }, [cake, setValue, reset]);
 
   const onSubmit: SubmitHandler<UpdateCakeInputs> = async (data) => {
     try {
-      await updateCake(data).unwrap();
-      console.log("Cake Id", { cakeId: cake?.cakeId, ...data });
-      await updateCake({ cakeId: cake?.cakeId, ...data });
+      if (!cake) {
+        toast.error("Cake data is missing");
+        return;
+      }
+      await updateCake({ cakeId: cake.cakeId, ...data });
       toast.success("Cake updated successfully");
       (document.getElementById("updatecake") as HTMLDialogElement)?.close();
     } catch (error) {
@@ -72,7 +84,6 @@ export const UpdateCake = ({ cake }: ChangeCakeProps) => {
               <input
                 id="cakeName"
                 type="text"
-                defaultValue={""}
                 {...register("cakeName")}
                 className="input input-bordered w-full bg-gray-50 focus:bg-white"
                 placeholder="e.g. Velvet Berry Bliss"
