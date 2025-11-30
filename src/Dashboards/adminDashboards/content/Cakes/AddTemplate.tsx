@@ -9,7 +9,7 @@ type AddTemplateInputs = {
   DesignName: string;
   Description: string;
   BasePrice: number;
-  Availability: boolean;  
+  Availability: boolean;
   BaseFlavor: string;
   Size: string;
   Images: string;
@@ -52,9 +52,7 @@ export const AddTemplate = () => {
     try {
       await addDesign(data).unwrap();
       toast.success("Design added successfully");
-      (
-        document.getElementById("newdesign") as HTMLDialogElement
-      )?.close();
+      (document.getElementById("newdesign") as HTMLDialogElement)?.close();
     } catch (error) {
       console.error("Error adding design:", error);
       toast.error("Failed to add design. Please try again.");
