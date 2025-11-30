@@ -1,17 +1,6 @@
 import { ApiUrl } from "../../utils/apiUrl";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { RootState } from "../../app/store";
-// "DesignID": 1,
-//         "DesignName": "Birthday Bliss",
-//         "Description": "Colorful birthday cake with sprinkles.",
-//         "BaseFlavor": "Vanilla",
-//         "Size": "Small",
-//         "BasePrice": 1000,
-//         "ImageUrl": "birthday.jpg",
-//         "Category": "Birthday",
-//         "Availability": true,
-//         "CreatedAt": "2025-10-28T11:54:47.847Z",
-//         "UpdatedAt": "2025-10-28T11:54:47.847Z"
 
 export type Tdesigns = {
   DesignID: number;

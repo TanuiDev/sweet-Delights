@@ -4,6 +4,7 @@ import templatesApi, {
 } from "../../../../features/Cakes/templatesAPI";
 import { MdOutlineAutoDelete } from "react-icons/md";
 import { DeleteDesign } from "./DeleteDesign";
+
 import { FaEdit } from "react-icons/fa";
 
 const formatPrice = (price: number | string) => {
