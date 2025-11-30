@@ -45,10 +45,7 @@ const schema = yup.object({
     .string()
     .max(50, "Max 50 characters")
     .required("Category is required"),
-  Images: yup
-    .string()
-    .url("Must be a valid URL")
-    .required("Image URL is required"),
+  Images: yup.string().required("Image URL is required"),
 });
 
 export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
@@ -88,10 +85,12 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
         return;
       }
 
-      const res = await updateData({ ...data, DesignID: design.DesignID });
+      const res = await updateData({ DesignID: design.DesignID, ...data });
       console.log(res.data);
-      // toast(res.data?.message || "Design updated successfully!");
-      (document.getElementById("update_modal") as HTMLDialogElement)?.close();
+      toast("Design updated successfully!");
+      (
+        document.getElementById("update_template") as HTMLDialogElement
+      )?.close();
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
@@ -101,108 +100,241 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
   };
   return (
     <dialog id="update_template" className="modal sm:modal-middle">
-      <div className="modal-box bg-gray-600 text-white w-full max-w-xs sm:max-w-lg mx-auto rounded-lg">
-        <h3 className="font-bold text-lg mb-4">Update Template</h3>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-          <input
-            data-test="edit- design-name-input"
-            type="text"
-            {...register("DesignName")}
-            placeholder="Design Name"
-            className="input rounded w-full p-2 focus:ring-2 focus:ring-blue-500 text-lg bg-white text-gray-800"
-          />
-          {errors.DesignName && (
-            <span className="text-sm text-red-700">
-              {errors.DesignName.message}
-            </span>
-          )}
+      <div className="modal-box relative overflow-hidden border border-white/60 bg-gradient-to-br from-white via-purple-50/30 to-pink-50/40 backdrop-blur-xl shadow-2xl shadow-purple-200/50 w-full max-w-2xl mx-auto rounded-3xl p-0 max-h-[90vh] flex flex-col">
+        {/* Decorative background elements */}
+        <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-pink-200/30 blur-3xl" />
+        <div className="pointer-events-none absolute -left-20 -bottom-20 h-40 w-40 rounded-full bg-purple-200/30 blur-3xl" />
 
-          <textarea
-            data-test="edit-description-input"
-            {...register("description")}
-            placeholder="Description"
-            className="textarea textarea-bordered w-full p-2 focus:ring-2 focus:ring-blue-500 text-lg bg-white text-gray-800"
-          />
-          {errors.description && (
-            <span className="text-sm text-red-700">
-              {errors.description.message}
-            </span>
-          )}
+        {/* Header - Fixed */}
+        <div className="relative z-10 flex-shrink-0 p-8 pb-4 border-b border-purple-100/50">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-3xl font-black tracking-tight bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
+                Update Template
+              </h3>
+              <p className="mt-1 text-sm text-gray-500">
+                Modify your cake design details
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                (
+                  document.getElementById(
+                    "update_template",
+                  ) as HTMLDialogElement
+                )?.close();
+                reset();
+              }}
+              className="btn btn-ghost btn-circle btn-sm text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
 
-          <input
-            data-test="edit-base-price-input"
-            type="number"
-            {...register("BasePrice")}
-            placeholder="Base Price"
-            className="input rounded w-full p-2 focus:ring-2 focus:ring-blue-500 text-lg bg-white text-gray-800"
-          />
-          {errors.BasePrice && (
-            <span className="text-sm text-red-700">
-              {errors.BasePrice.message}
-            </span>
-          )}
-          <input
-            data-test="edit-size-input"
-            type="text"
-            {...register("Size")}
-            placeholder="Size"
-            className="input rounded w-full p-2 focus:ring-2 focus:ring-blue-500 text-lg bg-white text-gray-800"
-          />
-          {errors.Size && (
-            <span className="text-sm text-red-700">{errors.Size.message}</span>
-          )}
+        {/* Scrollable Content Area */}
+        <div className="relative z-10 flex-1 overflow-y-auto px-8 py-6">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            id="update-form"
+            className="space-y-5"
+          >
+            {/* Design Name */}
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-gray-700">
+                Design Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                data-test="edit- design-name-input"
+                type="text"
+                {...register("DesignName")}
+                placeholder="Enter design name"
+                className="input w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
+              />
+              {errors.DesignName && (
+                <span className="flex items-center gap-1 text-sm font-medium text-red-600">
+                  <span>⚠</span> {errors.DesignName.message}
+                </span>
+              )}
+            </div>
 
-          <div className="form-control">
-            <label className="label cursor-pointer">
-              <span className="label-text mr-4 text-white">Status</span>
-              <div className="flex gap-4">
-                <label className="flex items-center gap-1">
+            {/* Description */}
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-gray-700">
+                Description <span className="text-red-500">*</span>
+              </label>
+              <textarea
+                data-test="edit-description-input"
+                {...register("description")}
+                placeholder="Enter description"
+                rows={4}
+                className="textarea w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none resize-none"
+              />
+              {errors.description && (
+                <span className="flex items-center gap-1 text-sm font-medium text-red-600">
+                  <span>⚠</span> {errors.description.message}
+                </span>
+              )}
+            </div>
+
+            {/* Grid for Base Price and Size */}
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-700">
+                  Base Price <span className="text-red-500">*</span>
+                </label>
+                <input
+                  data-test="edit-base-price-input"
+                  type="number"
+                  step="0.01"
+                  {...register("BasePrice")}
+                  placeholder="0.00"
+                  className="input w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
+                />
+                {errors.BasePrice && (
+                  <span className="flex items-center gap-1 text-sm font-medium text-red-600">
+                    <span>⚠</span> {errors.BasePrice.message}
+                  </span>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-700">
+                  Size <span className="text-red-500">*</span>
+                </label>
+                <input
+                  data-test="edit-size-input"
+                  type="text"
+                  {...register("Size")}
+                  placeholder="e.g., Small, Medium, Large"
+                  className="input w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
+                />
+                {errors.Size && (
+                  <span className="flex items-center gap-1 text-sm font-medium text-red-600">
+                    <span>⚠</span> {errors.Size.message}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Grid for Base Flavor and Category */}
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-700">
+                  Base Flavor <span className="text-red-500">*</span>
+                </label>
+                <input
+                  data-test="edit-base-flavor-input"
+                  type="text"
+                  {...register("BaseFlavor")}
+                  placeholder="e.g., Vanilla, Chocolate"
+                  className="input w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
+                />
+                {errors.BaseFlavor && (
+                  <span className="flex items-center gap-1 text-sm font-medium text-red-600">
+                    <span>⚠</span> {errors.BaseFlavor.message}
+                  </span>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-700">
+                  Category <span className="text-red-500">*</span>
+                </label>
+                <input
+                  data-test="edit-category-input"
+                  type="text"
+                  {...register("Category")}
+                  placeholder="e.g., Birthday, Wedding"
+                  className="input w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
+                />
+                {errors.Category && (
+                  <span className="flex items-center gap-1 text-sm font-medium text-red-600">
+                    <span>⚠</span> {errors.Category.message}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Image URL */}
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-gray-700">
+                Image URL <span className="text-red-500">*</span>
+              </label>
+              <input
+                data-test="edit-image-input"
+                type="file"
+                {...register("Images")}
+                placeholder="https://example.com/image.jpg"
+                className="input w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
+              />
+              {errors.Images && (
+                <span className="flex items-center gap-1 text-sm font-medium text-red-600">
+                  <span>⚠</span> {errors.Images.message}
+                </span>
+              )}
+            </div>
+
+            {/* Availability Status */}
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-gray-700">
+                Availability Status <span className="text-red-500">*</span>
+              </label>
+              <div className="flex gap-4 rounded-2xl border-2 border-gray-200 bg-white p-4">
+                <label className="flex flex-1 cursor-pointer items-center justify-center gap-3 rounded-xl border-2 border-transparent bg-gray-50 px-4 py-3 transition-all hover:bg-gray-100 has-[:checked]:border-red-300 has-[:checked]:bg-red-50">
                   <input
                     data-test="edit-availability-Unavailable"
                     type="radio"
                     value="false"
                     {...register("availability")}
-                    className="radio radio-primary text-green-400"
+                    className="radio radio-error"
                   />
-                  Unavailable
+                  <span className="font-semibold text-gray-700">
+                    Unavailable
+                  </span>
                 </label>
-                <label className="flex items-center gap-1">
+                <label className="flex flex-1 cursor-pointer items-center justify-center gap-3 rounded-xl border-2 border-transparent bg-gray-50 px-4 py-3 transition-all hover:bg-gray-100 has-[:checked]:border-green-300 has-[:checked]:bg-green-50">
                   <input
                     data-test="edit-availability-Available"
                     type="radio"
                     value="true"
                     {...register("availability")}
-                    className="radio radio-primary text-yellow-400"
+                    className="radio radio-success"
                   />
-                  Available
+                  <span className="font-semibold text-gray-700">Available</span>
                 </label>
               </div>
-            </label>
-          </div>
-          {errors.availability && (
-            <span className="text-sm text-red-700">
-              {errors.availability.message}
-            </span>
-          )}
+              {errors.availability && (
+                <span className="flex items-center gap-1 text-sm font-medium text-red-600">
+                  <span>⚠</span> {errors.availability.message}
+                </span>
+              )}
+            </div>
+          </form>
+        </div>
 
-          <div className="modal-action">
+        {/* Fixed Footer with Buttons */}
+        <div className="relative z-10 flex-shrink-0 border-t border-purple-100/50 bg-white/50 backdrop-blur-sm px-8 py-4">
+          <div className="flex gap-3">
             <button
               data-test="update-todo-button"
               type="submit"
-              className="btn btn-primary"
+              form="update-form"
+              className="btn flex-1 rounded-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 border-none px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition-all hover:translate-y-0.5 hover:shadow-xl hover:shadow-pink-500/40 disabled:opacity-50"
               disabled={isLoading}
             >
               {isLoading ? (
                 <>
-                  <span className="loading loading-spinner text-primary" />{" "}
+                  <span className="loading loading-spinner loading-sm" />
                   Updating...
                 </>
               ) : (
-                "Update"
+                "Update Template"
               )}
             </button>
             <button
-              className="btn"
+              className="btn btn-ghost rounded-2xl border-2 border-gray-200 px-6 py-3 text-base font-semibold text-gray-700 transition-all hover:border-gray-300 hover:bg-gray-50"
               type="button"
               onClick={() => {
                 (
@@ -213,11 +345,14 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                 reset();
               }}
             >
-              Close
+              Cancel
             </button>
           </div>
-        </form>
+        </div>
       </div>
+      <form method="dialog" className="modal-backdrop">
+        <button>close</button>
+      </form>
     </dialog>
   );
 };
