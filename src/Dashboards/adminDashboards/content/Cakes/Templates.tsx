@@ -7,6 +7,7 @@ import { DeleteDesign } from "./DeleteDesign";
 
 import { FaEdit } from "react-icons/fa";
 import { UpdateTemplate } from "./UpdateTemplate";
+import { AddTemplate } from "./AddTemplate";
 
 const formatPrice = (price: number | string) => {
   const value =
@@ -26,6 +27,7 @@ const loadingPlaceholders = Array.from({ length: 6 });
 export const Templates = () => {
   const [deleteDesign, setDeleteDesign] = useState<Tdesigns | null>(null);
   const [updateDesign, setUpdateDesign] = useState<Tdesigns | null>(null);
+
 
   const {
     data: templatesDetails,
@@ -79,12 +81,13 @@ export const Templates = () => {
               <button
                 onClick={() =>
                   (
-                    document.getElementById("newcake") as HTMLDialogElement
+                    document.getElementById("newdesign") as HTMLDialogElement
                   )?.showModal()
                 }
                 className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-pink-500 via-fuchsia-500 to-indigo-500 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl"
               >
                 Add New Template
+                
               </button>
               <button className="inline-flex items-center gap-2 rounded-full border border-pink-200 bg-white px-6 py-3 text-sm font-semibold text-pink-500 transition hover:border-pink-400 hover:text-pink-600">
                 Preview Catalog
@@ -110,7 +113,10 @@ export const Templates = () => {
           </ul>
         </header>
 
+        <AddTemplate  />
+
         <section className="relative z-10">
+
           {templatesError && (
             <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-red-700">
               Unable to load cake templates. Please refresh or try again later.
