@@ -12,16 +12,19 @@ type AddTemplateInputs = {
   Availability: boolean;
   BaseFlavor: string;
   Size: string;
-  Images: string;
+  ImageUrl: string;
   QuantityAvailable: number;
+  Category: string;
 };
 
 const schema = yup.object({
   DesignName: yup.string().required("Design Name is required"),
   Description: yup.string().required("Description is required"),
   Size: yup.string().required("Size is required"),
-  Images: yup.string().required("Images is required"),
+  ImageUrl: yup.string().required("Image URL is required"),
   BaseFlavor: yup.string().required("Base Flavor is required"),
+  Category: yup.string().required("Category is required"),
+
   BasePrice: yup
     .number()
     .required("Base Price is required")
@@ -61,19 +64,19 @@ export const AddTemplate = () => {
 
   return (
     <dialog id="newdesign" className="modal sm:modal-middle">
-      <div className="modal-box relative overflow-hidden border border-white/60 bg-gradient-to-br from-white via-purple-50/30 to-pink-50/40 backdrop-blur-xl shadow-2xl shadow-purple-200/50 w-full max-w-2xl mx-auto rounded-3xl p-0 max-h-[90vh] flex flex-col">
+      <div className="modal-box relative overflow-hidden border border-white/60 bg-linear-to-br from-white via-purple-50/30 to-pink-50/40 backdrop-blur-xl shadow-2xl shadow-purple-200/50 w-full max-w-2xl mx-auto rounded-3xl p-0 max-h-[90vh] flex flex-col">
         {/* Decorative background elements */}
         <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-pink-200/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-20 -bottom-20 h-40 w-40 rounded-full bg-purple-200/30 blur-3xl" />
 
         {/* Header - Fixed */}
-        <div className="relative z-10 flex-shrink-0 p-8 pb-4 border-b border-purple-100/50">
+        <div className="relative z-10 shrink-0 p-8 pb-4 border-b border-purple-100/50">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm uppercase tracking-widest text-purple-600 font-semibold mb-1">
                 Inventory
               </p>
-              <h3 className="text-3xl font-black tracking-tight bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
+              <h3 className="text-3xl font-black tracking-tight bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
                 Add New Cake Template
               </h3>
               <p className="mt-1 text-sm text-gray-500">
@@ -138,7 +141,6 @@ export const AddTemplate = () => {
                 )}
               </div>
             </div>
-
             {/* Grid for Size and Quantity */}
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="space-y-2">
@@ -176,7 +178,6 @@ export const AddTemplate = () => {
                 )}
               </div>
             </div>
-
             {/* Base Price */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
@@ -196,7 +197,6 @@ export const AddTemplate = () => {
                 </span>
               )}
             </div>
-
             {/* Description */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
@@ -214,7 +214,6 @@ export const AddTemplate = () => {
                 </span>
               )}
             </div>
-
             {/* Image Upload */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
@@ -222,18 +221,33 @@ export const AddTemplate = () => {
               </label>
               <input
                 type="file"
-                {...register("Images")}
+                {...register("ImageUrl")}
                 multiple
                 className="file-input w-full rounded-2xl border-2 border-gray-200 bg-white file:mr-4 file:rounded-xl file:border-0 file:bg-gradient-to-r file:from-purple-500 file:to-pink-500 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white file:cursor-pointer hover:file:opacity-90 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
               />
-              {errors.Images && (
+              {errors.ImageUrl && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                  <span>⚠</span> {errors.Images.message}
+                  <span>⚠</span> {errors.ImageUrl.message}
                 </span>
               )}
             </div>
-
-            {/* Availability Checkbox */}
+            //category
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-gray-700">
+                Category <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                {...register("Category")}
+                placeholder="e.g., Birthday, Wedding"
+                className="input w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
+              />
+              {errors.Category && (
+                <span className="flex items-center gap-1 text-sm font-medium text-red-600">
+                  <span>⚠</span> {errors.Category.message}
+                </span>
+              )}
+            </div>
             <div className="flex items-center gap-3 rounded-2xl border-2 border-gray-200 bg-white p-4">
               <input
                 type="checkbox"
@@ -252,13 +266,12 @@ export const AddTemplate = () => {
           </form>
         </div>
 
-        {/* Fixed Footer with Buttons */}
-        <div className="relative z-10 flex-shrink-0 border-t border-purple-100/50 bg-white/50 backdrop-blur-sm px-8 py-4">
+        <div className="relative z-10 shrink-0 border-t border-purple-100/50 bg-white/50 backdrop-blur-sm px-8 py-4">
           <div className="flex gap-3">
             <button
               type="submit"
               form="add-template-form"
-              className="btn flex-1 rounded-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 border-none px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition-all hover:translate-y-0.5 hover:shadow-xl hover:shadow-pink-500/40 disabled:opacity-50"
+              className="btn flex-1 rounded-2xl bg-linear-to-r from-purple-500 via-pink-500 to-indigo-500 border-none px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition-all hover:translate-y-0.5 hover:shadow-xl hover:shadow-pink-500/40 disabled:opacity-50"
               disabled={isLoading}
             >
               {isLoading ? (
