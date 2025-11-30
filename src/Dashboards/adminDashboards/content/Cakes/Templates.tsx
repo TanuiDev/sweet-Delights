@@ -6,6 +6,7 @@ import { MdOutlineAutoDelete } from "react-icons/md";
 import { DeleteDesign } from "./DeleteDesign";
 
 import { FaEdit } from "react-icons/fa";
+import { UpdateTemplate } from "./UpdateTemplate";
 
 const formatPrice = (price: number | string) => {
   const value =
@@ -24,6 +25,7 @@ const loadingPlaceholders = Array.from({ length: 6 });
 
 export const Templates = () => {
   const [deleteDesign, setDeleteDesign] = useState<Tdesigns | null>(null);
+  const [updateDesign, setUpdateDesign] = useState<Tdesigns | null>(null);
 
   const {
     data: templatesDetails,
@@ -61,7 +63,7 @@ export const Templates = () => {
         <header className="grid gap-8 rounded-3xl border border-white/60 bg-white/70 p-8 backdrop-blur-2xl sm:grid-cols-[2fr,1fr]">
           <div className="space-y-6">
             <p className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-1 text-sm font-semibold text-purple-700">
-              ✨ Curated Cakes by Sweet Delights
+             Curated Cakes by Sweet Delights
             </p>
             <div>
               <h2 className="text-3xl font-black tracking-tight text-gray-900 md:text-5xl">
@@ -148,6 +150,7 @@ export const Templates = () => {
                       className="group relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-2xl shadow-purple-100/70 ring-1 ring-transparent transition-all duration-300 hover:-translate-y-1 hover:border-pink-200 hover:shadow-pink-200/70 hover:ring-pink-100"
                     >
                       <DeleteDesign design={deleteDesign} />
+                      <UpdateTemplate design={updateDesign} />
 
                       <div className="relative h-56 overflow-hidden">
                         <img
@@ -221,7 +224,17 @@ export const Templates = () => {
                           </div>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <button className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl">
+                          <button className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl"
+                          
+                            onClick={() => {
+                              setUpdateDesign(template);
+                              (
+                                document.getElementById(
+                                  "update_template",
+                                ) as HTMLDialogElement
+                              )?.showModal();
+                            }}
+                          >
                             <FaEdit size={28} />
                           </button>
                           <button
