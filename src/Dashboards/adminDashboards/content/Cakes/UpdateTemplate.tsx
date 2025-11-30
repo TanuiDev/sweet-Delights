@@ -96,16 +96,16 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.log(error);
-      toast.error("Failed to update todo. Please try again.");
+      toast.error("Failed to update Template. Please try again.");
     }
   };
   return (
     <dialog id="update_template" className="modal sm:modal-middle">
       <div className="modal-box bg-gray-600 text-white w-full max-w-xs sm:max-w-lg mx-auto rounded-lg">
-        <h3 className="font-bold text-lg mb-4">Update Todo</h3>
+        <h3 className="font-bold text-lg mb-4">Update Template</h3>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <input
-            data-test="edit-todo-name-input"
+            data-test="edit- design-name-input"
             type="text"
             {...register("DesignName")}
             placeholder="Design Name"
@@ -118,7 +118,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
           )}
 
           <textarea
-            data-test="edit-todo-description-input"
+            data-test="edit-description-input"
             {...register("description")}
             placeholder="Description"
             className="textarea textarea-bordered w-full p-2 focus:ring-2 focus:ring-blue-500 text-lg bg-white text-gray-800"
@@ -130,7 +130,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
           )}
 
           <input
-            data-test="edit-todo-userid-input"
+            data-test="edit-base-price-input"
             type="number"
             {...register("BasePrice")}
             placeholder="Base Price"
@@ -142,7 +142,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
             </span>
           )}
           <input
-            data-test="edit-todo-userid-input"
+            data-test="edit-size-input"
             type="text"
             {...register("Size")}
             placeholder="Size"
@@ -158,23 +158,23 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               <div className="flex gap-4">
                 <label className="flex items-center gap-1">
                   <input
-                    data-test="edit-todo-status-completed"
+                    data-test="edit-availability-Unavailable"
                     type="radio"
                     value="false"
                     {...register("availability")}
                     className="radio radio-primary text-green-400"
                   />
-                  Completed
+                  Unavailable
                 </label>
                 <label className="flex items-center gap-1">
                   <input
-                    data-test="edit-todo-status-pending"
+                    data-test="edit-availability-Available"
                     type="radio"
                     value="true"
                     {...register("availability")}
                     className="radio radio-primary text-yellow-400"
                   />
-                  Pending
+                  Available
                 </label>
               </div>
             </label>

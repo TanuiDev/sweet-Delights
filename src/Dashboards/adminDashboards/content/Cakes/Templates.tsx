@@ -63,7 +63,7 @@ export const Templates = () => {
         <header className="grid gap-8 rounded-3xl border border-white/60 bg-white/70 p-8 backdrop-blur-2xl sm:grid-cols-[2fr,1fr]">
           <div className="space-y-6">
             <p className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-1 text-sm font-semibold text-purple-700">
-             Curated Cakes by Sweet Delights
+              Curated Cakes by Sweet Delights
             </p>
             <div>
               <h2 className="text-3xl font-black tracking-tight text-gray-900 md:text-5xl">
@@ -224,8 +224,8 @@ export const Templates = () => {
                           </div>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <button className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl"
-                          
+                          <button
+                            className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl"
                             onClick={() => {
                               setUpdateDesign(template);
                               (

@@ -53,7 +53,10 @@ const templatesApi = createApi({
       }),
       invalidatesTags: ["Designs"],
     }),
-    updateDesign: builder.mutation<{ data: Tdesigns }, Partial<Tdesigns>>({
+    updateDesign: builder.mutation<
+      { data: Tdesigns },
+      Partial<Tdesigns> & { DesignID: number }
+    >({
       query: (design) => ({
         url: `/designs/${design.DesignID}`,
         method: "PUT",
