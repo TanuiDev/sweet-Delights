@@ -1,6 +1,8 @@
 import cakeApi from "../../../../features/Cakes/cakeAPI";
 import { MdAdd } from "react-icons/md";
 // import { FaEdit } from "react-icons/fa";
+import { FaShare } from "react-icons/fa";
+import { AiOutlineLike } from "react-icons/ai";
 
 export const Cake = () => {
   const {
@@ -51,7 +53,7 @@ export const Cake = () => {
               className="bg-pink-500 text-white px-4 py-2 rounded-md w-fit flex items-center gap-2 "
             >
               <MdAdd size={20} />
-              Add New Cake
+              Place New Order
             </button>
           </div>
           <div className="grid grid-cols-1 justify-between max-w-full sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -126,12 +128,30 @@ export const Cake = () => {
                       </div>
                     </div>
                     <div className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2">
-                      <button className=" text-red-800 px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300">
+                      <button className="p-2 text-xs h-fit font-bold rounded-sm hover:bg-rose-600 transition-colors duration-300 bg-red-500 ">
                         ADD TO CART
                       </button>
-                      <button className=" text-green-500 px-4 py-2 rounded-xl hover:bg-green-600 transition-colors duration-300">
+                      <button className=" p-2 h-fit text-green-500 text-xs  rounded-sm hover:bg-green-600 font-bold transition-colors duration-300 bg-red-200">
                         BUY NOW
                       </button>
+                      <div className="flex gap-2 ">
+                        <div className="grid col-end-1 align-middle justify-center p-2">
+                          <button className="text-green-500 font-bold transition-colors duration-300 flex items-center justify-center">
+                            <AiOutlineLike />
+                          </button>
+                          <h4 className="text-green-500 text-center font-bold">
+                            1000
+                          </h4>
+                        </div>
+                        <div className="grid col-end-1 align-middle justify-center p-2">
+                          <button className=" text-green-500 rounded-xl font-bold transition-colors duration-300">
+                            <FaShare />
+                          </button>
+                          <h4 className="text-green-500 text-center font-bold">
+                            300
+                          </h4>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );
