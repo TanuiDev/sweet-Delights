@@ -18,6 +18,8 @@ import { Orders } from "./Dashboards/adminDashboards/content/Orders/Orders";
 import { ReadyMade } from "./Dashboards/adminDashboards/content/Cakes/ReadyMade";
 import { Templates } from "./Dashboards/adminDashboards/content/Cakes/Templates";
 import { Cake } from "./Dashboards/userDashboards/content/Cakes/Cakes";
+import { MyOrders } from "./Dashboards/userDashboards/content/Orders/MyOrders";
+import { Profile } from "./Dashboards/userDashboards/content/Profile/Profile";
 
 function App() {
   const isCustomerLoggedIn = useSelector(
@@ -62,7 +64,7 @@ function App() {
         },
         {
           path: "profile",
-          element: <h1>Profile</h1>,
+          element: <Profile /> ,
         },
       ],
     },
@@ -80,7 +82,7 @@ function App() {
         },
         {
           path: "myorders",
-          element: <h1>Orders</h1>,
+          element: <MyOrders/>,
         },
         {
           path: "profile",
