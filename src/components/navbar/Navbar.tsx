@@ -22,7 +22,6 @@ export const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm">
       <div className="navbar max-w-7xl mx-auto px-4 md:px-8 py-3">
-      
         <div className="navbar-start">
           <div className="dropdown">
             <div

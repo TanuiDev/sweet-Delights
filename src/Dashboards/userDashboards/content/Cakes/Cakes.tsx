@@ -1,9 +1,8 @@
 import cakeApi from "../../../../features/Cakes/cakeAPI";
-import { MdAdd, MdOutlineAutoDelete } from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
+import { MdAdd } from "react-icons/md";
+// import { FaEdit } from "react-icons/fa";
 
 export const Cake = () => {
-  
   const {
     data: cakeDetails,
     isLoading: loading,
@@ -54,7 +53,7 @@ export const Cake = () => {
               <MdAdd size={20} />
               Add New Cake
             </button>
-          </div>          
+          </div>
           <div className="grid grid-cols-1 justify-between max-w-full sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {loading ? (
               <p>Loading cakes...</p>
@@ -73,7 +72,6 @@ export const Cake = () => {
                     key={cake.cakeId}
                     className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1 group"
                   >
-                
                     <div className="relative h-52 bg-linear-to-br from-purple-100 to-pink-100 overflow-hidden">
                       <img
                         src={cake.imageURL}
@@ -128,17 +126,11 @@ export const Cake = () => {
                       </div>
                     </div>
                     <div className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2">
-                      <button
-                        className=" text-red-800 px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
-                       
-                      >
-                        <MdOutlineAutoDelete size={28} />
+                      <button className=" text-red-800 px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300">
+                        ADD TO CART
                       </button>
-                      <button
-                        className=" text-green-500 px-4 py-2 rounded-xl hover:bg-green-600 transition-colors duration-300"
-                        
-                      >
-                        <FaEdit size={28} />
+                      <button className=" text-green-500 px-4 py-2 rounded-xl hover:bg-green-600 transition-colors duration-300">
+                        BUY NOW
                       </button>
                     </div>
                   </div>

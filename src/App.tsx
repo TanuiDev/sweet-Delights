@@ -72,7 +72,7 @@ function App() {
       children: [
         {
           path: "cakes",
-          element: <Cake  />,
+          element: <Cake />,
         },
         {
           path: "templates",
