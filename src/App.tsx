@@ -64,7 +64,7 @@ function App() {
         },
         {
           path: "profile",
-          element: <Profile /> ,
+          element: <Profile />,
         },
       ],
     },
@@ -82,7 +82,7 @@ function App() {
         },
         {
           path: "myorders",
-          element: <MyOrders/>,
+          element: <MyOrders />,
         },
         {
           path: "profile",
