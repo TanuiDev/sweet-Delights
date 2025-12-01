@@ -51,19 +51,19 @@ export const About = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50">
+      <div className="min-h-screen bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50">
         {/* Hero Section */}
         <div className="relative overflow-hidden pt-20 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-6">
-              <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 text-sm font-semibold mb-4">
+              <span className="inline-block px-4 py-2 bg-linear-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 text-sm font-semibold mb-4">
                 Our Story
               </span>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
               About SweetDelights
             </h1>
-            <div className="h-1.5 w-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mb-8"></div>
+            <div className="h-1.5 w-24 bg-linear-to-r from-purple-500 to-pink-500 rounded-full mx-auto mb-8"></div>
           </div>
         </div>
 
@@ -97,14 +97,14 @@ export const About = () => {
           {/* Why Choose Us Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
                 Why Choose Us?
               </h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
                 Discover what makes SweetDelights the perfect choice for your
                 sweet cravings
               </p>
-              <div className="h-1.5 w-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mt-4"></div>
+              <div className="h-1.5 w-24 bg-linear-to-r from-purple-500 to-pink-500 rounded-full mx-auto mt-4"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -114,7 +114,7 @@ export const About = () => {
                   className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-2"
                 >
                   <div
-                    className={`bg-gradient-to-br ${service.color} p-6 text-white`}
+                    className={`bg-linear-to-br ${service.color} p-6 text-white`}
                   >
                     <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
                       {service.icon}
@@ -135,7 +135,7 @@ export const About = () => {
 
           {/* Commitment Section */}
           <div className="mb-12">
-            <div className="bg-gradient-to-br from-purple-600 via-pink-600 to-indigo-600 rounded-3xl shadow-2xl p-8 md:p-12 text-white relative overflow-hidden">
+            <div className="bg-linear-to-br from-purple-600 via-pink-600 to-indigo-600 rounded-3xl shadow-2xl p-8 md:p-12 text-white relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-32 -mt-32"></div>
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-10 rounded-full -ml-24 -mb-24"></div>
               <div className="relative z-10">
@@ -154,7 +154,7 @@ export const About = () => {
 
           {/* CTA Section */}
           <div className="text-center">
-            <button className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 text-white text-lg font-semibold rounded-xl hover:from-purple-700 hover:via-pink-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+            <button className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 text-white text-lg font-semibold rounded-xl hover:from-purple-700 hover:via-pink-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
               Learn More
               <svg
                 className="w-5 h-5"
