@@ -22,7 +22,7 @@ export const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm">
       <div className="navbar max-w-7xl mx-auto px-4 md:px-8 py-3">
-        {/* Mobile Menu & Logo */}
+      
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -47,7 +47,7 @@ export const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[100] w-64 p-4 shadow-2xl rounded-2xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50"
+              className="menu menu-sm dropdown-content mt-3 z-100 w-64 p-4 shadow-2xl rounded-2xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50"
             >
               <li>
                 <NavLink
@@ -55,7 +55,7 @@ export const Navbar = () => {
                   className={({ isActive }) =>
                     `rounded-lg transition-all ${
                       isActive
-                        ? "text-white bg-gradient-to-r from-pink-500 to-rose-500"
+                        ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
                         : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
                     }`
                   }
@@ -66,11 +66,11 @@ export const Navbar = () => {
               {isCustomerLoggedIn ? (
                 <li>
                   <NavLink
-                    to="/customer/dashboard/myorders"
+                    to="/customer/dashboard/cakes"
                     className={({ isActive }) =>
                       `rounded-lg transition-all ${
                         isActive
-                          ? "text-white bg-gradient-to-r from-pink-500 to-rose-500"
+                          ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
                           : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
                       }`
                     }
@@ -85,7 +85,7 @@ export const Navbar = () => {
                     className={({ isActive }) =>
                       `rounded-lg transition-all ${
                         isActive
-                          ? "text-white bg-gradient-to-r from-pink-500 to-rose-500"
+                          ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
                           : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
                       }`
                     }
@@ -100,7 +100,7 @@ export const Navbar = () => {
                   className={({ isActive }) =>
                     `rounded-lg transition-all ${
                       isActive
-                        ? "text-white bg-gradient-to-r from-pink-500 to-rose-500"
+                        ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
                         : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
                     }`
                   }
@@ -114,7 +114,7 @@ export const Navbar = () => {
                   className={({ isActive }) =>
                     `rounded-lg transition-all ${
                       isActive
-                        ? "text-white bg-gradient-to-r from-pink-500 to-rose-500"
+                        ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
                         : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
                     }`
                   }
@@ -128,7 +128,7 @@ export const Navbar = () => {
                   className={({ isActive }) =>
                     `rounded-lg transition-all ${
                       isActive
-                        ? "text-white bg-gradient-to-r from-pink-500 to-rose-500"
+                        ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
                         : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
                     }`
                   }
@@ -142,7 +142,7 @@ export const Navbar = () => {
                   className={({ isActive }) =>
                     `rounded-lg transition-all ${
                       isActive
-                        ? "text-white bg-gradient-to-r from-pink-500 to-rose-500"
+                        ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
                         : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
                     }`
                   }
@@ -156,7 +156,7 @@ export const Navbar = () => {
             to="/"
             className="btn btn-ghost text-xl md:text-2xl font-extrabold hover:bg-transparent p-2"
           >
-            <span className="bg-gradient-to-r from-pink-600 via-rose-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-pink-600 via-rose-500 to-purple-600 bg-clip-text text-transparent">
               Sweet
             </span>
             <span className="text-gray-800 dark:text-white ml-1">Delights</span>
@@ -174,7 +174,7 @@ export const Navbar = () => {
             {isCustomerLoggedIn ? (
               <li>
                 <NavLink
-                  to="/customer/dashboard/myorders"
+                  to="/customer/dashboard/cakes"
                   className={navLinkClass}
                 >
                   Dashboard
@@ -216,7 +216,7 @@ export const Navbar = () => {
             <button className="relative p-3 rounded-full hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all duration-300 group">
               <FaOpencart className="text-2xl md:text-3xl text-pink-600 dark:text-pink-400 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors duration-300" />
               {/* Cart Badge - You can add dynamic count here */}
-              <span className="absolute top-1 right-1 w-5 h-5 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
+              <span className="absolute top-1 right-1 w-5 h-5 bg-linear-to-r from-pink-500 to-rose-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
                 0
               </span>
             </button>

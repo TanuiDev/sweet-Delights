@@ -43,7 +43,7 @@ export const Login = () => {
       dispatch(loginSuccess(response));
 
       if (response.user.role === "customer") {
-        navigate("/customer/dashboard/myorders");
+        navigate("/customer/dashboard/cakes/");
       } else if (response.user.role === "admin") {
         navigate("/admin/dashboard/orders");
       }
