@@ -62,10 +62,6 @@ function App() {
           path: "users",
           element: <Users />,
         },
-        {
-          path: "profile",
-          element: <Profile />,
-        },
       ],
     },
     {
@@ -86,7 +82,7 @@ function App() {
         },
         {
           path: "profile",
-          element: <h1>Profile</h1>,
+          element: <Profile />,
         },
       ],
     },
