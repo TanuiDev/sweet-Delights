@@ -1,8 +1,8 @@
 export const userData = [
   {
-    id: "ready",
-    name: "ReadyMade",
-    link: "ready",
+    id: "cakes",
+    name: "Cakes",
+    link: "cakes",
   },
   {
     id: "templates",

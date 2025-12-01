@@ -17,6 +17,7 @@ import { Users } from "./Dashboards/adminDashboards/content/User/Users";
 import { Orders } from "./Dashboards/adminDashboards/content/Orders/Orders";
 import { ReadyMade } from "./Dashboards/adminDashboards/content/Cakes/ReadyMade";
 import { Templates } from "./Dashboards/adminDashboards/content/Cakes/Templates";
+import { Cake } from "./Dashboards/userDashboards/content/Cakes/Cakes";
 
 function App() {
   const isCustomerLoggedIn = useSelector(
@@ -70,8 +71,8 @@ function App() {
       element: isCustomerLoggedIn ? <UserDashboard /> : <Login />,
       children: [
         {
-          path: "ready",
-          element: <ReadyMade />,
+          path: "cakes",
+          element: <Cake  />,
         },
         {
           path: "templates",
