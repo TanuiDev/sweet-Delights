@@ -7,6 +7,8 @@ export const MyOrders = () => {
   const userId = useSelector(
     (state: RootState) => state.user.user?.user_id as number,
   );
+
+  console.log("User ID", userId);
   const {
     data: orderDetails,
     isLoading: loadingOrders,
