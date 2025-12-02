@@ -55,16 +55,17 @@ export const UserTemplates = () => {
         <header className="grid gap-8 rounded-3xl border border-white/60 bg-white/70 p-8 backdrop-blur-2xl sm:grid-cols-[2fr,1fr]">
           <div className="space-y-6">
             <p className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-1 text-sm font-semibold text-purple-700">
-              Curated Cakes by Sweet Delights
+                New Collection 2025
             </p>
             <div>
               <h2 className="text-3xl font-black tracking-tight text-gray-900 md:text-5xl">
-                Ready-Made Cakes that Steal the Spotlight
+                Explore Our Exquisite Cake Designs
               </h2>
               <p className="mt-4 text-base text-gray-600 md:text-lg">
-                Discover couture-inspired cakes with artisanal finishes, bold
-                florals, and decadent textures. Each template is crafted to wow
-                guests and save you hours of custom work.
+                Discover a curated selection of cake designs crafted by our
+                expert bakers. Whether you're celebrating a birthday, wedding, or
+                any special occasion, find the perfect design to make your event
+                unforgettable.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -76,11 +77,9 @@ export const UserTemplates = () => {
                 }
                 className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-pink-500 via-fuchsia-500 to-indigo-500 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl"
               >
-                Add New Template
+                Place A Custom Order
               </button>
-              <button className="inline-flex items-center gap-2 rounded-full border border-pink-200 bg-white px-6 py-3 text-sm font-semibold text-pink-500 transition hover:border-pink-400 hover:text-pink-600">
-                Preview Catalog
-              </button>
+             
             </div>
           </div>
           <ul className="grid gap-4 sm:grid-cols-3 sm:items-start">
