@@ -5,7 +5,6 @@ import { useNavigate } from "react-router";
 import userApi from "../../../../features/Auth/userApi";
 import { UpdateProfile } from "./UpdateProfile";
 
-
 export const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,11 +18,8 @@ export const Profile = () => {
     },
   );
 
- 
-
   return (
     <div className="relative isolate min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#f7f0ff] via-[#ffe4f5] to-[#e0edff] px-4 py-10 text-gray-900 sm:px-6 lg:px-12">
-      
       <div className="pointer-events-none absolute -left-40 top-10 h-80 w-80 rounded-full bg-pink-200/50 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 top-1/3 h-96 w-96 rounded-full bg-purple-200/60 blur-3xl" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-white to-transparent" />
@@ -33,7 +29,9 @@ export const Profile = () => {
           <div className="flex min-h-[60vh] items-center justify-center">
             <div className="flex flex-col items-center gap-4">
               <span className="loading loading-spinner loading-lg text-primary" />
-              <p className="text-lg font-medium text-gray-700">Loading profile...</p>
+              <p className="text-lg font-medium text-gray-700">
+                Loading profile...
+              </p>
             </div>
           </div>
         ) : error ? (
@@ -44,13 +42,13 @@ export const Profile = () => {
                 Error Loading Profile
               </h3>
               <p className="text-red-600">
-                We couldn't load your profile information. Please try again later.
+                We couldn't load your profile information. Please try again
+                later.
               </p>
             </div>
           </div>
         ) : (
           <div className="rounded-3xl border border-white/60 bg-white/70 p-6 shadow-2xl backdrop-blur-2xl sm:p-8 lg:p-10">
-            
             <div className="mb-8 border-b border-gray-200/60 pb-6">
               <p className="text-xs uppercase tracking-[0.25em] text-purple-600 sm:text-sm">
                 Profile
@@ -93,7 +91,6 @@ export const Profile = () => {
                   )}
                 </div>
 
-               
                 <div className="flex-1 space-y-4 text-center sm:text-left">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -109,6 +106,14 @@ export const Profile = () => {
                       </p>
                       <p className="mt-1 text-sm font-medium text-gray-900">
                         {data?.user_Id}
+                      </p>
+                    </div>
+                    <div className="rounded-lg bg-white/60 p-3 backdrop-blur-sm">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                        Name
+                      </p>
+                      <p className="mt-1 text-sm font-medium text-gray-900 capitalize">
+                        {data?.name}
                       </p>
                     </div>
 
@@ -131,7 +136,7 @@ export const Profile = () => {
                     </div>
                     <div className="rounded-lg bg-white/60 p-3 backdrop-blur-sm">
                       <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      Address
+                        Address
                       </p>
                       <p className="mt-1 text-sm font-medium text-gray-900 capitalize">
                         {data?.address}
@@ -189,14 +194,13 @@ export const Profile = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
               <button
                 className="btn btn-primary flex-1 gap-2 bg-gradient-to-r from-purple-600 to-pink-500 border-none text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl sm:flex-initial"
                 onClick={() => {
                   (
                     document.getElementById(
-                      "update_profile_modal",
+                      "update_profile",
                     ) as HTMLDialogElement
                   )?.showModal();
                 }}

@@ -51,9 +51,7 @@ export const UpdateProfile = ({ user, refetch }: UpdateUserProps) => {
       }
 
       (
-        document.getElementById(
-          "update_profile_modal",
-        ) as HTMLDialogElement
+        document.getElementById("update_profile_modal") as HTMLDialogElement
       )?.close();
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -81,7 +79,7 @@ export const UpdateProfile = ({ user, refetch }: UpdateUserProps) => {
   }, [user, setValue]);
 
   return (
-    <dialog id="update_profile_modal" className="modal sm:modal-middle">
+    <dialog id="update_profile" className="modal sm:modal-middle">
       <div className="modal-box w-full max-w-2xl bg-white px-0 py-0 text-gray-900 shadow-xl rounded-3xl">
         {/* Header */}
         <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-3xl border-b border-white/20">
@@ -102,7 +100,6 @@ export const UpdateProfile = ({ user, refetch }: UpdateUserProps) => {
           className="flex max-h-[70vh] flex-col gap-6 overflow-y-auto px-6 py-6 scrollbar-thin scrollbar-thumb-purple-200 scrollbar-track-transparent"
         >
           <div className="grid grid-cols-1 gap-4">
-            {/* Name Field */}
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               <span className="flex items-center justify-between">
                 <span className="flex items-center gap-2">
@@ -138,7 +135,6 @@ export const UpdateProfile = ({ user, refetch }: UpdateUserProps) => {
               )}
             </label>
 
-            {/* Phone Field */}
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               <span className="flex items-center justify-between">
                 <span className="flex items-center gap-2">
@@ -174,7 +170,6 @@ export const UpdateProfile = ({ user, refetch }: UpdateUserProps) => {
               )}
             </label>
 
-            {/* Address Field */}
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               <span className="flex items-center justify-between">
                 <span className="flex items-center gap-2">
@@ -217,16 +212,13 @@ export const UpdateProfile = ({ user, refetch }: UpdateUserProps) => {
             </label>
           </div>
 
-          {/* Action Buttons */}
           <div className="mt-2 flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:items-center sm:justify-end">
             <button
               className="btn btn-ghost order-2 w-full sm:order-1 sm:w-auto"
               type="button"
               onClick={() => {
                 (
-                  document.getElementById(
-                    "update_profile_modal",
-                  ) as HTMLDialogElement
+                  document.getElementById("update_profile") as HTMLDialogElement
                 )?.close();
                 reset();
               }}
