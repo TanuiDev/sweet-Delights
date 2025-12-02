@@ -32,7 +32,7 @@ const schema = yup.object({
   ColorPreferences: yup.string().required("Color Preferences are required"),
 });
 
-export const AddCake = () => {
+export const CreateOrder = () => {
   const [placeOrder, { isLoading }] = orderApi.useCreateOrderMutation();
 
   const {
@@ -52,22 +52,22 @@ export const AddCake = () => {
         ),
       };
       await placeOrder(payload).unwrap();
-      toast.success("Cake added successfully");
-      (document.getElementById("newcake") as HTMLDialogElement)?.close();
+      toast.success("Order placed successfully");
+      (document.getElementById("newOrder") as HTMLDialogElement)?.close();
     } catch (error) {
-      console.error("Error adding cake:", error);
+      console.error("Error placing order:", error);
     }
   };
   return (
-    <dialog id="newcake" className="modal sm:modal-middle">
+    <dialog id="newOrder" className="modal sm:modal-middle">
       <div className="modal-box w-full max-w-2xl bg-white px-0 py-0 text-gray-900">
         <div className="bg-linear-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-2xl">
           <p className="text-sm uppercase tracking-widest text-white/80">
-            Inventory
+            Orders
           </p>
-          <h3 className="text-2xl font-semibold">Add New Cake</h3>
+          <h3 className="text-2xl font-semibold">Place New Order</h3>
           <p className="text-sm text-white/80">
-            Provide details for the ready-made cake you want to stock.
+            Provide details for the custom cake you want to order.
           </p>
         </div>
         <form
@@ -164,7 +164,7 @@ export const AddCake = () => {
               type="button"
               onClick={() => {
                 (
-                  document.getElementById("newcake") as HTMLDialogElement
+                  document.getElementById("newOrder") as HTMLDialogElement
                 )?.close();
               }}
               disabled={isLoading}
@@ -179,7 +179,7 @@ export const AddCake = () => {
               {isLoading ? (
                 <span className="loading loading-spinner text-primary" />
               ) : (
-                "Save cake"
+                "Place Order"
               )}
             </button>
           </div>

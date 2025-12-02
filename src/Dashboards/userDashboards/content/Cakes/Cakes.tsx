@@ -3,6 +3,7 @@ import { MdAdd } from "react-icons/md";
 // import { FaEdit } from "react-icons/fa";
 import { FaShare } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
+import { CreateOrder } from "../Orders/CreateOrder";
 
 export const Cake = () => {
   //  const userId = useSelector((state: RootState) => state.user.user?.user_id as number);
@@ -48,7 +49,7 @@ export const Cake = () => {
             <button
               onClick={() =>
                 (
-                  document.getElementById("newcake") as HTMLDialogElement
+                  document.getElementById("newOrder") as HTMLDialogElement
                 )?.showModal()
               }
               className="bg-pink-500 text-white px-4 py-2 rounded-md w-fit flex items-center gap-2 "
@@ -128,6 +129,7 @@ export const Cake = () => {
                         </div>
                       </div>
                     </div>
+                    <CreateOrder />
                     <div className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2">
                       <button className="p-2 text-xs h-fit font-bold rounded-sm hover:bg-rose-600 transition-colors duration-300 bg-red-500 ">
                         ADD TO CART
