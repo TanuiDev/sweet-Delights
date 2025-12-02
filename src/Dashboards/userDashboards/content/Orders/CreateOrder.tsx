@@ -1,6 +1,9 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../../../app/store";
+
 
 import { toast } from "sonner";
 import orderApi from "../../../../features/Auth/orderAPI";
@@ -34,6 +37,7 @@ const schema = yup.object({
 
 export const CreateOrder = () => {
   const [placeOrder, { isLoading }] = orderApi.useCreateOrderMutation();
+    const userId = useSelector((state: RootState) => state.user.user?.user_id as number);
 
   const {
     register,
@@ -43,10 +47,11 @@ export const CreateOrder = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<PlaceOrderInputs> = async (data) => {
+  const onPlaceOrder: SubmitHandler<PlaceOrderInputs> = async (data) => {
     try {
       const payload = {
-        ...data,
+        UserId: userId,
+        ...data,       
         SampleImages: (data.SampleImages || []).filter(
           (s): s is string => s !== undefined && s !== null,
         ),
@@ -71,7 +76,7 @@ export const CreateOrder = () => {
           </p>
         </div>
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(onPlaceOrder)}
           className="flex flex-col gap-6 px-6 py-6"
         >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
