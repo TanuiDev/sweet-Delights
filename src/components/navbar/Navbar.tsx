@@ -206,6 +206,7 @@ export const Navbar = () => {
                 Register
               </NavLink>
             </li>
+            
           </ul>
         </div>
 

@@ -13,7 +13,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  whitelist: ["user"], // Add the names of the slices you want to persist
+  whitelist: ["user"],
 };
 
 const rootReducer = combineReducers({
