@@ -1,15 +1,81 @@
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../../../app/store";
+import { logout } from "../../../../features/Auth/userSlice";
+import { useNavigate } from "react-router";
+import userApi from "../../../../features/Auth/userApi";
+import { UpdateProfile } from "./UpdateProfile";
+// import { UpdateUser } from "./UpdateUser";
+
 export const Profile = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const user_Id = useSelector((state: RootState) => state.user.user?.user_id);
+
+  const { data, isLoading, error, refetch } = userApi.useGetUsersByIdQuery(
+    user_Id ?? 0,
+    {
+      skip: !user_Id,
+    },
+  );
+
+  console.log(data);
+
   return (
-    <>
-      <div className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-          User Profile
-        </h2>
-        <p className="text-gray-600 text-sm md:text-base mb-8">
-          Manage your profile information and settings here.
-        </p>
-      </div>
-      ;
-    </>
+    <div className="">
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>Error loading profile</p>
+      ) : (
+        <div className="bg-white p-6 rounded-lg shadow-md h-screen">
+          <h2 className="text-xl font-semibold mb-4">User Information</h2>
+          <div className="flex flex-col items-center mb-4 gap-4 border border-gray-300 p-4 rounded">
+            <img
+              src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+              alt="user avatar"
+              className="w-40 h-40 object-cover rounded-full mr-4 border-2 border-gray-400"
+            />
+
+            <div>
+              <h3 className="text-lg font-bold">Name: {data?.name}</h3>
+              <p className="text-gray-600">User ID: {data?.user_Id}</p>
+              <p className="text-gray-600">Email: {data?.email}</p>
+              <p className="text-gray-600">Role: {data?.role}</p>
+              <p className="text-gray-600">
+                Verified? {data?.is_verified ? "Yes" : "No"}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-2 justify-center">
+            <button
+              className="btn btn-primary flex mx-auto"
+              onClick={() => {
+                (
+                  document.getElementById(
+                    "update_profile_modal",
+                  ) as HTMLDialogElement
+                )?.showModal();
+              }}
+            >
+              Update Profile
+            </button>
+
+            <button
+              className="btn btn-primary flex mx-auto"
+              onClick={() => {
+                dispatch(logout());
+                navigate("/login");
+              }}
+            >
+              LogOut
+            </button>
+          </div>
+        </div>
+      )}
+
+      {data && <UpdateProfile user={data} refetch={refetch} />}
+    </div>
   );
 };

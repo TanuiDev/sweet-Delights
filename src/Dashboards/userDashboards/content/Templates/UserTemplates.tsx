@@ -1,7 +1,4 @@
 import templatesApi from "../../../../features/Cakes/templatesAPI";
-// import { MdOutlineAutoDelete } from "react-icons/md";
-
-// import { FaEdit } from "react-icons/fa";
 import { CreateOrder } from "../Orders/CreateOrder";
 
 const formatPrice = (price: number | string) => {

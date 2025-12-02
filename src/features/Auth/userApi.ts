@@ -56,6 +56,13 @@ const userApi = createApi({
       }),
       providesTags: ["User"],
     }),
+    getUsersById: builder.query<Tuser, number>({
+      query: (user_Id) => ({
+        url: `/users/${user_Id}`,
+        method: "GET",
+      }),
+      providesTags: ["User"],
+    }),
     updateUser: builder.mutation<Tuser, Partial<Tuser> & { user_Id: number }>({
       query: (user) => ({
         url: `/users/${user.user_Id}`,
@@ -80,5 +87,8 @@ export const {
   useCreateUserMutation,
   useVerifyUserMutation,
   useGetUsersQuery,
+  useGetUsersByIdQuery,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
 } = userApi;
 export default userApi;
