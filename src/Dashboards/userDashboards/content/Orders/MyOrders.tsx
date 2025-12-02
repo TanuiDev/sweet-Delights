@@ -1,6 +1,7 @@
 import orderApi, { type Torders } from "../../../../features/Auth/orderAPI";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../../../app/store";
+import { AiOutlineLike } from "react-icons/ai";
 
 export const MyOrders = () => {
   const userId = useSelector(
@@ -63,7 +64,9 @@ export const MyOrders = () => {
             {!orderDetails.data || orderDetails.data.length === 0 ? (
               <div className="col-span-full flex items-center justify-center min-h-[400px]">
                 <div className="text-center">
-                  <div className="text-6xl mb-4">📦</div>
+                  <div className="text-6xl mb-4">
+                    <AiOutlineLike className="text-pink-500 mx-auto" />
+                  </div>
                   <p className="text-xl text-gray-600 font-medium">
                     No orders found.
                   </p>
