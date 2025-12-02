@@ -71,6 +71,11 @@ export const MyOrders = () => {
                     Orders will appear here once customers place them.
                   </p>
                 </div>
+                <div className="text-center">
+                  <button className="mt-6 bg-pink-500 text-white px-4 py-2 rounded-md w-fit flex items-center gap-2 ">
+                    place an Order
+                  </button>
+                </div>
               </div>
             ) : (
               orderDetails.data.map((data: Torders) => (
