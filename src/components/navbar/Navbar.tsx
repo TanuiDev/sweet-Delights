@@ -162,7 +162,7 @@ export const Navbar = () => {
           </NavLink>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Menu */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal gap-2 px-1">
             <li>
@@ -206,7 +206,6 @@ export const Navbar = () => {
                 Register
               </NavLink>
             </li>
-            
           </ul>
         </div>
 
@@ -215,12 +214,11 @@ export const Navbar = () => {
           <div className="relative group">
             <button className="relative p-3 rounded-full hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all duration-300 group">
               <FaOpencart className="text-2xl md:text-3xl text-pink-600 dark:text-pink-400 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors duration-300" />
-              {/* Cart Badge - You can add dynamic count here */}
               <span className="absolute top-1 right-1 w-5 h-5 bg-linear-to-r from-pink-500 to-rose-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
                 0
               </span>
             </button>
-            {/* Tooltip */}
+
             <div className="absolute right-0 top-full mt-2 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
               <div className="bg-gray-900 dark:bg-gray-700 text-white text-sm px-3 py-2 rounded-lg shadow-xl whitespace-nowrap">
                 View Cart
