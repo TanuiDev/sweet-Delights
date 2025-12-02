@@ -4,7 +4,6 @@ import * as yup from "yup";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../../../app/store";
 
-
 import { toast } from "sonner";
 import orderApi from "../../../../features/Auth/orderAPI";
 
@@ -15,7 +14,7 @@ type PlaceOrderInputs = {
   DeliveryDate: string;
   Notes: string;
   ExtendedDescription: string;
-  SampleImages: (string | undefined)[];
+  SampleImages: string;
   ColorPreferences: string;
 };
 
@@ -28,17 +27,14 @@ const schema = yup.object({
   ExtendedDescription: yup
     .string()
     .required("Extended Description is required"),
-  SampleImages: yup
-    .array()
-    .of(yup.string())
-    .required("Sample Images are required"),
+  SampleImages: yup.string().required("Image URL is required"),
   ColorPreferences: yup.string().required("Color Preferences are required"),
 });
 
 export const CreateOrder = () => {
   const [placeOrders, { isLoading }] = orderApi.useCreateOrderMutation();
-    const userId = useSelector((state: RootState) => state.user.user?.user_id as number);
-
+  const user = useSelector((state: RootState) => state.user.user);
+  const user_id = user?.user_id;
   const {
     register,
     handleSubmit,
@@ -48,15 +44,17 @@ export const CreateOrder = () => {
   });
 
   const onPlaceOrder: SubmitHandler<PlaceOrderInputs> = async (data) => {
+    if (!user_id) {
+      toast.error("Please log in to place an order");
+      return;
+    }
+    const payload = {
+      ...data,
+      user_id: user_id,
+    };
+
     try {
-      const payload = {
-        UserId: userId,
-        ...data,       
-        SampleImages: (data.SampleImages || []).filter(
-          (s): s is string => s !== undefined && s !== null,
-        ),
-      };
-      await placeOrders(payload)
+      await placeOrders(payload).unwrap();
       toast.success("Order placed successfully");
       (document.getElementById("newOrder") as HTMLDialogElement)?.close();
     } catch (error) {
@@ -65,23 +63,35 @@ export const CreateOrder = () => {
   };
   return (
     <dialog id="newOrder" className="modal sm:modal-middle">
-      <div className="modal-box w-full max-w-2xl bg-white px-0 py-0 text-gray-900">
-        <div className="bg-linear-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-2xl">
-          <p className="text-sm uppercase tracking-widest text-white/80">
+      <div className="modal-box w-full max-w-2xl bg-white px-0 py-0 text-gray-900 shadow-xl rounded-3xl">
+        <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-3xl border-b border-white/20">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/80">
             Orders
           </p>
-          <h3 className="text-2xl font-semibold">Place New Order</h3>
-          <p className="text-sm text-white/80">
-            Provide details for the custom cake you want to order.
+          <h3 className="mt-1 text-2xl sm:text-3xl font-semibold">
+            Place New Order
+          </h3>
+          <p className="mt-1 text-xs sm:text-sm text-white/80">
+            Provide delightful details for your custom cake so we can craft it
+            perfectly.
           </p>
         </div>
-        <form onSubmit={handleSubmit(onPlaceOrder)}  className="flex flex-col gap-6 px-6 py-6">
+
+        <form
+          onSubmit={handleSubmit(onPlaceOrder)}
+          className="flex max-h-[70vh] flex-col gap-6 overflow-y-auto px-6 py-6 scrollbar-thin scrollbar-thumb-purple-200 scrollbar-track-transparent"
+        >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
-              Cake Size
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
+              <span className="flex items-center justify-between">
+                <span>Cake Size</span>
+                <span className="text-[10px] rounded-full bg-purple-50 px-2 py-0.5 text-purple-600">
+                  Required
+                </span>
+              </span>
               <select
                 {...register("Size")}
-                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                className="select select-bordered w-full bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
               >
                 <option value="Small">Small</option>
                 <option value="Medium">Medium</option>
@@ -93,12 +103,14 @@ export const CreateOrder = () => {
                 </span>
               )}
             </label>
-            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
-              Cake flavor
+
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
+              Cake Flavor
               <input
                 type="text"
+                placeholder="e.g. Vanilla, Chocolate, Red Velvet"
                 {...register("Flavor")}
-                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                className="input input-bordered w-full bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
               />
               {errors.Flavor && (
                 <span className="text-xs font-normal text-red-600">
@@ -106,12 +118,14 @@ export const CreateOrder = () => {
                 </span>
               )}
             </label>
-            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
+
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700 md:col-span-2">
               Message on Cake
               <input
                 type="text"
+                placeholder="Happy Birthday Sarah!"
                 {...register("Message")}
-                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                className="input input-bordered w-full bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
               />
               {errors.Message && (
                 <span className="text-xs font-normal text-red-600">
@@ -119,48 +133,81 @@ export const CreateOrder = () => {
                 </span>
               )}
             </label>
-            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
+
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               Notes
               <input
                 type="text"
+                placeholder="Allergies, serving count, or special requests"
                 {...register("Notes")}
-                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                className="input input-bordered w-full bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
               />
             </label>
-            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
+
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               Delivery Date
               <input
                 type="date"
                 {...register("DeliveryDate")}
-                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                className="input input-bordered w-full bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
               />
+              {errors.DeliveryDate && (
+                <span className="text-xs font-normal text-red-600">
+                  {errors.DeliveryDate.message}
+                </span>
+              )}
             </label>
-            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
+
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               Color Preferences
               <input
                 type="text"
+                placeholder="Pastels, gold accents, brand colors..."
                 {...register("ColorPreferences")}
-                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                className="input input-bordered w-full bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
               />
+              {errors.ColorPreferences && (
+                <span className="text-xs font-normal text-red-600">
+                  {errors.ColorPreferences.message}
+                </span>
+              )}
             </label>
-            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
+
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700 md:col-span-2">
               Extended Description
               <textarea
                 {...register("ExtendedDescription")}
-                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                placeholder="Describe your dream cake in detail – theme, layers, fillings, decorations, and more."
+                className="textarea textarea-bordered min-h-28 w-full resize-y bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
               />
+              {errors.ExtendedDescription && (
+                <span className="text-xs font-normal text-red-600">
+                  {errors.ExtendedDescription.message}
+                </span>
+              )}
             </label>
-            <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
-              Sample Images (comma separated URLs)
+
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700 md:col-span-2">
+              Sample Images
+              <span className="text-xs font-normal text-gray-500">
+                Upload 1–3 inspiration photos to help us match your desired
+                style.
+              </span>
               <input
                 type="file"
                 multiple
                 {...register("SampleImages")}
-                className="input input-bordered w-full bg-gray-50 focus:bg-white"
+                className="file-input file-input-bordered w-full bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
               />
+              {errors.SampleImages && (
+                <span className="text-xs font-normal text-red-600">
+                  {errors.SampleImages.message}
+                </span>
+              )}
             </label>
           </div>
-          <div className="flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:justify-end">
+
+          <div className="mt-2 flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:items-center sm:justify-end">
             <button
               className="btn btn-ghost order-2 w-full sm:order-1 sm:w-auto"
               type="button"
@@ -175,14 +222,13 @@ export const CreateOrder = () => {
             </button>
             <button
               type="submit"
-              className="btn btn-primary order-1 w-full sm:order-2 sm:w-auto"
+              className="btn btn-primary order-1 w-full sm:order-2 sm:w-auto gap-2"
               disabled={isLoading}
             >
-              {isLoading ? (
-                <span className="loading loading-spinner text-primary" />
-              ) : (
-                "Place Order"
+              {isLoading && (
+                <span className="loading loading-spinner loading-sm text-primary-content" />
               )}
+              <span>{isLoading ? "Placing Order..." : "Place Order"}</span>
             </button>
           </div>
         </form>

@@ -36,7 +36,6 @@ export const Login = () => {
 
   const onsubmit: SubmitHandler<inputData> = async (data) => {
     try {
-      console.log("Form Data:", data);
       const response = await loginUser(data).unwrap();
       console.log("User logged in successfully:", response);
       toast.success("User logged in successfully!");

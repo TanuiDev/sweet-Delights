@@ -38,7 +38,7 @@ export const AddCake = () => {
       toast.success("Cake added successfully");
       (document.getElementById("newcake") as HTMLDialogElement)?.close();
     } catch (error) {
-      console.error("Error adding cake:", error);
+      toast.error("Error adding cake" + (error as Error).message);
     }
   };
   return (

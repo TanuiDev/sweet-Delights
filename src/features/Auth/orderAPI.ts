@@ -4,7 +4,7 @@ import type { RootState } from "../../app/store";
 
 export type Torders = {
   Id: number;
-  UserId: number;
+  user_id: number;
   DesignId?: number;
   Size: string;
   Flavor: string;
@@ -14,7 +14,7 @@ export type Torders = {
   Price: number;
   Notes: string;
   ExtendedDescription: string;
-  SampleImages: string[];
+  SampleImages: string;
   ColorPreferences: string;
   CreatedAt: string;
   UpdatedAt: string;
@@ -37,7 +37,7 @@ const orderApi = createApi({
   endpoints: (builder) => ({
     createOrder: builder.mutation<Torders, Partial<Torders>>({
       query: (body) => ({
-        url: "/orders/create",
+        url: "/orders",
         method: "POST",
         body,
       }),
@@ -52,8 +52,8 @@ const orderApi = createApi({
       providesTags: ["User"],
     }),
     getOrderByUserId: builder.query<{ data: Torders[] }, number>({
-      query: (userId) => ({
-        url: `/user/orders/${userId}`,
+      query: (user_id) => ({
+        url: `/user/orders/${user_id}`,
         method: "GET",
       }),
       providesTags: ["User"],
