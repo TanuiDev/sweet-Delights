@@ -51,6 +51,13 @@ const orderApi = createApi({
       }),
       providesTags: ["User"],
     }),
+    getOrderByUserId: builder.query<{ data: Torders[] }, number>({
+      query: (userId) => ({
+        url: `/user/orders/${userId}`,
+        method: "GET",
+      }),
+      providesTags: ["User"],
+    }),
     updateOrder: builder.mutation<Torders, Partial<Torders> & { Id: number }>({
       query: (order) => ({
         url: `/orders/${order.Id}`,

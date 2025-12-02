@@ -1,11 +1,16 @@
 import orderApi, { type Torders } from "../../../../features/Auth/orderAPI";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../../../app/store";
 
 export const MyOrders = () => {
+  const userId = useSelector(
+    (state: RootState) => state.user.user?.user_id as number,
+  );
   const {
     data: orderDetails,
     isLoading: loadingOrders,
     isError: orderError,
-  } = orderApi.useGetOrdersQuery();
+  } = orderApi.useGetOrderByUserIdQuery(userId);
 
   const getStatusBadgeColor = (status: string) => {
     const statusLower = status?.toLowerCase() || "";
@@ -55,7 +60,7 @@ export const MyOrders = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {orderDetails.data.length === 0 ? (
+            {!orderDetails.data || orderDetails.data.length === 0 ? (
               <div className="col-span-full flex items-center justify-center min-h-[400px]">
                 <div className="text-center">
                   <div className="text-6xl mb-4">📦</div>
