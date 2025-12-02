@@ -4,14 +4,16 @@ import type { RootState } from "../../../../app/store";
 import { AiOutlineLike } from "react-icons/ai";
 
 export const MyOrders = () => {
-  const userId = useSelector(
+  const UserId = useSelector(
     (state: RootState) => state.user.user?.user_id as number,
   );
   const {
     data: orderDetails,
     isLoading: loadingOrders,
     isError: orderError,
-  } = orderApi.useGetOrderByUserIdQuery(userId);
+  } = orderApi.useGetOrderByUserIdQuery(UserId);
+
+  console.log("My Orders", orderDetails);
 
   const getStatusBadgeColor = (status: string) => {
     const statusLower = status?.toLowerCase() || "";
@@ -54,10 +56,10 @@ export const MyOrders = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
-              All Orders
+              My Orders
             </h2>
             <p className="text-gray-600 text-sm md:text-base">
-              Manage and track all customer orders
+              Manage and track all your orders
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
