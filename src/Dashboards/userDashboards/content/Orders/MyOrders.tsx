@@ -2,6 +2,7 @@ import orderApi, { type Torders } from "../../../../features/Auth/orderAPI";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../../../app/store";
 import { AiOutlineLike } from "react-icons/ai";
+import { IoCalendarOutline } from "react-icons/io5";
 
 export const MyOrders = () => {
   const UserId = useSelector(
@@ -88,7 +89,6 @@ export const MyOrders = () => {
                   key={data.Id}
                   className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1"
                 >
-                  {/* Image Section */}
                   <div className="relative h-48 bg-linear-to-br from-purple-100 to-pink-100 overflow-hidden">
                     <img
                       src={
@@ -143,11 +143,54 @@ export const MyOrders = () => {
 
                       <div className="flex items-center gap-2">
                         <span className="font-semibold text-gray-700 min-w-[140px]">
+                          Size:
+                        </span>
+                        <span className="text-lg font-bold bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                          {data.Size}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-gray-700 min-w-[140px]">
                           Price:
                         </span>
                         <span className="text-lg font-bold bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                           KSh {data.Price?.toLocaleString() || "0"}
                         </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-gray-700 min-w-[140px]">
+                          Color Preferences:
+                        </span>
+                        <span className="text-lg font-bold bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                          {data.ColorPreferences}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-gray-700 min-w-[140px]">
+                          Extended Description:
+                        </span>
+                        <span className="text-lg font-bold bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                          {data.ExtendedDescription}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-gray-700 min-w-[140px]">
+                          Ordered On:
+                        </span>
+                        <span>
+                          <IoCalendarOutline size={28} />
+                        </span>
+                        {new Date(data.DeliveryDate).toLocaleDateString(
+                          "en-US",
+                          {
+                            weekday: "short",
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          },
+                        )}
                       </div>
 
                       <div className="flex gap-2">
@@ -155,7 +198,9 @@ export const MyOrders = () => {
                           Delivery Date:
                         </span>
                         <span className="text-gray-600 flex items-center gap-1">
-                          <span>📅</span>
+                          <span>
+                            <IoCalendarOutline size={28} />
+                          </span>
                           {new Date(data.DeliveryDate).toLocaleDateString(
                             "en-US",
                             {
@@ -180,19 +225,7 @@ export const MyOrders = () => {
                       )}
                     </div>
 
-                    <div className="pt-4 border-t border-gray-100">
-                      <select
-                        defaultValue={data.Status}
-                        className="select select-bordered w-full bg-white border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 text-sm font-medium transition-all"
-                      >
-                        <option disabled>Update Order Status</option>
-                        <option>Pending</option>
-                        <option>In Progress</option>
-                        <option>Completed</option>
-                        <option>Delivered</option>
-                        <option value="">Cancelled</option>
-                      </select>
-                    </div>
+                    <div className="pt-4 border-t border-gray-100"></div>
                   </div>
                 </div>
               ))
