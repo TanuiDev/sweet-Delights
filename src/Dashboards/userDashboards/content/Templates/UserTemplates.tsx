@@ -55,7 +55,7 @@ export const UserTemplates = () => {
         <header className="grid gap-8 rounded-3xl border border-white/60 bg-white/70 p-8 backdrop-blur-2xl sm:grid-cols-[2fr,1fr]">
           <div className="space-y-6">
             <p className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-1 text-sm font-semibold text-purple-700">
-                New Collection 2025
+              New Collection 2025
             </p>
             <div>
               <h2 className="text-3xl font-black tracking-tight text-gray-900 md:text-5xl">
@@ -63,9 +63,9 @@ export const UserTemplates = () => {
               </h2>
               <p className="mt-4 text-base text-gray-600 md:text-lg">
                 Discover a curated selection of cake designs crafted by our
-                expert bakers. Whether you're celebrating a birthday, wedding, or
-                any special occasion, find the perfect design to make your event
-                unforgettable.
+                expert bakers. Whether you're celebrating a birthday, wedding,
+                or any special occasion, find the perfect design to make your
+                event unforgettable.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -79,7 +79,6 @@ export const UserTemplates = () => {
               >
                 Place A Custom Order
               </button>
-             
             </div>
           </div>
           <ul className="grid gap-4 sm:grid-cols-3 sm:items-start">
