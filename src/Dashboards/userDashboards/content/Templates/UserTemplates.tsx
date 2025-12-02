@@ -1,9 +1,7 @@
-import templatesApi  from "../../../../features/Cakes/templatesAPI";
+import templatesApi from "../../../../features/Cakes/templatesAPI";
 import { MdOutlineAutoDelete } from "react-icons/md";
 
-
 import { FaEdit } from "react-icons/fa";
-
 
 const formatPrice = (price: number | string) => {
   const value =
@@ -104,8 +102,6 @@ export const UserTemplates = () => {
           </ul>
         </header>
 
-   
-
         <section className="relative z-10">
           {templatesError && (
             <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-red-700">
@@ -145,8 +141,6 @@ export const UserTemplates = () => {
                       key={template.DesignID}
                       className="group relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-2xl shadow-purple-100/70 ring-1 ring-transparent transition-all duration-300 hover:-translate-y-1 hover:border-pink-200 hover:shadow-pink-200/70 hover:ring-pink-100"
                     >
-                      
-
                       <div className="relative h-56 overflow-hidden">
                         <img
                           src={template.ImageUrl}
@@ -219,16 +213,10 @@ export const UserTemplates = () => {
                           </div>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <button
-                            className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl"
-                                                         
-                          >
+                          <button className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl">
                             <FaEdit size={28} />
                           </button>
-                          <button
-                            className="inline-flex items-center gap-2  text-red-600 px-4 py-2 text-sm font-bold uppercase tracking-wide   transition hover:translate-y-0.5 hover:shadow-xl"
-                          
-                          >
+                          <button className="inline-flex items-center gap-2  text-red-600 px-4 py-2 text-sm font-bold uppercase tracking-wide   transition hover:translate-y-0.5 hover:shadow-xl">
                             <MdOutlineAutoDelete size={28} />
                           </button>
                         </div>
