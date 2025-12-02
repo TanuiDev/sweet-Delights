@@ -5,9 +5,9 @@ export const userData = [
     link: "cakes",
   },
   {
-    id: "templates",
-    name: "templates",
-    link: "templates",
+    id: "designs",
+    name: "Designs",
+    link: "designs",
   },
   {
     id: "orders",

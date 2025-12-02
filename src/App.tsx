@@ -20,6 +20,7 @@ import { Templates } from "./Dashboards/adminDashboards/content/Cakes/Templates"
 import { Cake } from "./Dashboards/userDashboards/content/Cakes/Cakes";
 import { MyOrders } from "./Dashboards/userDashboards/content/Orders/MyOrders";
 import { Profile } from "./Dashboards/userDashboards/content/Profile/Profile";
+import { UserTemplates } from "./Dashboards/userDashboards/content/Templates/UserTemplates";
 
 function App() {
   const isCustomerLoggedIn = useSelector(
@@ -73,8 +74,8 @@ function App() {
           element: <Cake />,
         },
         {
-          path: "templates",
-          element: <Templates />,
+          path: "designs",
+          element: <UserTemplates />,
         },
         {
           path: "myorders",
