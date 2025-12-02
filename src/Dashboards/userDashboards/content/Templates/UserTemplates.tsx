@@ -2,6 +2,7 @@ import templatesApi from "../../../../features/Cakes/templatesAPI";
 import { MdOutlineAutoDelete } from "react-icons/md";
 
 import { FaEdit } from "react-icons/fa";
+import { CreateOrder } from "../Orders/CreateOrder";
 
 const formatPrice = (price: number | string) => {
   const value =
@@ -72,7 +73,7 @@ export const UserTemplates = () => {
               <button
                 onClick={() =>
                   (
-                    document.getElementById("newdesign") as HTMLDialogElement
+                    document.getElementById("newOrder") as HTMLDialogElement
                   )?.showModal()
                 }
                 className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-pink-500 via-fuchsia-500 to-indigo-500 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl"
@@ -199,7 +200,7 @@ export const UserTemplates = () => {
                             </dd>
                           </div>
                         </dl>
-
+                        <CreateOrder />
                         <div className="flex items-center justify-between rounded-2xl border border-gray-100 bg-white px-5 py-3">
                           <div>
                             <p className="text-xs uppercase tracking-widest text-gray-400">
