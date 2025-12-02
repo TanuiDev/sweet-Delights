@@ -36,7 +36,7 @@ const schema = yup.object({
 });
 
 export const CreateOrder = () => {
-  const [placeOrder, { isLoading }] = orderApi.useCreateOrderMutation();
+  const [placeOrders, { isLoading }] = orderApi.useCreateOrderMutation();
     const userId = useSelector((state: RootState) => state.user.user?.user_id as number);
 
   const {
@@ -56,7 +56,7 @@ export const CreateOrder = () => {
           (s): s is string => s !== undefined && s !== null,
         ),
       };
-      await placeOrder(payload).unwrap();
+      await placeOrders(payload)
       toast.success("Order placed successfully");
       (document.getElementById("newOrder") as HTMLDialogElement)?.close();
     } catch (error) {
@@ -75,10 +75,7 @@ export const CreateOrder = () => {
             Provide details for the custom cake you want to order.
           </p>
         </div>
-        <form
-          onSubmit={handleSubmit(onPlaceOrder)}
-          className="flex flex-col gap-6 px-6 py-6"
-        >
+        <form onSubmit={handleSubmit(onPlaceOrder)}  className="flex flex-col gap-6 px-6 py-6">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
               Cake Size
