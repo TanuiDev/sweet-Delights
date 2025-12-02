@@ -3,8 +3,11 @@ import { MdAdd } from "react-icons/md";
 // import { FaEdit } from "react-icons/fa";
 import { FaShare } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
+// import { useSelector } from "react-redux";
+// import type { RootState } from "../../../../app/store";
 
 export const Cake = () => {
+  //  const userId = useSelector((state: RootState) => state.user.user?.user_id as number);
   const {
     data: cakeDetails,
     isLoading: loading,
