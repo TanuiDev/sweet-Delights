@@ -66,6 +66,17 @@ const orderApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
+    updateOrderStatus: builder.mutation<
+      Torders,
+      Partial<Torders> & { Id: number }
+    >({
+      query: (order) => ({
+        url: `/order/${order.Id}`,
+        method: "PATCH",
+        body: order,
+      }),
+      invalidatesTags: ["User"],
+    }),
     deleteOrder: builder.mutation<
       { success: boolean; order_Id: number },
       number
@@ -82,6 +93,7 @@ const orderApi = createApi({
 export const {
   useCreateOrderMutation,
   useGetOrdersQuery,
+  useUpdateOrderStatusMutation,
   useUpdateOrderMutation,
   useDeleteOrderMutation,
 } = orderApi;

@@ -23,7 +23,7 @@ type ChangeStatusProps = {
 };
 
 export const UpdateOrderStatus = ({ order }: ChangeStatusProps) => {
-  const [updateOrder, { isLoading }] = orderApi.useUpdateOrderMutation();
+  const [updateOrder, { isLoading }] = orderApi.useUpdateOrderStatusMutation();
 
   const {
     register,
