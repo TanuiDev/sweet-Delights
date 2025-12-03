@@ -39,20 +39,18 @@ interface UpdateUserProps {
 }
 
 export const UpdateProfile = ({ user, refetch }: UpdateUserProps) => {
-  const [updateUser, { isLoading }] = userApi.useUpdateUserMutation();
+  const [updateUser, { isLoading }] = userApi.useUpdateUserProfileMutation();
 
   const onSubmit: SubmitHandler<UpdateProfileInputs> = async (data) => {
     try {
-      await updateUser({ user_Id: user.user_Id, ...data });
-
+      const result = await updateUser({ user_Id: user.user_Id, ...data });
+      console.log(result);
       toast.success("Profile updated successfully");
+      reset(result.data);
       if (refetch) {
-        refetch();
+        await refetch();
       }
-
-      (
-        document.getElementById("update_profile_modal") as HTMLDialogElement
-      )?.close();
+      (document.getElementById("update_profile") as HTMLDialogElement)?.close();
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
@@ -81,8 +79,7 @@ export const UpdateProfile = ({ user, refetch }: UpdateUserProps) => {
   return (
     <dialog id="update_profile" className="modal sm:modal-middle">
       <div className="modal-box w-full max-w-2xl bg-white px-0 py-0 text-gray-900 shadow-xl rounded-3xl">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-3xl border-b border-white/20">
+        <div className="bg-linear-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-3xl border-b border-white/20">
           <p className="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/80">
             Profile
           </p>
@@ -94,7 +91,6 @@ export const UpdateProfile = ({ user, refetch }: UpdateUserProps) => {
           </p>
         </div>
 
-        {/* Form */}
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex max-h-[70vh] flex-col gap-6 overflow-y-auto px-6 py-6 scrollbar-thin scrollbar-thumb-purple-200 scrollbar-track-transparent"
