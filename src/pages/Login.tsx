@@ -46,10 +46,10 @@ export const Login = () => {
       } else if (response.user.role === "admin") {
         navigate("/admin/dashboard/orders");
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
     } catch (error: any) {
-      console.error("Failed to login user:", error);
-      toast.error(error?.data?.message);
+      // console.error("Failed to login user:", error);
+      toast.error("Failed to login user");
     }
   };
 

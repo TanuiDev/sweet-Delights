@@ -35,6 +35,26 @@ describe("Login test", () => {
   });
 
   it("Fail to login with invalid credentials", () => {
+    cy.getDataTest("login-email").as("loginEmail-input");
+
+    cy.get("@loginEmail-input").should("be.visible")
+    .should("have.attr", "type", "email")
+    .type("briantanui371@gmail.com");
+
+    cy.getDataTest("login-password").as("loginPassword-input");
+
+     cy.get("@loginPassword-input").should("be.visible")
+    .should("have.attr", "type", "password")
+    .type("1234567890");
+
+    cy.getDataTest("login-submit").as("loginSubmit-button");
+
+    cy.get("@loginSubmit-button")
+    .should('contain', 'Sign In')
+    .should("not.be.disabled")        
+    .click();
+
+    cy.contains(/Failed to login user/i).should("be.visible");
   });
 
 });
