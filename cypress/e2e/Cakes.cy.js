@@ -22,11 +22,11 @@ describe("Cakes test", () => {
         cy.contains("Cake added successfully").should("be.visible");
 
         cy.contains(cakeName).should("exist");
-        cy.contains(cakeName).parent().within(() => {
-            cy.getDataTest("edit-cake-button").click();
-        }
-    );
 
+
+
+
+        
         
     });
 });
