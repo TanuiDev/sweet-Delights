@@ -224,7 +224,7 @@ export const UpdateProfile = ({ user, refetch }: UpdateUserProps) => {
             </button>
             <button
               type="submit"
-              className="btn btn-primary order-1 w-full sm:order-2 sm:w-auto gap-2 bg-gradient-to-r from-purple-600 to-pink-500 border-none text-white"
+              className="btn btn-primary order-1 w-full sm:order-2 sm:w-auto gap-2 bg-linear-to-r from-purple-600 to-pink-500 border-none text-white"
               disabled={isLoading}
             >
               {isLoading && (
