@@ -91,7 +91,7 @@ export const Login = () => {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit(onsubmit)} className="space-y-6">
+            <form onSubmit={handleSubmit(onsubmit)} className="space-y-6" data-test="login-form">
               {/* Email Field */}
               <div>
                 <label
@@ -115,6 +115,7 @@ export const Login = () => {
                     </svg>
                   </div>
                   <input
+                    data-test="login-email"
                     id="email"
                     type="email"
                     placeholder="Enter your email"
@@ -166,6 +167,7 @@ export const Login = () => {
                     </svg>
                   </div>
                   <input
+                    data-test="login-password"
                     id="password"
                     type="password"
                     placeholder="Enter your password"
@@ -205,6 +207,7 @@ export const Login = () => {
               </div>
 
               <button
+                  data-test="login-submit"
                 type="submit"
                 disabled={isLoading}
                 className="w-full group relative px-6 py-4 bg-linear-to-r from-pink-500 to-rose-500 text-white rounded-xl font-semibold text-lg shadow-lg shadow-pink-500/50 hover:shadow-xl hover:shadow-pink-500/60 transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
