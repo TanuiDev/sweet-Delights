@@ -140,7 +140,7 @@ export const AddCake = () => {
           </label>
           <div className="flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:justify-end">
             <button
-              data-test="add-new-cake-cancel-button"
+              
               className="btn btn-ghost order-2 w-full sm:order-1 sm:w-auto"
               type="button"
               onClick={() => {
@@ -153,6 +153,7 @@ export const AddCake = () => {
               Cancel
             </button>
             <button
+              data-test="add-new-cake-submit-button"
               type="submit"
               className="btn btn-primary order-1 w-full sm:order-2 sm:w-auto"
               disabled={isLoading}

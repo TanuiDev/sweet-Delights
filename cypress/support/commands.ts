@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import 'cypress-file-upload';
 
 Cypress.Commands.add('getDataTest',(dataTestSelector)=> {
    return cy.get(`[data-test=${dataTestSelector}]`);
