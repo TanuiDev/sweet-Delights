@@ -1,6 +1,12 @@
+import { useState } from "react";
 import orderApi, { type Torders } from "../../../../features/Auth/orderAPI";
+import { UpdateOrderStatus } from "./UpdateOrderStatus";
 
 export const Orders = () => {
+  const [updateOrderStatus, setUpdateOrderStatus] = useState<Torders | null>(
+    null,
+  );
+
   const {
     data: orderDetails,
     isLoading: loadingOrders,
@@ -73,7 +79,6 @@ export const Orders = () => {
                   key={data.Id}
                   className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1"
                 >
-                  {/* Image Section */}
                   <div className="relative h-48 bg-linear-to-br from-purple-100 to-pink-100 overflow-hidden">
                     <img
                       src={
@@ -94,6 +99,8 @@ export const Orders = () => {
                       </span>
                     </div>
                   </div>
+
+                  <UpdateOrderStatus order={updateOrderStatus} />
 
                   <div className="p-5 space-y-4">
                     <div>
@@ -166,17 +173,19 @@ export const Orders = () => {
                     </div>
 
                     <div className="pt-4 border-t border-gray-100">
-                      <select
-                        defaultValue={data.Status}
-                        className="select select-bordered w-full bg-white border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 text-sm font-medium transition-all"
+                      <button
+                        onClick={() => {
+                          setUpdateOrderStatus(data);
+                          (
+                            document.getElementById(
+                              "order_Status",
+                            ) as HTMLDialogElement
+                          )?.showModal();
+                        }}
+                        className="w-full btn btn-primary bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 border-0 hover:scale-105 transform transition-all"
                       >
-                        <option disabled>Update Order Status</option>
-                        <option>Pending</option>
-                        <option>In Progress</option>
-                        <option>Completed</option>
-                        <option>Delivered</option>
-                        <option value="">Cancelled</option>
-                      </select>
+                        Update Order Status
+                      </button>
                     </div>
                   </div>
                 </div>
