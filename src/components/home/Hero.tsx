@@ -13,9 +13,9 @@ export const Hero = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             {/* Text Content */}
             <div className="lg:w-1/2 text-center lg:text-left space-y-8 animate-fade-in">
-              <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-                  <span className="bg-gradient-to-r from-pink-600 via-rose-500 to-purple-600 bg-clip-text text-transparent animate-gradient">
+              <div className="space-y-4" >
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight" data-test="hero-title" >
+                  <span className="bg-linear-to-r from-pink-600 via-rose-500 to-purple-600 bg-clip-text text-transparent animate-gradient">
                     Welcome to
                   </span>
                   <br />
