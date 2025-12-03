@@ -52,7 +52,6 @@ export const About = () => {
     <>
       <Navbar />
       <div className="min-h-screen bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50">
-        
         <div className="relative overflow-hidden pt-20 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-6">
@@ -60,7 +59,10 @@ export const About = () => {
                 Our Story
               </span>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent" data-test="about-title">
+            <h1
+              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent"
+              data-test="about-title"
+            >
               About SweetDelights
             </h1>
             <div className="h-1.5 w-24 bg-linear-to-r from-purple-500 to-pink-500 rounded-full mx-auto mb-8"></div>

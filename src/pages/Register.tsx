@@ -45,7 +45,7 @@ export const Register = () => {
   const onsubmit: SubmitHandler<inputData> = async (data) => {
     try {
       // console.log("Form Data:", data);
-       await createUser(data).unwrap();
+      await createUser(data).unwrap();
       // console.log("User registered successfully:", response);
       toast.success("User registered successfully!");
       navigate("/verify", { state: { email: data.email } });
@@ -58,7 +58,6 @@ export const Register = () => {
     <>
       <Navbar />
       <div className="relative min-h-[calc(100vh-200px)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 overflow-hidden bg-linear-to-br from-pink-50 via-rose-50 to-purple-50 dark:from-gray-900 dark:via-purple-900 dark:to-pink-900">
-        
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -66,9 +65,7 @@ export const Register = () => {
         </div>
 
         <div className="relative z-10 w-full max-w-2xl">
-          
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-10 border border-white/20 dark:border-gray-700/50 animate-fade-in">
-            
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-linear-to-r from-pink-500 to-rose-500 mb-4 shadow-lg">
                 <svg
@@ -83,7 +80,10 @@ export const Register = () => {
                   <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
                 </svg>
               </div>
-              <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2" data-test="register-heading">
+              <h1
+                className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2"
+                data-test="register-heading"
+              >
                 Create Your Account
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
@@ -91,9 +91,11 @@ export const Register = () => {
               </p>
             </div>
 
-           
-            <form onSubmit={handleSubmit(onsubmit)} className="space-y-5" data-test="register-form">
-             
+            <form
+              onSubmit={handleSubmit(onsubmit)}
+              className="space-y-5"
+              data-test="register-form"
+            >
               <div>
                 <label
                   htmlFor="name"
@@ -146,9 +148,7 @@ export const Register = () => {
                 )}
               </div>
 
-             
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                
                 <div>
                   <label
                     htmlFor="email"
@@ -201,7 +201,6 @@ export const Register = () => {
                   )}
                 </div>
 
-              
                 <div>
                   <label
                     htmlFor="phone"
@@ -255,7 +254,6 @@ export const Register = () => {
                 </div>
               </div>
 
-              
               <div>
                 <label
                   htmlFor="address"
@@ -362,7 +360,6 @@ export const Register = () => {
                   )}
                 </div>
 
-              
                 <div>
                   <label
                     htmlFor="confirmPassword"
@@ -416,9 +413,8 @@ export const Register = () => {
                 </div>
               </div>
 
-              
               <button
-                  data-test="register-submit"
+                data-test="register-submit"
                 type="submit"
                 disabled={isLoading}
                 className="w-full group relative px-6 py-4 bg-linear-to-r from-pink-500 to-rose-500 text-white rounded-xl font-semibold text-lg shadow-lg shadow-pink-500/50 hover:shadow-xl hover:shadow-pink-500/60 transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none mt-6"
@@ -449,7 +445,6 @@ export const Register = () => {
                 <div className="absolute inset-0 bg-linear-to-r from-rose-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
 
-             
               <div className="relative my-6">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
@@ -461,7 +456,6 @@ export const Register = () => {
                 </div>
               </div>
 
-             
               <div className="text-center">
                 <a
                   href="/login"

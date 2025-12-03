@@ -56,11 +56,13 @@ export const AddCake = () => {
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-6 px-6 py-6"
+          data-test="add-new-cake-form"
         >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
               Cake name
               <input
+                data-test="add-new-cake-cakeName"
                 id="cakeName"
                 type="text"
                 {...register("cakeName")}
@@ -76,6 +78,7 @@ export const AddCake = () => {
             <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
               Flavors used
               <input
+                data-test="add-new-cake-flavorsUsed"
                 type="text"
                 {...register("flavorsUsed")}
                 className="input input-bordered w-full bg-gray-50 focus:bg-white"
@@ -90,6 +93,7 @@ export const AddCake = () => {
             <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
               Size
               <input
+                data-test="add-new-cake-size"
                 type="text"
                 {...register("size")}
                 className="input input-bordered w-full bg-gray-50 focus:bg-white"
@@ -104,6 +108,7 @@ export const AddCake = () => {
             <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
               Quantity available
               <input
+                data-test="add-new-cake-quantityAvailable"
                 type="number"
                 min={0}
                 {...register("quantityAvailable")}
@@ -120,6 +125,7 @@ export const AddCake = () => {
           <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
             Select Images
             <input
+              data-test="add-new-cake-imageURL"
               type="file"
               {...register("imageURL")}
               className="file:mr-5 file:py-1 file:px-3 
@@ -134,6 +140,7 @@ export const AddCake = () => {
           </label>
           <div className="flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:justify-end">
             <button
+              data-test="add-new-cake-cancel-button"
               className="btn btn-ghost order-2 w-full sm:order-1 sm:w-auto"
               type="button"
               onClick={() => {
