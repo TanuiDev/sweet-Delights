@@ -87,6 +87,7 @@ export const ReadyMade = () => {
                   >
                     {updateCakeData && <UpdateCake cake={updateCakeData} />}
                     {deleteCakeData && <DeleteCake cake={deleteCakeData} />}
+
                     <div className="relative h-52 bg-linear-to-br from-purple-100 to-pink-100 overflow-hidden">
                       <img
                         src={cake.imageURL}
@@ -140,7 +141,7 @@ export const ReadyMade = () => {
                         </div>
                       </div>
                     </div>
-                    <div  data-test="cake-card" className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2">
+                    <div   className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2">
                       <button
                       data-test="delete-cake-button"
                         className=" text-red-800 px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
@@ -156,7 +157,9 @@ export const ReadyMade = () => {
                         <MdOutlineAutoDelete size={28} />
                       </button>
                       <button
+
                       data-test="edit-cake-button"
+                      type="button"
                         className=" text-green-500 px-4 py-2 rounded-xl hover:bg-green-600 transition-colors duration-300"
                         onClick={() => {
                           setUpdateCake(cake);
