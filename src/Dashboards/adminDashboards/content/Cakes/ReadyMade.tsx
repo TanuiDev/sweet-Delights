@@ -81,13 +81,10 @@ export const ReadyMade = () => {
 
                 return (
                   <div
-                    data-test="cake-card-container"
+                    data-test="cake-details"
                     key={cake.cakeId}
                     className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1 group"
                   >
-                    {updateCakeData && <UpdateCake cake={updateCakeData} />}
-                    {deleteCakeData && <DeleteCake cake={deleteCakeData} />}
-
                     <div className="relative h-52 bg-linear-to-br from-purple-100 to-pink-100 overflow-hidden">
                       <img
                         src={cake.imageURL}
@@ -100,9 +97,9 @@ export const ReadyMade = () => {
                         {availability.label}
                       </span>
                     </div>
-                    <div className="p-5 space-y-4">
-                      <div className="flex items-center justify-between gap-3">
-                        <h3 className="text-base font-semibold text-gray-900 flex-1">
+                    <div  className="p-5 space-y-4">
+                      <div  className="flex items-center justify-between gap-3">
+                        <h3  className="text-base font-semibold text-gray-900 flex-1">
                           {cake.cakeName}
                         </h3>
                         <div className="text-right">
@@ -146,6 +143,7 @@ export const ReadyMade = () => {
                         data-test="delete-cake-button"
                         className=" text-red-800 px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
                         onClick={() => {
+                          
                           setDeleteCake(cake);
                           (
                             document.getElementById(
@@ -177,6 +175,8 @@ export const ReadyMade = () => {
               })
             )}
           </div>
+            {updateCakeData && <UpdateCake cake={updateCakeData} />}
+            {deleteCakeData && <DeleteCake cake={deleteCakeData} />}
         </div>
       </div>
     </>
