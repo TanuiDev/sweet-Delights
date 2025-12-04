@@ -28,16 +28,16 @@ export const DeleteDesign = ({ design }: DeleteProps) => {
 
   return (
     <dialog id="delete_design" className="modal sm:modal-middle">
-      <div className="modal-box relative overflow-hidden border border-white/60 bg-gradient-to-br from-white via-red-50/30 to-pink-50/40 backdrop-blur-xl shadow-2xl shadow-red-200/50 w-full max-w-lg mx-auto rounded-3xl p-0">
-        {/* Decorative background elements */}
+      <div data-test ="delete-design-modal" className="modal-box relative overflow-hidden border border-white/60 bg-linear-to-br from-white via-red-50/30 to-pink-50/40 backdrop-blur-xl shadow-2xl shadow-red-200/50 w-full max-w-lg mx-auto rounded-3xl p-0">
+        
         <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-red-200/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-20 -bottom-20 h-40 w-40 rounded-full bg-pink-200/30 blur-3xl" />
 
-        {/* Header */}
-        <div className="relative z-10 flex-shrink-0 p-8 pb-4 border-b border-red-100/50">
+        
+        <div className="relative z-10 shrink-0 p-8 pb-4 border-b border-red-100/50">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-3xl font-black tracking-tight bg-gradient-to-r from-red-600 via-pink-600 to-rose-600 bg-clip-text text-transparent">
+              <h3 className="text-3xl font-black tracking-tight bg-linear-to-r from-red-600 via-pink-600 to-rose-600 bg-clip-text text-transparent">
                 Delete Template
               </h3>
               <p className="mt-1 text-sm text-gray-500">
@@ -58,11 +58,11 @@ export const DeleteDesign = ({ design }: DeleteProps) => {
           </div>
         </div>
 
-        {/* Content Area */}
+     
         <div className="relative z-10 px-8 py-8">
           <div className="flex flex-col items-center text-center space-y-6">
-            {/* Warning Icon */}
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-red-100 to-pink-100">
+            
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-linear-to-br from-red-100 to-pink-100">
               <svg
                 className="h-12 w-12 text-red-600"
                 fill="none"
@@ -78,36 +78,36 @@ export const DeleteDesign = ({ design }: DeleteProps) => {
               </svg>
             </div>
 
-            {/* Warning Message */}
+            
             <div className="space-y-2">
               <p className="text-lg font-semibold text-gray-800">
                 Are you sure you want to delete this template?
               </p>
-              <p className="text-base text-gray-600">
+              <p  className="text-base text-gray-600">
                 The template{" "}
-                <span className="font-bold text-red-600">
+                <span  className="font-bold text-red-600">
                   {design?.DesignName}
                 </span>{" "}
                 will be permanently removed from the system.
               </p>
             </div>
 
-            {/* Warning Box */}
+            
             <div className="w-full rounded-2xl border-2 border-red-200 bg-red-50/80 p-4">
               <p className="text-sm font-medium text-red-800">
-                ⚠️ This action cannot be undone. All associated data will be
+                 This action cannot be undone. All associated data will be
                 permanently deleted.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Fixed Footer with Buttons */}
-        <div className="relative z-10 flex-shrink-0 border-t border-red-100/50 bg-white/50 backdrop-blur-sm px-8 py-4">
+        
+        <div className="relative z-10 shrink-0 border-t border-red-100/50 bg-white/50 backdrop-blur-sm px-8 py-4">
           <div className="flex gap-3">
             <button
-              data-test="delete-cake-confirm-button"
-              className="btn flex-1 rounded-2xl bg-gradient-to-r from-red-500 via-rose-500 to-pink-500 border-none px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-lg shadow-red-500/30 transition-all hover:translate-y-0.5 hover:shadow-xl hover:shadow-red-500/40 disabled:opacity-50"
+              data-test="delete-design-confirm-button"
+              className="btn flex-1 rounded-2xl bg-linear-to-r from-red-500 via-rose-500 to-pink-500 border-none px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-lg shadow-red-500/30 transition-all hover:translate-y-0.5 hover:shadow-xl hover:shadow-red-500/40 disabled:opacity-50"
               onClick={handleDelete}
               disabled={isLoading}
             >
@@ -134,9 +134,7 @@ export const DeleteDesign = ({ design }: DeleteProps) => {
           </div>
         </div>
       </div>
-      <form method="dialog" className="modal-backdrop">
-        <button>close</button>
-      </form>
+     
     </dialog>
   );
 };

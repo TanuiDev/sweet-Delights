@@ -23,11 +23,21 @@ describe("Cakes test", () => {
         cy.getDataTest("add-new-template-imageURL").attachFile("cake.png");
         cy.getDataTest("add-new-template-submit-button").click();
         cy.contains("Design added successfully").should("be.visible");
-        cy.contains(templateName).should("exist");        
-        
+        cy.contains(templateName).should("exist");
 
+        //delete the created template
+        cy.contains(templateName)
+        .closest("[data-test='template-details']")
+        .within(() => {
+            cy.getDataTest("delete-template-button").click();
+                       
+        });
 
-               
-        
+        cy.contains(templateName).closest("[data-test='delete-design-modal']").within(() => {
+            cy.getDataTest("delete-design-confirm-button").click();
+        });
+
+        cy.contains(/Design deleted successfully/i).should("be.visible");
+            
     });
 });

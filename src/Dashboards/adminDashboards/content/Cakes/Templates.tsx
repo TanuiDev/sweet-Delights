@@ -169,7 +169,7 @@ export const Templates = () => {
                         </div>
                       </div>
 
-                      <div className="space-y-5 p-6">
+                      <div data-test="template-details" className="space-y-5 p-6">
                         <div className="flex items-start justify-between gap-4">
                           <div>
                             <h3 className="text-xl font-bold text-gray-900">
@@ -242,6 +242,7 @@ export const Templates = () => {
                             <FaEdit size={28} />
                           </button>
                           <button
+                            data-test="delete-template-button"
                             className="inline-flex items-center gap-2  text-red-600 px-4 py-2 text-sm font-bold uppercase tracking-wide   transition hover:translate-y-0.5 hover:shadow-xl"
                             onClick={() => {
                               setDeleteDesign(template);
