@@ -20,16 +20,7 @@ describe("Cakes test", () => {
        cy.getDataTest("add-new-cake-imageURL").attachFile("cake.png");
         cy.getDataTest("add-new-cake-submit-button").click();
         cy.contains("Cake added successfully").should("be.visible");
-        cy.contains(cakeName).should("exist");
-
-        
-
-        
-
-
-
-
-        
+        cy.contains(cakeName).should("exist");        
         
     });
 });

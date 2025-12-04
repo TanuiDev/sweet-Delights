@@ -1,0 +1,33 @@
+describe("Cakes test", () => {
+    beforeEach(() => {
+
+        cy.loginAsAdmin();
+        
+        
+    });
+
+    it("Perform Crud Operations", () => {
+        cy.visit("/admin/dashboard/templates");
+        cy.getDataTest("templates-header").should("be.visible");
+
+        cy.getDataTest("add-new-template-button").click();
+
+        const templateName =  `Elegant Celebration Cypress ${Date.now()}`;
+        cy.getDataTest("add-new-template-designName").type(templateName);
+        cy.getDataTest("add-new-template-description").type("An elegant cake design perfect for celebrations.");
+        cy.getDataTest("add-new-template-sizeOptions").type("Small, Medium, Large");
+        cy.getDataTest("add-new-template-basePrice").clear().type("3000");
+        cy.getDataTest("add-new-template-quantityAvailable").type("10");
+        cy.getDataTest("add-new-template-category").type("Wedding");
+        cy.getDataTest("add-new-template-baseFlavor").type("Vanilla, Red Velvet");        
+        cy.getDataTest("add-new-template-imageURL").attachFile("cake.png");
+        cy.getDataTest("add-new-template-submit-button").click();
+        cy.contains("Design added successfully").should("be.visible");
+        cy.contains(templateName).should("exist");        
+        
+
+
+               
+        
+    });
+});

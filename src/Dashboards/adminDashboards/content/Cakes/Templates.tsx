@@ -67,7 +67,7 @@ export const Templates = () => {
               Curated Cakes by Sweet Delights
             </p>
             <div>
-              <h2 className="text-3xl font-black tracking-tight text-gray-900 md:text-5xl">
+              <h2 data-test="templates-header" className="text-3xl font-black tracking-tight text-gray-900 md:text-5xl">
                 Ready-Made Cakes that Steal the Spotlight
               </h2>
               <p className="mt-4 text-base text-gray-600 md:text-lg">
@@ -78,6 +78,7 @@ export const Templates = () => {
             </div>
             <div className="flex flex-wrap gap-3">
               <button
+              data-test="add-new-template-button"
                 onClick={() =>
                   (
                     document.getElementById("newdesign") as HTMLDialogElement

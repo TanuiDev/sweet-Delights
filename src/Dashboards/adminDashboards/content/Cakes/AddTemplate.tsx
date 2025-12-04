@@ -97,20 +97,22 @@ export const AddTemplate = () => {
           </div>
         </div>
 
-        {/* Scrollable Content Area */}
+        
         <div className="relative z-10 flex-1 overflow-y-auto px-8 py-6">
           <form
+            data-test="add-template-form"
             onSubmit={handleSubmit(onsubmit)}
             id="add-template-form"
             className="space-y-5"
           >
-            {/* Grid for Design Name and Base Flavor */}
+            
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">
                   Cake Name <span className="text-red-500">*</span>
                 </label>
                 <input
+                  data-test="add-new-template-designName"
                   id="cakeName"
                   type="text"
                   {...register("DesignName")}
@@ -129,6 +131,7 @@ export const AddTemplate = () => {
                   Base Flavor <span className="text-red-500">*</span>
                 </label>
                 <input
+                  data-test="add-new-template-baseFlavor"
                   type="text"
                   {...register("BaseFlavor")}
                   placeholder="e.g., Vanilla, Chocolate"
@@ -141,13 +144,14 @@ export const AddTemplate = () => {
                 )}
               </div>
             </div>
-            {/* Grid for Size and Quantity */}
+            
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">
                   Size <span className="text-red-500">*</span>
                 </label>
                 <input
+                  data-test="add-new-template-sizeOptions"
                   type="text"
                   {...register("Size")}
                   placeholder="e.g., 8-inch round, serves 10"
@@ -165,6 +169,7 @@ export const AddTemplate = () => {
                   Quantity Available
                 </label>
                 <input
+                  data-test="add-new-template-quantityAvailable"
                   type="number"
                   min={0}
                   {...register("QuantityAvailable")}
@@ -178,12 +183,13 @@ export const AddTemplate = () => {
                 )}
               </div>
             </div>
-            {/* Base Price */}
+            
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Base Price <span className="text-red-500">*</span>
               </label>
               <input
+                data-test="add-new-template-basePrice"  
                 type="number"
                 min={1000}
                 step="0.01"
@@ -197,12 +203,13 @@ export const AddTemplate = () => {
                 </span>
               )}
             </div>
-            {/* Description */}
+            
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Description <span className="text-red-500">*</span>
               </label>
               <textarea
+                data-test="add-new-template-description"
                 {...register("Description")}
                 placeholder="Enter a detailed description of the cake..."
                 rows={4}
@@ -214,16 +221,17 @@ export const AddTemplate = () => {
                 </span>
               )}
             </div>
-            {/* Image Upload */}
+           
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Select Images <span className="text-red-500">*</span>
               </label>
               <input
+                data-test="add-new-template-imageURL"
                 type="file"
                 {...register("ImageUrl")}
                 multiple
-                className="file-input w-full rounded-2xl border-2 border-gray-200 bg-white file:mr-4 file:rounded-xl file:border-0 file:bg-gradient-to-r file:from-purple-500 file:to-pink-500 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white file:cursor-pointer hover:file:opacity-90 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
+                className="file-input w-full rounded-2xl border-2 border-gray-200 bg-white file:mr-4 file:rounded-xl file:border-0 file:bg-linear-to-r file:from-purple-500 file:to-pink-500 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white file:cursor-pointer hover:file:opacity-90 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
               />
               {errors.ImageUrl && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
@@ -231,25 +239,27 @@ export const AddTemplate = () => {
                 </span>
               )}
             </div>
-            //category
+            
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Category <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
+                data-test="add-new-template-category"
                 {...register("Category")}
                 placeholder="e.g., Birthday, Wedding"
                 className="input w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
               />
               {errors.Category && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                  <span>⚠</span> {errors.Category.message}
+                  <span><></></span> {errors.Category.message}
                 </span>
               )}
             </div>
             <div className="flex items-center gap-3 rounded-2xl border-2 border-gray-200 bg-white p-4">
               <input
+                data-test="add-new-template-availability"
                 type="checkbox"
                 {...register("Availability")}
                 className="checkbox checkbox-primary checkbox-lg"
@@ -269,6 +279,7 @@ export const AddTemplate = () => {
         <div className="relative z-10 shrink-0 border-t border-purple-100/50 bg-white/50 backdrop-blur-sm px-8 py-4">
           <div className="flex gap-3">
             <button
+            data-test="add-new-template-submit-button"
               type="submit"
               form="add-template-form"
               className="btn flex-1 rounded-2xl bg-linear-to-r from-purple-500 via-pink-500 to-indigo-500 border-none px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition-all hover:translate-y-0.5 hover:shadow-xl hover:shadow-pink-500/40 disabled:opacity-50"
@@ -284,6 +295,7 @@ export const AddTemplate = () => {
               )}
             </button>
             <button
+              data-test="add-new-template-cancel-button"
               className="btn btn-ghost rounded-2xl border-2 border-gray-200 px-6 py-3 text-base font-semibold text-gray-700 transition-all hover:border-gray-300 hover:bg-gray-50"
               type="button"
               onClick={() => {
