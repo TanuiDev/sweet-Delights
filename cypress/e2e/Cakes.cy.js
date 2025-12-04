@@ -21,13 +21,24 @@ describe("Cakes test", () => {
         cy.getDataTest("add-new-cake-submit-button").click();
         cy.contains("Cake added successfully").should("be.visible");
         cy.contains(cakeName).should("exist"); 
-        
-        
-        cy.contains(cakeName)
-        .closest("[data-test='cake-details']")
+
+        cy.contains(templateName)
+        .closest("[data-test='template-details']")
         .within(() => {
-            cy.getDataTest("delete-cake-button").click();                       
-        });
+        cy.getDataTest("edit-template-button").click();                                        
+        }); 
+    cy.get("#updatecake").within(() => {
+        cy.getDataTest("edit-design-name-input").should("have.value", cakeName);
+        cy.getDataTest("edit-base-price-input").clear().type(NewPrice);
+        cy.getDataTest("update-template-button").click();
+    });
+        
+        
+        // cy.contains(cakeName)
+        // .closest("[data-test='cake-details']")
+        // .within(() => {
+        //     cy.getDataTest("delete-cake-button").click();                       
+        // });
 
         
             

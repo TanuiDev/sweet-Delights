@@ -37,7 +37,8 @@ describe("Cakes test", () => {
     cy.get("#update_template").within(() => {
         cy.getDataTest("edit-design-name-input").should("have.value", templateName);
         cy.getDataTest("edit-base-price-input").clear().type(NewPrice);
-        cy.getDataTest("update-template-button").click();});
+        cy.getDataTest("update-template-button").click();
+    });
 
 
         cy.contains(/Design updated successfully/i).should("be.visible");
