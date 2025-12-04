@@ -67,7 +67,10 @@ export const Templates = () => {
               Curated Cakes by Sweet Delights
             </p>
             <div>
-              <h2 data-test="templates-header" className="text-3xl font-black tracking-tight text-gray-900 md:text-5xl">
+              <h2
+                data-test="templates-header"
+                className="text-3xl font-black tracking-tight text-gray-900 md:text-5xl"
+              >
                 Ready-Made Cakes that Steal the Spotlight
               </h2>
               <p className="mt-4 text-base text-gray-600 md:text-lg">
@@ -78,7 +81,7 @@ export const Templates = () => {
             </div>
             <div className="flex flex-wrap gap-3">
               <button
-              data-test="add-new-template-button"
+                data-test="add-new-template-button"
                 onClick={() =>
                   (
                     document.getElementById("newdesign") as HTMLDialogElement
@@ -169,7 +172,10 @@ export const Templates = () => {
                         </div>
                       </div>
 
-                      <div data-test="template-details" className="space-y-5 p-6">
+                      <div
+                        data-test="template-details"
+                        className="space-y-5 p-6"
+                      >
                         <div className="flex items-start justify-between gap-4">
                           <div>
                             <h3 className="text-xl font-bold text-gray-900">
@@ -229,6 +235,7 @@ export const Templates = () => {
                         </div>
                         <div className="flex justify-between gap-4">
                           <button
+                            data-test="edit-template-button"
                             className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl"
                             onClick={() => {
                               setUpdateDesign(template);

@@ -99,16 +99,17 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
   };
   return (
     <dialog id="update_template" className="modal sm:modal-middle">
-      <div className="modal-box relative overflow-hidden border border-white/60 bg-gradient-to-br from-white via-purple-50/30 to-pink-50/40 backdrop-blur-xl shadow-2xl shadow-purple-200/50 w-full max-w-2xl mx-auto rounded-3xl p-0 max-h-[90vh] flex flex-col">
-        {/* Decorative background elements */}
+      <div
+        data-test="update-template-modal"
+        className="modal-box relative overflow-hidden border border-white/60 bg-linear-to-br from-white via-purple-50/30 to-pink-50/40 backdrop-blur-xl shadow-2xl shadow-purple-200/50 w-full max-w-2xl mx-auto rounded-3xl p-0 max-h-[90vh] flex flex-col"
+      >
         <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-pink-200/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-20 -bottom-20 h-40 w-40 rounded-full bg-purple-200/30 blur-3xl" />
 
-        {/* Header - Fixed */}
-        <div className="relative z-10 flex-shrink-0 p-8 pb-4 border-b border-purple-100/50">
+        <div className="relative z-10 flex-linear-0 p-8 pb-4 border-b border-purple-100/50">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-3xl font-black tracking-tight bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
+              <h3 className="text-3xl font-black tracking-tight bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
                 Update Template
               </h3>
               <p className="mt-1 text-sm text-gray-500">
@@ -132,20 +133,19 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
           </div>
         </div>
 
-        {/* Scrollable Content Area */}
         <div className="relative z-10 flex-1 overflow-y-auto px-8 py-6">
           <form
+            data-test="update-template-form"
             onSubmit={handleSubmit(onSubmit)}
             id="update-form"
             className="space-y-5"
           >
-            {/* Design Name */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Design Name <span className="text-red-500">*</span>
               </label>
               <input
-                data-test="edit- design-name-input"
+                data-test="edit-design-name-input"
                 type="text"
                 {...register("DesignName")}
                 placeholder="Enter design name"
@@ -158,7 +158,6 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               )}
             </div>
 
-            {/* Description */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Description <span className="text-red-500">*</span>
@@ -177,7 +176,6 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               )}
             </div>
 
-            {/* Grid for Base Price and Size */}
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">
@@ -186,7 +184,6 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                 <input
                   data-test="edit-base-price-input"
                   type="number"
-                  step="0.01"
                   {...register("BasePrice")}
                   placeholder="0.00"
                   className="input w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
@@ -217,7 +214,6 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               </div>
             </div>
 
-            {/* Grid for Base Flavor and Category */}
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">
@@ -256,7 +252,6 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               </div>
             </div>
 
-            {/* Image URL */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Image URL <span className="text-red-500">*</span>
@@ -275,13 +270,12 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               )}
             </div>
 
-            {/* Availability Status */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Availability Status <span className="text-red-500">*</span>
               </label>
               <div className="flex gap-4 rounded-2xl border-2 border-gray-200 bg-white p-4">
-                <label className="flex flex-1 cursor-pointer items-center justify-center gap-3 rounded-xl border-2 border-transparent bg-gray-50 px-4 py-3 transition-all hover:bg-gray-100 has-[:checked]:border-red-300 has-[:checked]:bg-red-50">
+                <label className="flex flex-1 cursor-pointer items-center justify-center gap-3 rounded-xl border-2 border-transparent bg-gray-50 px-4 py-3 transition-all hover:bg-gray-100 has-checked:border-red-300 has-checked:bg-red-50">
                   <input
                     data-test="edit-availability-Unavailable"
                     type="radio"
@@ -293,7 +287,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                     Unavailable
                   </span>
                 </label>
-                <label className="flex flex-1 cursor-pointer items-center justify-center gap-3 rounded-xl border-2 border-transparent bg-gray-50 px-4 py-3 transition-all hover:bg-gray-100 has-[:checked]:border-green-300 has-[:checked]:bg-green-50">
+                <label className="flex flex-1 cursor-pointer items-center justify-center gap-3 rounded-xl border-2 border-transparent bg-gray-50 px-4 py-3 transition-all hover:bg-gray-100 has-checked:border-green-300 has-checked:bg-green-50">
                   <input
                     data-test="edit-availability-Available"
                     type="radio"
@@ -313,14 +307,13 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
           </form>
         </div>
 
-        {/* Fixed Footer with Buttons */}
-        <div className="relative z-10 flex-shrink-0 border-t border-purple-100/50 bg-white/50 backdrop-blur-sm px-8 py-4">
+        <div className="relative z-10 shrink-0 border-t border-purple-100/50 bg-white/50 backdrop-blur-sm px-8 py-4">
           <div className="flex gap-3">
             <button
-              data-test="update-todo-button"
+              data-test="update-template-button"
               type="submit"
               form="update-form"
-              className="btn flex-1 rounded-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 border-none px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition-all hover:translate-y-0.5 hover:shadow-xl hover:shadow-pink-500/40 disabled:opacity-50"
+              className="btn flex-1 rounded-2xl bg-linear-to-r from-purple-500 via-pink-500 to-indigo-500 border-none px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition-all hover:translate-y-0.5 hover:shadow-xl hover:shadow-pink-500/40 disabled:opacity-50"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -333,6 +326,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               )}
             </button>
             <button
+              data-test="cancel-update-button"
               className="btn btn-ghost rounded-2xl border-2 border-gray-200 px-6 py-3 text-base font-semibold text-gray-700 transition-all hover:border-gray-300 hover:bg-gray-50"
               type="button"
               onClick={() => {

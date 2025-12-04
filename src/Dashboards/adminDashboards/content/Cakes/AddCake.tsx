@@ -140,7 +140,6 @@ export const AddCake = () => {
           </label>
           <div className="flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:justify-end">
             <button
-              
               className="btn btn-ghost order-2 w-full sm:order-1 sm:w-auto"
               type="button"
               onClick={() => {

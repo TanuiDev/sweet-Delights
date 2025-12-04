@@ -81,7 +81,7 @@ export const ReadyMade = () => {
 
                 return (
                   <div
-                  data-test="cake-card-container"                  
+                    data-test="cake-card-container"
                     key={cake.cakeId}
                     className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1 group"
                   >
@@ -102,7 +102,7 @@ export const ReadyMade = () => {
                     </div>
                     <div className="p-5 space-y-4">
                       <div className="flex items-center justify-between gap-3">
-                        <h3   className="text-base font-semibold text-gray-900 flex-1">
+                        <h3 className="text-base font-semibold text-gray-900 flex-1">
                           {cake.cakeName}
                         </h3>
                         <div className="text-right">
@@ -141,9 +141,9 @@ export const ReadyMade = () => {
                         </div>
                       </div>
                     </div>
-                    <div   className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2">
+                    <div className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2">
                       <button
-                      data-test="delete-cake-button"
+                        data-test="delete-cake-button"
                         className=" text-red-800 px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
                         onClick={() => {
                           setDeleteCake(cake);
@@ -157,9 +157,8 @@ export const ReadyMade = () => {
                         <MdOutlineAutoDelete size={28} />
                       </button>
                       <button
-
-                      data-test="edit-cake-button"
-                      type="button"
+                        data-test="edit-cake-button"
+                        type="button"
                         className=" text-green-500 px-4 py-2 rounded-xl hover:bg-green-600 transition-colors duration-300"
                         onClick={() => {
                           setUpdateCake(cake);

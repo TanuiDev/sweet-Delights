@@ -97,7 +97,6 @@ export const AddTemplate = () => {
           </div>
         </div>
 
-        
         <div className="relative z-10 flex-1 overflow-y-auto px-8 py-6">
           <form
             data-test="add-template-form"
@@ -105,7 +104,6 @@ export const AddTemplate = () => {
             id="add-template-form"
             className="space-y-5"
           >
-            
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">
@@ -144,7 +142,7 @@ export const AddTemplate = () => {
                 )}
               </div>
             </div>
-            
+
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">
@@ -183,13 +181,13 @@ export const AddTemplate = () => {
                 )}
               </div>
             </div>
-            
+
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Base Price <span className="text-red-500">*</span>
               </label>
               <input
-                data-test="add-new-template-basePrice"  
+                data-test="add-new-template-basePrice"
                 type="number"
                 min={1000}
                 step="0.01"
@@ -203,7 +201,7 @@ export const AddTemplate = () => {
                 </span>
               )}
             </div>
-            
+
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Description <span className="text-red-500">*</span>
@@ -221,7 +219,7 @@ export const AddTemplate = () => {
                 </span>
               )}
             </div>
-           
+
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Select Images <span className="text-red-500">*</span>
@@ -239,7 +237,7 @@ export const AddTemplate = () => {
                 </span>
               )}
             </div>
-            
+
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">
                 Category <span className="text-red-500">*</span>
@@ -253,7 +251,10 @@ export const AddTemplate = () => {
               />
               {errors.Category && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                  <span><></></span> {errors.Category.message}
+                  <span>
+                    <></>
+                  </span>{" "}
+                  {errors.Category.message}
                 </span>
               )}
             </div>
@@ -279,7 +280,7 @@ export const AddTemplate = () => {
         <div className="relative z-10 shrink-0 border-t border-purple-100/50 bg-white/50 backdrop-blur-sm px-8 py-4">
           <div className="flex gap-3">
             <button
-            data-test="add-new-template-submit-button"
+              data-test="add-new-template-submit-button"
               type="submit"
               form="add-template-form"
               className="btn flex-1 rounded-2xl bg-linear-to-r from-purple-500 via-pink-500 to-indigo-500 border-none px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-lg shadow-pink-500/30 transition-all hover:translate-y-0.5 hover:shadow-xl hover:shadow-pink-500/40 disabled:opacity-50"
