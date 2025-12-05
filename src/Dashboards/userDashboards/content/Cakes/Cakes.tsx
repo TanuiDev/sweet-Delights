@@ -35,7 +35,7 @@ export const Cake = () => {
 
   return (
     <>
-      <div className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-4 px-1 sm:px-3 lg:px-4">
+      <div data-test="cakes-container" className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-4 px-1 sm:px-3 lg:px-4">
         <div className="">
           <h2  data-test="cakes-title" className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-4">
             Ready Made Cakes
@@ -47,7 +47,7 @@ export const Cake = () => {
           </p>
           <div className="flex justify-end mb-4">
             <button
-              data-test="place-new-order-btn"
+              data-test="order-cake-btn"
               onClick={() =>
                 (
                   document.getElementById("newOrder") as HTMLDialogElement
