@@ -33,7 +33,7 @@ export const Users = () => {
 
       {/* Header */}
       <div className="mb-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+        <h2 data-test="users-title" className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
           User Management
         </h2>
         <p className="text-gray-600 text-sm md:text-base">
@@ -63,7 +63,7 @@ export const Users = () => {
       )}
 
       {usersData && usersData.data && usersData.data.length > 0 ? (
-        <div className="max-w-7xl mx-auto">
+        <div data-test="users-list" className="max-w-7xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
             <div className="">
               <table className="overflow-x-auto">
