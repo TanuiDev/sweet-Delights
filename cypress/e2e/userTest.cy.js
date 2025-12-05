@@ -22,10 +22,22 @@ describe("My Orders Tests",()=>{
 
         cy.getDataTest("place-new-order-btn")
         .should("be.visible")
-        .click();
+        .click();       
+
+        cy.get("[data-test='create-order-dialog']")
+        .should("be.visible");
+
         
+ 
+        
+        
+        
+
+        
+            
+    });
+
         
         
     })
 
-});

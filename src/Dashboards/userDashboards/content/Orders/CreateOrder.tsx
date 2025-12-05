@@ -62,10 +62,10 @@ export const CreateOrder = () => {
     }
   };
   return (
-    <dialog id="newOrder" className="modal sm:modal-middle">
+    <dialog data-test="create-order-dialog" id="newOrder" className="modal sm:modal-middle">
       <div className="modal-box w-full max-w-2xl bg-white px-0 py-0 text-gray-900 shadow-xl rounded-3xl">
-        <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-3xl border-b border-white/20">
-          <p className="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/80">
+        <div className="bg-linear-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-3xl border-b border-white/20">
+          <p  className="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/80">
             Orders
           </p>
           <h3 className="mt-1 text-2xl sm:text-3xl font-semibold">
@@ -78,6 +78,7 @@ export const CreateOrder = () => {
         </div>
 
         <form
+          data-test="create-order-form"
           onSubmit={handleSubmit(onPlaceOrder)}
           className="flex max-h-[70vh] flex-col gap-6 overflow-y-auto px-6 py-6 scrollbar-thin scrollbar-thumb-purple-200 scrollbar-track-transparent"
         >
@@ -90,6 +91,7 @@ export const CreateOrder = () => {
                 </span>
               </span>
               <select
+                data-test="create-order-size"
                 {...register("Size")}
                 className="select select-bordered w-full bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
               >
@@ -107,6 +109,7 @@ export const CreateOrder = () => {
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               Cake Flavor
               <input
+                  data-test="create-order-flavor"
                 type="text"
                 placeholder="e.g. Vanilla, Chocolate, Red Velvet"
                 {...register("Flavor")}
@@ -122,6 +125,7 @@ export const CreateOrder = () => {
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700 md:col-span-2">
               Message on Cake
               <input
+                  data-test="create-order-message"
                 type="text"
                 placeholder="Happy Birthday Sarah!"
                 {...register("Message")}
@@ -137,6 +141,7 @@ export const CreateOrder = () => {
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               Notes
               <input
+                data-test="create-order-notes"
                 type="text"
                 placeholder="Allergies, serving count, or special requests"
                 {...register("Notes")}
@@ -147,6 +152,7 @@ export const CreateOrder = () => {
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               Delivery Date
               <input
+                data-test="create-order-delivery-date"
                 type="date"
                 {...register("DeliveryDate")}
                 className="input input-bordered w-full bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
@@ -161,6 +167,7 @@ export const CreateOrder = () => {
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               Color Preferences
               <input
+                data-test="create-order-color-preferences"
                 type="text"
                 placeholder="Pastels, gold accents, brand colors..."
                 {...register("ColorPreferences")}
@@ -176,6 +183,7 @@ export const CreateOrder = () => {
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700 md:col-span-2">
               Extended Description
               <textarea
+                data-test="create-order-extended-description"
                 {...register("ExtendedDescription")}
                 placeholder="Describe your dream cake in detail – theme, layers, fillings, decorations, and more."
                 className="textarea textarea-bordered min-h-28 w-full resize-y bg-gray-50 focus:bg-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-100"
@@ -194,6 +202,7 @@ export const CreateOrder = () => {
                 style.
               </span>
               <input
+                data-test="create-order-sample-images"  
                 type="file"
                 multiple
                 {...register("SampleImages")}
@@ -209,6 +218,7 @@ export const CreateOrder = () => {
 
           <div className="mt-2 flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:items-center sm:justify-end">
             <button
+              data-test="create-order-cancel-btn"
               className="btn btn-ghost order-2 w-full sm:order-1 sm:w-auto"
               type="button"
               onClick={() => {
@@ -221,6 +231,7 @@ export const CreateOrder = () => {
               Cancel
             </button>
             <button
+              data-test="create-order-submit-btn"
               type="submit"
               className="btn btn-primary order-1 w-full sm:order-2 sm:w-auto gap-2"
               disabled={isLoading}
