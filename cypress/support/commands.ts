@@ -15,6 +15,16 @@ Cypress.Commands.add('loginAsAdmin', (email='briantanui371@gmail.com', password=
     cy.contains(/Success/i).should('be.visible')
 });
 
+Cypress.Commands.add('loginAsCustomer', (email='kibiwott.brian22@students.dkut.ac.ke', password='Tanuibiwott%2001') => {
+  cy.visit('/login');
+  cy.visit('/login')
+    cy.getDataTest('login-email').type(email)
+    cy.getDataTest('login-password').type(password)
+    cy.getDataTest('login-submit').click()
+
+    cy.contains(/Success/i).should('be.visible')
+});
+
 export {};
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -22,6 +32,7 @@ declare global {
     interface Chainable {
       getDataTest(dataTestSelector: string): Chainable<JQuery<HTMLElement>>;
         loginAsAdmin(email: string, password: string): Chainable<void>;
+        loginAsCustomer(email: string, password: string): Chainable<void>;
     }
   }
 }

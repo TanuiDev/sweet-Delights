@@ -65,6 +65,7 @@ export const UpdateOrderStatus = ({ order }: ChangeStatusProps) => {
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <label className="text-white font-semibold">Select Role:</label>
           <select
+          data-test="order-status-select"
             {...register("Status")}
             className="select select-bordered w-full bg-white text-black dark:bg-gray-200 dark:text-black"
           >
@@ -96,6 +97,7 @@ export const UpdateOrderStatus = ({ order }: ChangeStatusProps) => {
               )}
             </button>
             <button
+            data-test="save-order-status-btn"
               className="btn w-full sm:w-auto"
               type="button"
               onClick={() => {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import orderApi, { type Torders } from "../../../../features/Auth/orderAPI";
 import { UpdateOrderStatus } from "./UpdateOrderStatus";
+import { MdDateRange } from "react-icons/md";
 
 export const Orders = () => {
   const [updateOrderStatus, setUpdateOrderStatus] = useState<Torders | null>(
@@ -53,10 +54,10 @@ export const Orders = () => {
       {!loadingOrders && !orderError && orderDetails && (
         <div className="max-w-7xl mx-auto">
           <div className="mb-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+            <h2 data-test="orders-title" className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
               All Orders
             </h2>
-            <p className="text-gray-600 text-sm md:text-base">
+            <p  className="text-gray-600 text-sm md:text-base">
               Manage and track all customer orders
             </p>
           </div>
@@ -76,6 +77,7 @@ export const Orders = () => {
             ) : (
               orderDetails.data.map((data: Torders) => (
                 <div
+                  data-test="order-card"
                   key={data.Id}
                   className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1"
                 >
@@ -147,7 +149,7 @@ export const Orders = () => {
                           Delivery Date:
                         </span>
                         <span className="text-gray-600 flex items-center gap-1">
-                          <span>📅</span>
+                          <span><MdDateRange /> </span>
                           {new Date(data.DeliveryDate).toLocaleDateString(
                             "en-US",
                             {
@@ -174,6 +176,7 @@ export const Orders = () => {
 
                     <div className="pt-4 border-t border-gray-100">
                       <button
+                      data-test="update-status-btn"
                         onClick={() => {
                           setUpdateOrderStatus(data);
                           (
