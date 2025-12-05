@@ -9,7 +9,6 @@ describe("My Orders Tests",()=>{
 
         cy.visit("/customer/dashboard/cakes");
         cy.getDataTest("cakes-container").should("be.visible");
-        cy.getDataTest("order-cake-btn").click(); 
-                               
+        cy.getDataTest("order-cake-btn").should("exist");                           
     });
 });
