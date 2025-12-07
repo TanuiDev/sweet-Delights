@@ -1,6 +1,15 @@
 import userApi, { type Tuser } from "../../../../features/Auth/userApi";
 import { CiEdit } from "react-icons/ci";
 import { RiDeleteBinLine } from "react-icons/ri";
+import {
+  FaUsers,
+  FaCheckCircle,
+  FaClock,
+  FaUserShield,
+  FaUserTag,
+  FaExclamationTriangle,
+} from "react-icons/fa";
+import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import { DeleteUser } from "./DeleteUser";
 import { useState } from "react";
 import { UpdateRole } from "./UpdateRole";
@@ -27,39 +36,68 @@ export const Users = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-8  sm:px-6 lg:px-8">
+    <div className="min-h-screen w-fit bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50">
       <DeleteUser user={deleteUser} />
       <UpdateRole user={updateUser} />
 
-      {/* Header */}
-      <div className="mb-8 text-center">
+      <div className="mb-6 text-center">
+        <div className="flex items-center justify-center mb-3">
+          <div className="relative">
+            <div className="absolute inset-0 bg-purple-500/20 rounded-full blur-xl animate-pulse" />
+            <div className="relative bg-white p-3 rounded-full shadow-lg border-2 border-purple-200">
+              <FaUsers className="text-purple-600 text-2xl" />
+            </div>
+          </div>
+        </div>
         <h2
           data-test="users-title"
-          className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2"
+          className="text-2xl md:text-3xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2"
         >
           User Management
         </h2>
         <p className="text-gray-600 text-sm md:text-base">
           Manage and monitor all registered users
         </p>
+        {usersData?.data && (
+          <div className="mt-3 inline-flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-md border border-purple-200">
+            <FaUsers className="text-purple-600 text-sm" />
+            <span className="font-semibold text-gray-700 text-sm">
+              {usersData.data.length} Total Users
+            </span>
+          </div>
+        )}
       </div>
 
       {loadingUsers && (
         <div className="flex items-center justify-center min-h-[400px]">
-          <div className="flex flex-col items-center gap-4">
-            <span className="loading loading-spinner loading-lg text-purple-600"></span>
-            <p className="text-lg text-gray-600 font-medium">
+          <div className="flex flex-col items-center gap-4 bg-white rounded-xl shadow-xl p-8 border border-purple-200">
+            <div className="relative">
+              <div className="absolute inset-0 bg-purple-500/20 rounded-full blur-xl animate-pulse" />
+              <span className="loading loading-spinner loading-md text-purple-600 relative"></span>
+            </div>
+            <p className="text-base text-gray-700 font-semibold">
               Loading users...
+            </p>
+            <p className="text-xs text-gray-500">
+              Please wait while we fetch the data
             </p>
           </div>
         </div>
       )}
 
       {userError && (
-        <div className="flex items-center justify-center min-h-[400px]">
-          <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6 max-w-md">
-            <p className="text-xl text-red-600 font-semibold text-center">
-              Error loading users. Please try again later.
+        <div className="flex  justify-center min-h-[400px]">
+          <div className="bg-red-50 border-2 border-red-300 rounded-xl p-6 max-w-md shadow-xl">
+            <div className="flex justify-center mb-3">
+              <div className="bg-red-100 p-3 rounded-full">
+                <FaExclamationTriangle className="text-red-600 text-2xl" />
+              </div>
+            </div>
+            <p className="text-base text-red-700 font-bold text-center mb-1">
+              Error Loading Users
+            </p>
+            <p className="text-xs text-red-600 text-center">
+              Please try again later or contact support if the problem persists.
             </p>
           </div>
         </div>
@@ -67,157 +105,196 @@ export const Users = () => {
 
       {usersData && usersData.data && usersData.data.length > 0 ? (
         <div data-test="users-list" className="max-w-7xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
-            <div className="">
-              <table className="overflow-x-auto">
-                <thead>
-                  <tr className="bg-linear-to-r from-purple-600 via-gray-600 to-cyan-600">
-                    <th className="px-4 py-2 text-left text-sm font-bold text-white uppercase tracking-wider">
+          <div className="bg-white rounded-2xl shadow-2xl  border border-purple-200">
+            <table className="w-full table-auto border-collapse">
+              <thead>
+                <tr className="bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600">
+                  <th className="px-2 py-3 text-left text-xs font-bold text-white uppercase tracking-wide whitespace-nowrap">
+                    <div className="flex items-center gap-1.5">
+                      <FaUserTag className="text-purple-200 text-xs" />
                       Name
-                    </th>
-                    <th className="px-4 py-2 text-left text-sm font-bold text-white uppercase tracking-wider">
+                    </div>
+                  </th>
+                  <th className="px-2 py-3 text-left text-xs font-bold text-white uppercase tracking-wide whitespace-nowrap">
+                    <div className="flex items-center gap-1.5">
+                      <MdEmail className="text-purple-200 text-xs" />
                       Email
-                    </th>
-                    <th className="px-4 py-2text-left text-sm font-bold text-white uppercase tracking-wider">
+                    </div>
+                  </th>
+                  <th className="px-2 py-3 text-left text-xs font-bold text-white uppercase tracking-wide whitespace-nowrap">
+                    <div className="flex items-center gap-1.5">
+                      <MdPhone className="text-purple-200 text-xs" />
                       Phone
-                    </th>
-                    <th className="px-4 py-2 text-left text-sm font-bold text-white uppercase tracking-wider">
+                    </div>
+                  </th>
+                  <th className="px-2 py-3 text-left text-xs font-bold text-white uppercase tracking-wide whitespace-nowrap">
+                    <div className="flex items-center gap-1.5">
+                      <MdLocationOn className="text-purple-200 text-xs" />
                       Address
-                    </th>
-                    <th className="px-4 py-2 text-center text-sm font-bold text-white uppercase tracking-wider">
+                    </div>
+                  </th>
+                  <th className="px-2 py-3 text-center text-xs font-bold text-white uppercase tracking-wide whitespace-nowrap">
+                    <div className="flex items-center justify-center gap-1.5">
+                      <FaCheckCircle className="text-purple-200 text-xs" />
                       Verified
-                    </th>
-                    <th className="px-4 py-2 text-left text-sm font-bold text-white uppercase tracking-wider">
+                    </div>
+                  </th>
+                  <th className="px-2 py-3 text-left text-xs font-bold text-white uppercase tracking-wide whitespace-nowrap">
+                    <div className="flex items-center gap-1.5">
+                      <FaClock className="text-purple-200 text-xs" />
                       Created At
-                    </th>
-                    <th className="px-4 py-2 text-left text-sm font-bold text-white uppercase tracking-wider">
+                    </div>
+                  </th>
+                  <th className="px-2 py-3 text-left text-xs font-bold text-white uppercase tracking-wide whitespace-nowrap">
+                    <div className="flex items-center gap-1.5">
+                      <FaClock className="text-purple-200 text-xs" />
                       Updated At
-                    </th>
-                    <th className="px-4 py-2 text-center text-sm font-bold text-white uppercase tracking-wider">
+                    </div>
+                  </th>
+                  <th className="px-2 py-3 text-center text-xs font-bold text-white uppercase tracking-wide whitespace-nowrap">
+                    <div className="flex items-center justify-center gap-1.5">
+                      <FaUserShield className="text-purple-200 text-xs" />
                       Role
-                    </th>
-                    <th className="px-4 py-2 text-center text-sm font-bold text-white uppercase tracking-wider">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {usersData.data.map((user) => (
-                    <tr
-                      key={user.user_Id}
-                      className="hover:bg-linear-to-r hover:from-purple-50 hover:to-pink-50 transition-all duration-200"
-                    >
-                      <td className="px-2 py-1 whitespace-nowrap">
-                        <div className="text-sm font-semibold text-gray-900">
+                    </div>
+                  </th>
+                  <th className="px-2 py-3 text-center text-xs font-bold text-white uppercase tracking-wide whitespace-nowrap sticky right-0 bg-purple-600 shadow-xl">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-100">
+                {usersData.data.map((user) => (
+                  <tr
+                    key={user.user_Id}
+                    className="hover:bg-linear-to-r hover:from-purple-50 hover:via-pink-50 hover:to-indigo-50 transition-all duration-300 hover:shadow-md"
+                  >
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 rounded-full bg-linear-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-xs font-bold shadow-md">
+                          {user.name.charAt(0).toUpperCase()}
+                        </div>
+                        <div className="text-xs font-bold text-gray-900">
                           {user.name}
                         </div>
-                      </td>
-                      <td className="px-2 py-1 whitespace-nowrap">
-                        <div className="text-sm text-gray-700">
-                          {user.email}
-                        </div>
-                      </td>
-                      <td className="px-2 py-1 whitespace-nowrap">
-                        <div className="text-sm text-gray-700">
-                          {user.phone}
-                        </div>
-                      </td>
-                      <td className="px-2 py-1">
-                        <div className="text-sm text-gray-700 max-w-xs truncate">
-                          {user.address}
-                        </div>
-                      </td>
-                      <td className="px-2 py-1 whitespace-nowrap text-center">
-                        {user.is_verified ? (
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-300">
-                            Verified
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-300">
-                            Pending
-                          </span>
-                        )}
-                      </td>
-                      <td className="px-2 py-1 whitespace-nowrap">
-                        <div className="text-sm text-gray-600">
-                          {new Date(user.Created_At).toLocaleDateString(
-                            "en-US",
-                            {
-                              year: "numeric",
-                              month: "short",
-                              day: "numeric",
-                            },
-                          )}
-                        </div>
-                      </td>
-                      <td className="px-2 py-1 whitespace-nowrap">
-                        <div className="text-sm text-gray-600">
-                          {new Date(user.Updated_At).toLocaleDateString(
-                            "en-US",
-                            {
-                              year: "numeric",
-                              month: "short",
-                              day: "numeric",
-                            },
-                          )}
-                        </div>
-                      </td>
-                      <td className="px-2 py-1 whitespace-nowrap text-center">
-                        <span
-                          className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${getRoleBadgeColor(
-                            user.role,
-                          )}`}
-                        >
-                          {user.role}
+                      </div>
+                    </td>
+                    <td className="px-2 py-3 whitespace-nowrap">
+                      <div className="text-xs text-gray-700 font-medium">
+                        {user.email}
+                      </div>
+                    </td>
+                    <td className="px-2 py-3 whitespace-nowrap">
+                      <div className="text-xs text-gray-700 font-medium">
+                        {user.phone}
+                      </div>
+                    </td>
+                    <td className="px-2 py-3 whitespace-nowrap">
+                      <div
+                        className="text-xs text-gray-700 max-w-[180px] truncate"
+                        title={user.address}
+                      >
+                        {user.address}
+                      </div>
+                    </td>
+                    <td className="px-2  py-3 whitespace-nowrap text-center">
+                      {user.is_verified ? (
+                        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold bg-linear-to-r from-green-100 to-emerald-100 text-green-800 border border-green-300 shadow-sm">
+                          <FaCheckCircle className="text-xs" />
+                          Verified
                         </span>
-                      </td>
-                      <td className="px-4 py-2 whitespace-nowrap text-center">
-                        <div className="flex items-center justify-center gap-2">
-                          <button
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-linear-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
-                            onClick={() => {
-                              setUpdateUser(user);
-                              (
-                                document.getElementById(
-                                  "role",
-                                ) as HTMLDialogElement
-                              )?.showModal();
-                            }}
-                          >
-                            <CiEdit size={16} /> Change Role
-                          </button>
-                          <button
-                            className="inline-flex items-center justify-center p-1.5 bg-linear-to-r from-red-500 to-red-600 text-white text-xs font-semibold rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
-                            onClick={() => {
-                              setDeleteUser(user);
-                              (
-                                document.getElementById(
-                                  "delete_modal",
-                                ) as HTMLDialogElement
-                              )?.showModal();
-                            }}
-                          >
-                            <RiDeleteBinLine size={18} />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold bg-linear-to-r from-amber-100 to-yellow-100 text-amber-800 border border-amber-300 shadow-sm">
+                          <FaClock className="text-xs" />
+                          Pending
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-2 py-3 whitespace-nowrap">
+                      <div className="text-xs text-gray-600 font-medium">
+                        {new Date(user.Created_At).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </div>
+                    </td>
+                    <td className="px-2 py-3 whitespace-nowrap">
+                      <div className="text-xs text-gray-600 font-medium">
+                        {new Date(user.Updated_At).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </div>
+                    </td>
+                    <td className="px-2 py-3 whitespace-nowrap text-center">
+                      <span
+                        className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold border shadow-sm ${getRoleBadgeColor(
+                          user.role,
+                        )}`}
+                      >
+                        <FaUserShield className="text-xs" />
+                        {user.role}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap text-center sticky right-0 bg-white shadow-lg">
+                      <div className="flex items-center justify-center gap-2">
+                        <button
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-linear-to-r from-purple-500 to-pink-500 text-white text-xs font-bold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+                          onClick={() => {
+                            setUpdateUser(user);
+                            (
+                              document.getElementById(
+                                "role",
+                              ) as HTMLDialogElement
+                            )?.showModal();
+                          }}
+                        >
+                          <CiEdit size={16} /> Change Role
+                        </button>
+                        <button
+                          className="inline-flex items-center justify-center p-1.5 bg-linear-to-r from-red-500 to-red-600 text-white text-xs font-bold rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+                          onClick={() => {
+                            setDeleteUser(user);
+                            (
+                              document.getElementById(
+                                "delete_modal",
+                              ) as HTMLDialogElement
+                            )?.showModal();
+                          }}
+                        >
+                          <RiDeleteBinLine size={20} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       ) : (
-        <div className="flex items-center justify-center min-h-[400px]">
-          <div className="text-center">
-            <div className="text-6xl mb-4">👥</div>
-            <p className="text-xl text-gray-600 font-medium">No users found.</p>
-            <p className="text-sm text-gray-500 mt-2">
-              Users will appear here once they register.
-            </p>
+        !loadingUsers &&
+        !userError && (
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="text-center bg-white rounded-xl shadow-xl p-8 border border-purple-200">
+              <div className="flex justify-center mb-4">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-purple-500/20 rounded-full blur-xl" />
+                  <div className="relative bg-purple-100 p-4 rounded-full">
+                    <FaUsers className="text-purple-600 text-3xl" />
+                  </div>
+                </div>
+              </div>
+              <p className="text-lg text-gray-800 font-bold mb-1">
+                No Users Found
+              </p>
+              <p className="text-sm text-gray-600 mt-1">
+                Users will appear here once they register.
+              </p>
+            </div>
           </div>
-        </div>
+        )
       )}
     </div>
   );

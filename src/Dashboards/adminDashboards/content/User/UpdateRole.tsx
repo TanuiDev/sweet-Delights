@@ -105,10 +105,10 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
               className="select select-bordered w-full bg-gray-800 text-white border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all duration-200"
             >
               <option value="customer" className="bg-gray-800">
-                👤 Customer
+                Customer
               </option>
               <option value="admin" className="bg-gray-800">
-                🛡️ Admin
+                Admin
               </option>
             </select>
 
