@@ -62,10 +62,8 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
   return (
     <dialog id="role" className="modal sm:modal-middle backdrop-blur-sm">
       <div className="modal-box bg-linear-to-br from-gray-800 to-gray-900 text-white w-full max-w-xs sm:max-w-md mx-auto rounded-2xl shadow-2xl border border-gray-700 relative overflow-hidden">
-        
         <div className="absolute top-0 left-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2" />
-        
-        
+
         <button
           type="button"
           onClick={() => {
@@ -78,7 +76,6 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
           <IoClose size={24} />
         </button>
 
-        
         <div className="flex justify-center mb-4">
           <div className="relative">
             <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl" />
@@ -88,7 +85,6 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
           </div>
         </div>
 
-        
         <h3 className="font-bold text-2xl mb-2 text-center bg-linear-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
           Change User Role
         </h3>
@@ -98,13 +94,12 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
-          
           <div className="bg-gray-700/50 rounded-lg p-5 border border-gray-600">
             <label className="text-white font-semibold mb-3 flex items-center gap-2">
               <FaUserShield className="text-blue-400" />
               Select Role:
             </label>
-            
+
             <select
               {...register("role")}
               className="select select-bordered w-full bg-gray-800 text-white border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all duration-200"
@@ -116,27 +111,29 @@ export const UpdateRole = ({ user }: ChangeRoleProps) => {
                 🛡️ Admin
               </option>
             </select>
-            
+
             {errors.role && (
               <div className="mt-2 text-sm text-red-400 bg-red-500/10 px-3 py-2 rounded border border-red-500/30">
                 {errors.role.message}
               </div>
             )}
 
-            
             <div className="mt-4 space-y-2 text-sm">
               <div className="flex items-start gap-2 text-gray-300">
                 <FaUserTie className="text-gray-400 mt-1 shrink-0" />
-                <span><strong>Customer:</strong> Standard user access</span>
+                <span>
+                  <strong>Customer:</strong> Standard user access
+                </span>
               </div>
               <div className="flex items-start gap-2 text-gray-300">
                 <FaUserShield className="text-blue-400 mt-1 shrink-0" />
-                <span><strong>Admin:</strong> Full system privileges</span>
+                <span>
+                  <strong>Admin:</strong> Full system privileges
+                </span>
               </div>
             </div>
           </div>
 
-          
           <div className="modal-action flex flex-col sm:flex-row gap-3 justify-center mt-2">
             <button
               type="submit"

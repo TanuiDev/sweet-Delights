@@ -28,16 +28,19 @@ export const DeleteUser = ({ user }: DeleteUserProps) => {
   };
 
   return (
-    <dialog id="delete_modal" className="modal sm:modal-middle backdrop-blur-sm">
+    <dialog
+      id="delete_modal"
+      className="modal sm:modal-middle backdrop-blur-sm"
+    >
       <div className="modal-box bg-linear-to-br from-gray-800 to-gray-900 text-white w-full max-w-xs sm:max-w-md mx-auto rounded-2xl shadow-2xl border border-gray-700 relative overflow-hidden">
-       
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        
-        
+
         <button
           type="button"
           onClick={() =>
-            (document.getElementById("delete_modal") as HTMLDialogElement)?.close()
+            (
+              document.getElementById("delete_modal") as HTMLDialogElement
+            )?.close()
           }
           className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200 z-10"
           aria-label="Close"
@@ -45,7 +48,6 @@ export const DeleteUser = ({ user }: DeleteUserProps) => {
           <IoClose size={24} />
         </button>
 
-        
         <div className="flex justify-center mb-4">
           <div className="relative">
             <div className="absolute inset-0 bg-red-500/20 rounded-full blur-xl animate-pulse" />
@@ -55,12 +57,10 @@ export const DeleteUser = ({ user }: DeleteUserProps) => {
           </div>
         </div>
 
-        
         <h3 className="font-bold text-2xl mb-3 text-center bg-linear-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
           Delete User
         </h3>
 
-        
         <div className="bg-gray-700/50 rounded-lg p-4 mb-6 border border-gray-600">
           <p className="text-center text-gray-200 leading-relaxed">
             Are you sure you want to permanently delete{" "}
@@ -74,7 +74,6 @@ export const DeleteUser = ({ user }: DeleteUserProps) => {
           </p>
         </div>
 
-    
         <div className="modal-action flex gap-3 justify-center mt-6">
           <button
             data-test="delete-user-confirm-button"
