@@ -62,10 +62,14 @@ export const CreateOrder = () => {
     }
   };
   return (
-    <dialog data-test="create-order-dialog" id="newOrder" className="modal sm:modal-middle">
+    <dialog
+      data-test="create-order-dialog"
+      id="newOrder"
+      className="modal sm:modal-middle"
+    >
       <div className="modal-box w-full max-w-2xl bg-white px-0 py-0 text-gray-900 shadow-xl rounded-3xl">
         <div className="bg-linear-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-3xl border-b border-white/20">
-          <p  className="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/80">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/80">
             Orders
           </p>
           <h3 className="mt-1 text-2xl sm:text-3xl font-semibold">
@@ -109,7 +113,7 @@ export const CreateOrder = () => {
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700">
               Cake Flavor
               <input
-                  data-test="create-order-flavor"
+                data-test="create-order-flavor"
                 type="text"
                 placeholder="e.g. Vanilla, Chocolate, Red Velvet"
                 {...register("Flavor")}
@@ -125,7 +129,7 @@ export const CreateOrder = () => {
             <label className="flex flex-col gap-1.5 text-sm font-medium text-gray-700 md:col-span-2">
               Message on Cake
               <input
-                  data-test="create-order-message"
+                data-test="create-order-message"
                 type="text"
                 placeholder="Happy Birthday Sarah!"
                 {...register("Message")}
@@ -202,7 +206,7 @@ export const CreateOrder = () => {
                 style.
               </span>
               <input
-                data-test="create-order-sample-images"  
+                data-test="create-order-sample-images"
                 type="file"
                 multiple
                 {...register("SampleImages")}

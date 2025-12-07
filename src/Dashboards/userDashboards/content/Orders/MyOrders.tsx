@@ -56,7 +56,10 @@ export const MyOrders = () => {
       {!loadingOrders && !orderError && orderDetails && (
         <div className="max-w-7xl mx-auto">
           <div className="mb-8 text-center">
-            <h2 data-test="my-orders-title" className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+            <h2
+              data-test="my-orders-title"
+              className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2"
+            >
               My Orders
             </h2>
             <p className="text-gray-600 text-sm md:text-base">
@@ -86,7 +89,7 @@ export const MyOrders = () => {
             ) : (
               orderDetails.data.map((data: Torders) => (
                 <div
-                data-test="order-card"
+                  data-test="order-card"
                   key={data.Id}
                   className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1"
                 >

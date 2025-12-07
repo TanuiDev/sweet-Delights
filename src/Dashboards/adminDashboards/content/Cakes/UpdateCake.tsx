@@ -63,7 +63,7 @@ export const UpdateCake = ({ cake }: ChangeCakeProps) => {
     }
   };
   return (
-    <dialog  id="updatecake" className="modal sm:modal-middle">
+    <dialog id="updatecake" className="modal sm:modal-middle">
       <div className="modal-box w-full max-w-2xl bg-white px-0 py-0 text-gray-900">
         <div className="bg-linear-to-r from-purple-600 via-pink-500 to-indigo-500 px-6 py-5 text-white rounded-t-2xl">
           <p className="text-sm uppercase tracking-widest text-white/80">
@@ -82,7 +82,7 @@ export const UpdateCake = ({ cake }: ChangeCakeProps) => {
             <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
               Cake name
               <input
-              data-test="update-cake-name"
+                data-test="update-cake-name"
                 id="cakeName"
                 type="text"
                 {...register("cakeName")}
@@ -112,7 +112,7 @@ export const UpdateCake = ({ cake }: ChangeCakeProps) => {
             <label className="flex flex-col gap-2 text-sm font-medium text-gray-700">
               Size
               <input
-              data-test="update-cake-size"
+                data-test="update-cake-size"
                 type="text"
                 {...register("size")}
                 className="input input-bordered w-full bg-gray-50 focus:bg-white"
@@ -169,7 +169,7 @@ export const UpdateCake = ({ cake }: ChangeCakeProps) => {
               Cancel
             </button>
             <button
-            data-test="update-cake-button"
+              data-test="update-cake-button"
               type="submit"
               className="btn btn-primary order-1 w-full sm:order-2 sm:w-auto"
               disabled={isLoading}

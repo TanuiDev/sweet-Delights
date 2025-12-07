@@ -97,9 +97,9 @@ export const ReadyMade = () => {
                         {availability.label}
                       </span>
                     </div>
-                    <div  className="p-5 space-y-4">
-                      <div  className="flex items-center justify-between gap-3">
-                        <h3  className="text-base font-semibold text-gray-900 flex-1">
+                    <div className="p-5 space-y-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <h3 className="text-base font-semibold text-gray-900 flex-1">
                           {cake.cakeName}
                         </h3>
                         <div className="text-right">
@@ -143,7 +143,6 @@ export const ReadyMade = () => {
                         data-test="delete-cake-button"
                         className=" text-red-800 px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
                         onClick={() => {
-                          
                           setDeleteCake(cake);
                           (
                             document.getElementById(
@@ -175,8 +174,8 @@ export const ReadyMade = () => {
               })
             )}
           </div>
-            {updateCakeData && <UpdateCake cake={updateCakeData} />}
-            {deleteCakeData && <DeleteCake cake={deleteCakeData} />}
+          {updateCakeData && <UpdateCake cake={updateCakeData} />}
+          {deleteCakeData && <DeleteCake cake={deleteCakeData} />}
         </div>
       </div>
     </>

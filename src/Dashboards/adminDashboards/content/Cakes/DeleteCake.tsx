@@ -3,7 +3,6 @@ import cakeApi, { type Tcakes } from "../../../../features/Cakes/cakeAPI";
 import { IoMdClose } from "react-icons/io";
 import { MdWarningAmber } from "react-icons/md";
 
-
 type DeleteProps = {
   cake: Tcakes | null;
 };
@@ -31,11 +30,9 @@ export const DeleteCake = ({ cake }: DeleteProps) => {
   return (
     <dialog id="delete_cake" className="modal sm:modal-middle">
       <div className="modal-box relative overflow-hidden border border-white/60 bg-linear-to-br from-white via-red-50/30 to-pink-50/40 backdrop-blur-xl shadow-2xl shadow-red-200/50 w-full max-w-lg mx-auto rounded-3xl p-0">
-       
         <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-red-200/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-20 -bottom-20 h-40 w-40 rounded-full bg-pink-200/30 blur-3xl" />
 
-       
         <div className="relative z-10 shrink-0 p-8 pb-4 border-b border-red-100/50">
           <div className="flex items-center justify-between">
             <div>
@@ -55,20 +52,17 @@ export const DeleteCake = ({ cake }: DeleteProps) => {
               }
               className="btn btn-ghost btn-circle btn-sm text-gray-400 hover:text-gray-600 hover:bg-gray-100"
             >
-              <IoMdClose  />
+              <IoMdClose />
             </button>
           </div>
         </div>
 
-        
         <div className="relative z-10 px-8 py-8">
           <div className="flex flex-col items-center text-center space-y-6">
-            
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-linear-to-br from-red-100 to-pink-100">
               <MdWarningAmber className="h-10 w-10 text-red-600" />
             </div>
 
-            
             <div className="space-y-2">
               <p className="text-lg font-semibold text-gray-800">
                 Are you sure you want to delete this cake?
@@ -83,7 +77,7 @@ export const DeleteCake = ({ cake }: DeleteProps) => {
             {/* Warning Box */}
             <div className="w-full rounded-2xl border-2 border-red-200 bg-red-50/80 p-4">
               <p className="text-sm font-medium text-red-800">
-                 This action cannot be undone. All associated data will be
+                This action cannot be undone. All associated data will be
                 permanently deleted.
               </p>
             </div>

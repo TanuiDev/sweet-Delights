@@ -35,9 +35,15 @@ export const Cake = () => {
 
   return (
     <>
-      <div data-test="cakes-container" className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-4 px-1 sm:px-3 lg:px-4">
+      <div
+        data-test="cakes-container"
+        className="min-h-screen w-full bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 py-4 px-1 sm:px-3 lg:px-4"
+      >
         <div className="">
-          <h2  data-test="cakes-title" className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-4">
+          <h2
+            data-test="cakes-title"
+            className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-4"
+          >
             Ready Made Cakes
           </h2>
           <p className="text-gray-600 text-sm md:text-base mb-8">
@@ -74,7 +80,7 @@ export const Cake = () => {
 
                 return (
                   <div
-                  data-test="cake-card"
+                    data-test="cake-card"
                     key={cake.cakeId}
                     className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1 group"
                   >

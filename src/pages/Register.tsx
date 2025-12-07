@@ -44,13 +44,13 @@ export const Register = () => {
 
   const onsubmit: SubmitHandler<inputData> = async (data) => {
     try {
-      // console.log("Form Data:", data);
       await createUser(data).unwrap();
-      // console.log("User registered successfully:", response);
+
       toast.success("User registered successfully!");
       navigate("/verify", { state: { email: data.email } });
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.error("Failed to register user:", error);
+      toast.error("User already exists");
     }
   };
 

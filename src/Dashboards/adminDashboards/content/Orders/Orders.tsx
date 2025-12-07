@@ -54,10 +54,13 @@ export const Orders = () => {
       {!loadingOrders && !orderError && orderDetails && (
         <div className="max-w-7xl mx-auto">
           <div className="mb-8 text-center">
-            <h2 data-test="orders-title" className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+            <h2
+              data-test="orders-title"
+              className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent mb-2"
+            >
               All Orders
             </h2>
-            <p  className="text-gray-600 text-sm md:text-base">
+            <p className="text-gray-600 text-sm md:text-base">
               Manage and track all customer orders
             </p>
           </div>
@@ -149,7 +152,9 @@ export const Orders = () => {
                           Delivery Date:
                         </span>
                         <span className="text-gray-600 flex items-center gap-1">
-                          <span><MdDateRange /> </span>
+                          <span>
+                            <MdDateRange />{" "}
+                          </span>
                           {new Date(data.DeliveryDate).toLocaleDateString(
                             "en-US",
                             {
@@ -176,7 +181,7 @@ export const Orders = () => {
 
                     <div className="pt-4 border-t border-gray-100">
                       <button
-                      data-test="update-status-btn"
+                        data-test="update-status-btn"
                         onClick={() => {
                           setUpdateOrderStatus(data);
                           (

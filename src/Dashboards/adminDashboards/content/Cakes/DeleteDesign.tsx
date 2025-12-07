@@ -56,7 +56,7 @@ export const DeleteDesign = ({ design }: DeleteProps) => {
               }
               className="btn btn-ghost btn-circle btn-sm text-gray-400 hover:text-gray-600 hover:bg-gray-100"
             >
-              <IoMdClose  />
+              <IoMdClose />
             </button>
           </div>
         </div>
