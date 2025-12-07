@@ -196,7 +196,7 @@ export const Profile = () => {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
               <button
-                className="btn btn-primary flex-1 gap-2 bg-gradient-to-r from-purple-600 to-pink-500 border-none text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl sm:flex-initial"
+                className="btn btn-primary flex-1 gap-2 bg-linear-to-r from-purple-600 to-pink-500 border-none text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl sm:flex-initial"
                 onClick={() => {
                   (
                     document.getElementById(
