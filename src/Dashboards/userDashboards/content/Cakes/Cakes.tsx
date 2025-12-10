@@ -150,17 +150,13 @@ export const Cake = () => {
                           <button className="text-green-500 font-bold transition-colors duration-300 flex items-center justify-center">
                             <AiOutlineLike />
                           </button>
-                          <h4 className="text-green-500 text-center font-bold">
-                            1000
-                          </h4>
+                          <h4 className="text-green-500 text-center font-bold"></h4>
                         </div>
                         <div className="grid col-end-1 align-middle justify-center p-2">
                           <button className=" text-green-500 rounded-xl font-bold transition-colors duration-300">
                             <FaShare />
                           </button>
-                          <h4 className="text-green-500 text-center font-bold">
-                            300
-                          </h4>
+                          <h4 className="text-green-500 text-center font-bold"></h4>
                         </div>
                       </div>
                     </div>
