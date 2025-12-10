@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
+import { useState } from "react";
+import axios from "axios";
 import { toast } from "sonner";
 import templatesApi from "../../../../features/Cakes/templatesAPI";
 
@@ -39,10 +41,14 @@ const schema = yup.object({
 export const AddTemplate = () => {
   const [addDesign, { isLoading }] = templatesApi.useAddDesignMutation();
 
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<AddTemplateInputs>({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -50,6 +56,49 @@ export const AddTemplate = () => {
       Availability: true,
     },
   });
+
+  const uploadToCloudinary = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "sweetDelights");
+    formData.append("cloud_name", "dmskflgvr");
+
+    try {
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/dmskflgvr/image/upload`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        },
+      );
+
+      const data = await response.data ;
+      return data.secure_url;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error:any) {
+      throw new Error("Failed to upload image");
+    }
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingImage(true);
+    try {
+      const imageUrl = await uploadToCloudinary(file);
+      setValue("ImageUrl", imageUrl);
+      setImagePreview(imageUrl);
+      toast.success("Image uploaded successfully");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+    } catch (error:any) {
+      toast.error("Failed to upload image");
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
   const onsubmit: SubmitHandler<AddTemplateInputs> = async (data) => {
     try {
@@ -65,11 +114,11 @@ export const AddTemplate = () => {
   return (
     <dialog id="newdesign" className="modal sm:modal-middle">
       <div className="modal-box relative overflow-hidden border border-white/60 bg-linear-to-br from-white via-purple-50/30 to-pink-50/40 backdrop-blur-xl shadow-2xl shadow-purple-200/50 w-full max-w-2xl mx-auto rounded-3xl p-0 max-h-[90vh] flex flex-col">
-        {/* Decorative background elements */}
+       
         <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-pink-200/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-20 -bottom-20 h-40 w-40 rounded-full bg-purple-200/30 blur-3xl" />
 
-        {/* Header - Fixed */}
+        
         <div className="relative z-10 shrink-0 p-8 pb-4 border-b border-purple-100/50">
           <div className="flex items-center justify-between">
             <div>
@@ -119,7 +168,7 @@ export const AddTemplate = () => {
                 />
                 {errors.DesignName && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                    <span>⚠</span> {errors.DesignName.message}
+                    {errors.DesignName.message}
                   </span>
                 )}
               </div>
@@ -137,7 +186,7 @@ export const AddTemplate = () => {
                 />
                 {errors.BaseFlavor && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                    <span>⚠</span> {errors.BaseFlavor.message}
+                     {errors.BaseFlavor.message}
                   </span>
                 )}
               </div>
@@ -157,7 +206,7 @@ export const AddTemplate = () => {
                 />
                 {errors.Size && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                    <span>⚠</span> {errors.Size.message}
+                     {errors.Size.message}
                   </span>
                 )}
               </div>
@@ -197,7 +246,7 @@ export const AddTemplate = () => {
               />
               {errors.BasePrice && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                  <span>⚠</span> {errors.BasePrice.message}
+                  {errors.BasePrice.message}
                 </span>
               )}
             </div>
@@ -215,7 +264,7 @@ export const AddTemplate = () => {
               />
               {errors.Description && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                  <span>⚠</span> {errors.Description.message}
+                  {errors.Description.message}
                 </span>
               )}
             </div>
@@ -227,13 +276,27 @@ export const AddTemplate = () => {
               <input
                 data-test="add-new-template-imageURL"
                 type="file"
-                {...register("ImageUrl")}
-                multiple
+                accept="image/*"
+                onChange={handleFileChange}
+                disabled={uploadingImage}
                 className="file-input w-full rounded-2xl border-2 border-gray-200 bg-white file:mr-4 file:rounded-xl file:border-0 file:bg-linear-to-r file:from-purple-500 file:to-pink-500 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white file:cursor-pointer hover:file:opacity-90 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none"
               />
+              {uploadingImage && (
+                <span className="text-sm text-purple-600 flex items-center gap-2">
+                  <span className="loading loading-spinner loading-sm" />
+                  Uploading image...
+                </span>
+              )}
+              {imagePreview && (
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  className="w-32 h-32 object-cover rounded-lg mt-2 border-2 border-purple-200"
+                />
+              )}
               {errors.ImageUrl && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                  <span>⚠</span> {errors.ImageUrl.message}
+                   {errors.ImageUrl.message}
                 </span>
               )}
             </div>
@@ -271,7 +334,7 @@ export const AddTemplate = () => {
             </div>
             {errors.Availability && (
               <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                <span>⚠</span> {errors.Availability.message}
+                {errors.Availability.message}
               </span>
             )}
           </form>

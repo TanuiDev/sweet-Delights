@@ -129,16 +129,16 @@ export const Templates = () => {
               ? loadingPlaceholders.map((_, idx) => (
                   <div
                     key={`skeleton-${idx}`}
-                    className="animate-pulse rounded-3xl border border-white/60 bg-white/70 p-6 shadow-2xl shadow-pink-200/40"
+                    className="animate-pulse rounded-3xl border border-white/60 bg-white/70 p-4 shadow-2xl shadow-pink-200/40"
                   >
-                    <div className="mb-4 h-48 w-full rounded-2xl bg-linear-to-r from-gray-200 to-gray-100" />
+                    <div className="mb-3 h-40 w-full rounded-2xl bg-linear-to-r from-gray-200 to-gray-100" />
                     <div className="mb-2 h-4 w-3/4 rounded-full bg-gray-200" />
-                    <div className="mb-6 h-4 w-full rounded-full bg-gray-100" />
-                    <div className="mb-4 flex gap-3">
-                      <span className="h-6 w-16 rounded-full bg-gray-100" />
-                      <span className="h-6 w-20 rounded-full bg-gray-200" />
+                    <div className="mb-3 h-3 w-full rounded-full bg-gray-100" />
+                    <div className="mb-3 flex gap-2">
+                      <span className="h-5 w-14 rounded-full bg-gray-100" />
+                      <span className="h-5 w-16 rounded-full bg-gray-200" />
                     </div>
-                    <div className="h-10 rounded-2xl bg-gray-100" />
+                    <div className="h-8 rounded-2xl bg-gray-100" />
                   </div>
                 ))
               : res.map((template) => {
@@ -154,114 +154,106 @@ export const Templates = () => {
                   return (
                     <article
                       key={template.DesignID}
-                      className="group relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-2xl shadow-purple-100/70 ring-1 ring-transparent transition-all duration-300 hover:-translate-y-1 hover:border-pink-200 hover:shadow-pink-200/70 hover:ring-pink-100"
+                      className="group relative overflow-hidden rounded-2xl border border-white/70 bg-white/80 shadow-xl shadow-purple-100/50 ring-1 ring-transparent transition-all duration-300 hover:-translate-y-1 hover:border-pink-200 hover:shadow-pink-200/60 hover:ring-pink-100"
                     >
                       <DeleteDesign design={deleteDesign} />
                       <UpdateTemplate design={updateDesign} />
 
-                      <div className="relative h-56 overflow-hidden">
+                      <div className="relative h-44 overflow-hidden">
                         <img
                           src={template.ImageUrl}
                           alt={template.DesignName}
                           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                         />
                         <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
-                        <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-600 shadow">
+                        <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-gray-600 shadow">
                           Signature
-                          <span className="h-2 w-2 rounded-full bg-pink-500" />
+                          <span className="h-1.5 w-1.5 rounded-full bg-pink-500" />
                         </div>
+                        <span
+                          className={`absolute right-3 top-3 rounded-full px-2.5 py-1 text-xs font-semibold ${
+                            isAvailable
+                              ? "bg-green-100 text-green-700"
+                              : "bg-amber-100 text-amber-700"
+                          }`}
+                        >
+                          {availabilityLabel}
+                        </span>
                       </div>
 
                       <div
                         data-test="template-details"
-                        className="space-y-5 p-6"
+                        className="space-y-3 p-4"
                       >
-                        <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <h3 className="text-xl font-bold text-gray-900">
-                              {template.DesignName}
-                            </h3>
-                            <p className="mt-1 text-sm text-gray-500 line-clamp-2">
-                              {template.Description}
-                            </p>
-                          </div>
-                          <span
-                            className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                              isAvailable
-                                ? "bg-green-100 text-green-700"
-                                : "bg-amber-100 text-amber-700"
-                            }`}
-                          >
-                            {availabilityLabel}
-                          </span>
+                        <div>
+                          <h3 className="text-lg font-bold text-gray-900 line-clamp-1">
+                            {template.DesignName}
+                          </h3>
+                          <p className="mt-1 text-xs text-gray-500 line-clamp-2">
+                            {template.Description}
+                          </p>
                         </div>
 
-                        <dl className="grid gap-3 text-sm text-gray-600">
-                          <div className="flex justify-between rounded-2xl bg-purple-50/60 px-4 py-2">
-                            <dt className="font-semibold text-purple-600">
-                              Flavor
-                            </dt>
-                            <dd className="font-bold text-purple-800">
+                        <dl className="grid grid-cols-3 gap-2 text-xs text-gray-600">
+                          <div className="flex flex-col items-center rounded-xl bg-purple-50/60 px-2 py-1.5">
+                            <dt className="font-semibold text-purple-600">Flavor</dt>
+                            <dd className="font-bold text-purple-800 text-center line-clamp-1">
                               {template.BaseFlavor}
                             </dd>
                           </div>
-                          <div className="flex justify-between rounded-2xl bg-pink-50/60 px-4 py-2">
-                            <dt className="font-semibold text-pink-600">
-                              Category
-                            </dt>
-                            <dd className="font-bold text-pink-800">
+                          <div className="flex flex-col items-center rounded-xl bg-pink-50/60 px-2 py-1.5">
+                            <dt className="font-semibold text-pink-600">Category</dt>
+                            <dd className="font-bold text-pink-800 text-center line-clamp-1">
                               {template.Category}
                             </dd>
                           </div>
-                          <div className="flex justify-between rounded-2xl bg-indigo-50/70 px-4 py-2">
-                            <dt className="font-semibold text-indigo-600">
-                              Size
-                            </dt>
-                            <dd className="font-bold text-indigo-800">
+                          <div className="flex flex-col items-center rounded-xl bg-indigo-50/70 px-2 py-1.5">
+                            <dt className="font-semibold text-indigo-600">Size</dt>
+                            <dd className="font-bold text-indigo-800 text-center line-clamp-1">
                               {template.Size}
                             </dd>
                           </div>
                         </dl>
 
-                        <div className="flex items-center justify-between rounded-2xl border border-gray-100 bg-white px-5 py-3">
+                        <div className="flex items-center justify-between rounded-xl border border-gray-100 bg-white px-3 py-2">
                           <div>
-                            <p className="text-xs uppercase tracking-widest text-gray-400">
-                              Starting at
+                            <p className="text-xs uppercase tracking-wider text-gray-400">
+                              From
                             </p>
-                            <p className="text-2xl font-black text-gray-900">
+                            <p className="text-xl font-black text-gray-900">
                               {formatPrice(template.BasePrice)}
                             </p>
                           </div>
-                        </div>
-                        <div className="flex justify-between gap-4">
-                          <button
-                            data-test="edit-template-button"
-                            className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl"
-                            onClick={() => {
-                              setUpdateDesign(template);
-                              (
-                                document.getElementById(
-                                  "update_template",
-                                ) as HTMLDialogElement
-                              )?.showModal();
-                            }}
-                          >
-                            <FaEdit size={28} />
-                          </button>
-                          <button
-                            data-test="delete-template-button"
-                            className="inline-flex items-center gap-2  text-red-600 px-4 py-2 text-sm font-bold uppercase tracking-wide   transition hover:translate-y-0.5 hover:shadow-xl"
-                            onClick={() => {
-                              setDeleteDesign(template);
-                              (
-                                document.getElementById(
-                                  "delete_design",
-                                ) as HTMLDialogElement
-                              )?.showModal();
-                            }}
-                          >
-                            <MdOutlineAutoDelete size={28} />
-                          </button>
+                          <div className="flex gap-2">
+                            <button
+                              data-test="edit-template-button"
+                              className="inline-flex items-center justify-center rounded-lg bg-green-50 p-2 text-green-600 transition hover:bg-green-100 hover:scale-110"
+                              onClick={() => {
+                                setUpdateDesign(template);
+                                (
+                                  document.getElementById(
+                                    "update_template",
+                                  ) as HTMLDialogElement
+                                )?.showModal();
+                              }}
+                            >
+                              <FaEdit size={18} />
+                            </button>
+                            <button
+                              data-test="delete-template-button"
+                              className="inline-flex items-center justify-center rounded-lg bg-red-50 p-2 text-red-600 transition hover:bg-red-100 hover:scale-110"
+                              onClick={() => {
+                                setDeleteDesign(template);
+                                (
+                                  document.getElementById(
+                                    "delete_design",
+                                  ) as HTMLDialogElement
+                                )?.showModal();
+                              }}
+                            >
+                              <MdOutlineAutoDelete size={18} />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </article>
