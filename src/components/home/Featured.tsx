@@ -5,7 +5,7 @@ export const Featured = () => {
       name: "Chocolate Ganache Dream",
       description:
         "Rich chocolate cake with silky ganache frosting, topped with fresh raspberries and chocolate shavings",
-      price: "ksh 35,00",
+      price: "ksh 3,000",
       image:
         "https://i.pinimg.com/736x/9d/25/93/9d2593780fe22eba7acf1ea6e9e57110.jpg",
       category: "ready-made" as const,
@@ -15,7 +15,7 @@ export const Featured = () => {
       name: "Elegant Wedding Tier",
       description:
         "Classic white fondant wedding cake with delicate lace patterns and fresh florals",
-      price: "ksh 23,000",
+      price: "ksh 2,300",
       image:
         "https://i.pinimg.com/736x/5b/d1/a2/5bd1a2689ac916f9b24b83e3a1136112.jpg",
       category: "ready-made",
@@ -25,7 +25,7 @@ export const Featured = () => {
       name: "Strawberry Shortcake",
       description:
         "Light and fluffy vanilla cake layered with fresh strawberries and whipped cream",
-      price: "ksh 15,999",
+      price: "ksh 1,500",
       image:
         "https://i.pinimg.com/736x/9c/15/b0/9c15b08d019a99dd1703de44a570068b.jpg",
       category: "ready-made" as const,
@@ -59,12 +59,7 @@ export const Featured = () => {
                   <span className="text-pink-500 font-bold text-lg">
                     {cake.price}
                   </span>
-                  <a
-                    href="#order"
-                    className="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600"
-                  >
-                    Order Now
-                  </a>
+                  Order Now
                 </div>
               </div>
             </div>

@@ -209,7 +209,17 @@ export const UserTemplates = () => {
                           </div>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <button className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl">
+                          <button
+                            data-test="order-cake-btn"
+                            onClick={() =>
+                              (
+                                document.getElementById(
+                                  "newOrder",
+                                ) as HTMLDialogElement
+                              )?.showModal()
+                            }
+                            className="inline-flex items-center gap-2  bg-linear-to-r  px-4 py-2 text-sm font-bold uppercase tracking-wide text-green-600  shadow-pink-500/30 transition hover:translate-y-0.5 hover:shadow-xl"
+                          >
                             Order This Design
                           </button>
                           <button className="inline-flex items-center gap-2  text-red-600 px-4 py-2 text-sm font-bold uppercase tracking-wide   transition hover:translate-y-0.5 hover:shadow-xl">
