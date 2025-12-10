@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
 
 import { toast } from "sonner";
 import cakeApi from "../../../../features/Cakes/cakeAPI";
@@ -24,13 +26,57 @@ const schema = yup.object({
 export const AddCake = () => {
   const [addCake, { isLoading }] = cakeApi.useAddCakeMutation();
 
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<AddCakeInputs>({
     resolver: yupResolver(schema),
   });
+
+  const uploadToCloudinary = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "sweetDelights");
+    formData.append("cloud_name", "dmskflgvr");
+
+    try {
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/dmskflgvr/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+
+      const data = await response.json();
+      return data.secure_url;
+    } catch (error) {
+      throw new Error("Failed to upload image");
+    }
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingImage(true);
+    try {
+      const imageUrl = await uploadToCloudinary(file);
+      setValue("imageURL", imageUrl);
+      setImagePreview(imageUrl);
+      toast.success("Image uploaded successfully");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast.error("Failed to upload image");
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
   const onSubmit: SubmitHandler<AddCakeInputs> = async (data) => {
     try {
@@ -127,11 +173,25 @@ export const AddCake = () => {
             <input
               data-test="add-new-cake-imageURL"
               type="file"
-              {...register("imageURL")}
+              accept="image/*"
+              onChange={handleFileChange}
+              disabled={uploadingImage}
               className="file:mr-5 file:py-1 file:px-3 
               file:border-gray-300 file:rounded-md file:text-xs file:font-medium file:bg-stone-50 file:text-stone-700 hover:file:cursor-pointer hover:file:bg-blue-50 hover:file:text-blue-700"
-              multiple
             />
+            {uploadingImage && (
+              <span className="text-xs text-blue-600 flex items-center gap-2">
+                <span className="loading loading-spinner loading-xs" />
+                Uploading image...
+              </span>
+            )}
+            {imagePreview && (
+              <img
+                src={imagePreview}
+                alt="Preview"
+                className="w-32 h-32 object-cover rounded-lg mt-2"
+              />
+            )}
             {errors.imageURL && (
               <span className="text-xs font-normal text-red-600">
                 {errors.imageURL.message}

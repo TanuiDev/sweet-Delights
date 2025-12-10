@@ -138,7 +138,10 @@ export const ReadyMade = () => {
                         </div>
                       </div>
                     </div>
-                    <div data-test="cake-action-buttons" className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2">
+                    <div
+                      data-test="cake-action-buttons"
+                      className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2"
+                    >
                       <button
                         data-test="delete-cake-button"
                         className=" text-red-800 px-4 py-2 rounded-xl hover:bg-rose-600 transition-colors duration-300"
@@ -153,7 +156,7 @@ export const ReadyMade = () => {
                       >
                         <MdOutlineAutoDelete size={28} />
                       </button>
-                      <button                        
+                      <button
                         type="button"
                         className=" text-green-500 px-4 py-2 w-fit rounded-xl hover:bg-green-600  duration-300"
                         onClick={() => {
