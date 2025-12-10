@@ -6,6 +6,8 @@ import templatesApi, {
   type Tdesigns,
 } from "../../../../features/Cakes/templatesAPI";
 import { toast } from "sonner";
+import { IoMdClose } from "react-icons/io";
+
 
 type UpdateDesignProps = {
   design: Tdesigns | null;
@@ -128,7 +130,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               }}
               className="btn btn-ghost btn-circle btn-sm text-gray-400 hover:text-gray-600 hover:bg-gray-100"
             >
-              ✕
+              <IoMdClose className="text-xl" />
             </button>
           </div>
         </div>
@@ -153,7 +155,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               />
               {errors.DesignName && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                  <span>⚠</span> {errors.DesignName.message}
+                   {errors.DesignName.message}
                 </span>
               )}
             </div>
@@ -171,7 +173,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               />
               {errors.description && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                  <span>⚠</span> {errors.description.message}
+                   {errors.description.message}
                 </span>
               )}
             </div>
@@ -190,7 +192,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                 />
                 {errors.BasePrice && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                    <span>⚠</span> {errors.BasePrice.message}
+                     {errors.BasePrice.message}
                   </span>
                 )}
               </div>
@@ -208,7 +210,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                 />
                 {errors.Size && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                    <span>⚠</span> {errors.Size.message}
+                     {errors.Size.message}
                   </span>
                 )}
               </div>
@@ -228,7 +230,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                 />
                 {errors.BaseFlavor && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                    <span>⚠</span> {errors.BaseFlavor.message}
+                     {errors.BaseFlavor.message}
                   </span>
                 )}
               </div>
@@ -246,7 +248,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                 />
                 {errors.Category && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                    <span>⚠</span> {errors.Category.message}
+                     {errors.Category.message}
                   </span>
                 )}
               </div>
@@ -265,7 +267,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               />
               {errors.Images && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                  <span>⚠</span> {errors.Images.message}
+                   {errors.Images.message}
                 </span>
               )}
             </div>
@@ -300,7 +302,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               </div>
               {errors.availability && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                  <span>⚠</span> {errors.availability.message}
+                   {errors.availability.message}
                 </span>
               )}
             </div>

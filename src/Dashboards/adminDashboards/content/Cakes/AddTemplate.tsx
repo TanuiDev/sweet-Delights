@@ -92,7 +92,8 @@ export const AddTemplate = () => {
       setValue("ImageUrl", imageUrl);
       setImagePreview(imageUrl);
       toast.success("Image uploaded successfully");
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error:any) {
       toast.error("Failed to upload image");
     } finally {
