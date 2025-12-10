@@ -74,10 +74,10 @@ export const AddTemplate = () => {
         },
       );
 
-      const data = await response.data ;
+      const data = await response.data;
       return data.secure_url;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error:any) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       throw new Error("Failed to upload image");
     }
   };
@@ -93,8 +93,8 @@ export const AddTemplate = () => {
       setImagePreview(imageUrl);
       toast.success("Image uploaded successfully");
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error:any) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       toast.error("Failed to upload image");
     } finally {
       setUploadingImage(false);
@@ -115,11 +115,9 @@ export const AddTemplate = () => {
   return (
     <dialog id="newdesign" className="modal sm:modal-middle">
       <div className="modal-box relative overflow-hidden border border-white/60 bg-linear-to-br from-white via-purple-50/30 to-pink-50/40 backdrop-blur-xl shadow-2xl shadow-purple-200/50 w-full max-w-2xl mx-auto rounded-3xl p-0 max-h-[90vh] flex flex-col">
-       
         <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-pink-200/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-20 -bottom-20 h-40 w-40 rounded-full bg-purple-200/30 blur-3xl" />
 
-        
         <div className="relative z-10 shrink-0 p-8 pb-4 border-b border-purple-100/50">
           <div className="flex items-center justify-between">
             <div>
@@ -187,7 +185,7 @@ export const AddTemplate = () => {
                 />
                 {errors.BaseFlavor && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                     {errors.BaseFlavor.message}
+                    {errors.BaseFlavor.message}
                   </span>
                 )}
               </div>
@@ -207,7 +205,7 @@ export const AddTemplate = () => {
                 />
                 {errors.Size && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                     {errors.Size.message}
+                    {errors.Size.message}
                   </span>
                 )}
               </div>
@@ -297,7 +295,7 @@ export const AddTemplate = () => {
               )}
               {errors.ImageUrl && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                   {errors.ImageUrl.message}
+                  {errors.ImageUrl.message}
                 </span>
               )}
             </div>

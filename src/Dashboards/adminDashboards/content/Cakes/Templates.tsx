@@ -196,19 +196,25 @@ export const Templates = () => {
 
                         <dl className="grid grid-cols-3 gap-2 text-xs text-gray-600">
                           <div className="flex flex-col items-center rounded-xl bg-purple-50/60 px-2 py-1.5">
-                            <dt className="font-semibold text-purple-600">Flavor</dt>
+                            <dt className="font-semibold text-purple-600">
+                              Flavor
+                            </dt>
                             <dd className="font-bold text-purple-800 text-center line-clamp-1">
                               {template.BaseFlavor}
                             </dd>
                           </div>
                           <div className="flex flex-col items-center rounded-xl bg-pink-50/60 px-2 py-1.5">
-                            <dt className="font-semibold text-pink-600">Category</dt>
+                            <dt className="font-semibold text-pink-600">
+                              Category
+                            </dt>
                             <dd className="font-bold text-pink-800 text-center line-clamp-1">
                               {template.Category}
                             </dd>
                           </div>
                           <div className="flex flex-col items-center rounded-xl bg-indigo-50/70 px-2 py-1.5">
-                            <dt className="font-semibold text-indigo-600">Size</dt>
+                            <dt className="font-semibold text-indigo-600">
+                              Size
+                            </dt>
                             <dd className="font-bold text-indigo-800 text-center line-clamp-1">
                               {template.Size}
                             </dd>

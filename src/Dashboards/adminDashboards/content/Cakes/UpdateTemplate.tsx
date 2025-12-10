@@ -8,16 +8,15 @@ import templatesApi, {
 import { toast } from "sonner";
 import { IoMdClose } from "react-icons/io";
 
-
 type UpdateDesignProps = {
   design: Tdesigns | null;
 };
 
 type UpdateDesign = {
   DesignName: string;
-  description: string;
+  Description: string;
   BasePrice: number;
-  availability: boolean;
+  Availability: boolean;
   BaseFlavor: string;
   Size: string;
   Category: string;
@@ -29,7 +28,7 @@ const schema = yup.object({
     .string()
     .max(75, "Max 75 characters")
     .required("Design name is required"),
-  description: yup
+  Description: yup
     .string()
     .max(255, "Max 255 characters")
     .required("Description is required"),
@@ -37,7 +36,7 @@ const schema = yup.object({
     .number()
     .required("Base Price is required")
     .positive("Base Price must be a positive number"),
-  availability: yup.boolean().default(true),
+  Availability: yup.boolean().default(true),
   BaseFlavor: yup
     .string()
     .max(50, "Max 50 characters")
@@ -66,12 +65,12 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
   useEffect(() => {
     if (design) {
       setValue("DesignName", design.DesignName);
-      setValue("description", design.Description);
+      setValue("Description", design.Description);
       setValue("BasePrice", design.BasePrice);
       setValue("BaseFlavor", design.BaseFlavor);
       setValue("Size", design.Size);
       setValue("Category", design.Category);
-      setValue("availability", design.Availability);
+      setValue("Availability", design.Availability);
       setValue("Images", design.ImageUrl);
     } else {
       reset();
@@ -155,7 +154,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               />
               {errors.DesignName && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                   {errors.DesignName.message}
+                  {errors.DesignName.message}
                 </span>
               )}
             </div>
@@ -166,14 +165,14 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               </label>
               <textarea
                 data-test="edit-description-input"
-                {...register("description")}
+                {...register("Description")}
                 placeholder="Enter description"
                 rows={4}
                 className="textarea w-full rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-800 transition-all focus:border-purple-400 focus:ring-4 focus:ring-purple-100 focus:outline-none resize-none"
               />
-              {errors.description && (
+              {errors.Description && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                   {errors.description.message}
+                  {errors.Description.message}
                 </span>
               )}
             </div>
@@ -192,7 +191,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                 />
                 {errors.BasePrice && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                     {errors.BasePrice.message}
+                    {errors.BasePrice.message}
                   </span>
                 )}
               </div>
@@ -210,7 +209,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                 />
                 {errors.Size && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                     {errors.Size.message}
+                    {errors.Size.message}
                   </span>
                 )}
               </div>
@@ -230,7 +229,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                 />
                 {errors.BaseFlavor && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                     {errors.BaseFlavor.message}
+                    {errors.BaseFlavor.message}
                   </span>
                 )}
               </div>
@@ -248,7 +247,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                 />
                 {errors.Category && (
                   <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                     {errors.Category.message}
+                    {errors.Category.message}
                   </span>
                 )}
               </div>
@@ -267,7 +266,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
               />
               {errors.Images && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                   {errors.Images.message}
+                  {errors.Images.message}
                 </span>
               )}
             </div>
@@ -282,7 +281,7 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                     data-test="edit-availability-Unavailable"
                     type="radio"
                     value="false"
-                    {...register("availability")}
+                    {...register("Availability")}
                     className="radio radio-error"
                   />
                   <span className="font-semibold text-gray-700">
@@ -294,15 +293,15 @@ export const UpdateTemplate = ({ design }: UpdateDesignProps) => {
                     data-test="edit-availability-Available"
                     type="radio"
                     value="true"
-                    {...register("availability")}
+                    {...register("Availability")}
                     className="radio radio-success"
                   />
                   <span className="font-semibold text-gray-700">Available</span>
                 </label>
               </div>
-              {errors.availability && (
+              {errors.Availability && (
                 <span className="flex items-center gap-1 text-sm font-medium text-red-600">
-                   {errors.availability.message}
+                  {errors.Availability.message}
                 </span>
               )}
             </div>
