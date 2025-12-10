@@ -19,10 +19,10 @@ export const Profile = () => {
   );
 
   return (
-    <div className="relative isolate min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#f7f0ff] via-[#ffe4f5] to-[#e0edff] px-4 py-10 text-gray-900 sm:px-6 lg:px-12">
+    <div className="relative isolate min-h-screen w-full overflow-hidden bg-linear-to-br from-[#f7f0ff] via-[#ffe4f5] to-[#e0edff] px-4 py-10 text-gray-900 sm:px-6 lg:px-12">
       <div className="pointer-events-none absolute -left-40 top-10 h-80 w-80 rounded-full bg-pink-200/50 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 top-1/3 h-96 w-96 rounded-full bg-purple-200/60 blur-3xl" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-linear-to-t from-white to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-4xl">
         {isLoading ? (
@@ -61,12 +61,12 @@ export const Profile = () => {
               </p>
             </div>
 
-            {/* Profile Card */}
-            <div className="mb-8 rounded-2xl border border-gray-200/60 bg-gradient-to-br from-white to-purple-50/30 p-6 shadow-lg sm:p-8">
+         
+            <div className="mb-8 rounded-2xl border border-gray-200/60 bg-linear-to-br from-white to-purple-50/30 p-6 shadow-lg sm:p-8">
               <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
-                {/* Avatar */}
+                
                 <div className="relative">
-                  <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 opacity-75 blur" />
+                  <div className="absolute -inset-1 rounded-full bg-linear-to-r from-purple-400 via-pink-400 to-indigo-400 opacity-75 blur" />
                   <img
                     src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
                     alt="user avatar"
