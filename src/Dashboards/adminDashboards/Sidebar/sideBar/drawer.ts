@@ -18,10 +18,6 @@ export const adminData = [
     id: "users",
     name: "Users",
     link: "users",
-  },
-  // {
-  //   id: "profile",
-  //   name: "profile",
-  //   link: "profile",
-  // },
+  }
+  
 ];
