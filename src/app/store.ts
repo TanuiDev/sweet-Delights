@@ -8,12 +8,13 @@ import loginApi from "../features/Auth/loginApi";
 import orderApi from "../features/Auth/orderAPI";
 import cakeApi from "../features/Cakes/cakeAPI";
 import templatesApi from "../features/Cakes/templatesAPI";
+import cartSlice from "../features/cart/cartSlice";
 
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  whitelist: ["user"],
+  whitelist: ["user", "cart"],
 };
 
 const rootReducer = combineReducers({
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   [templatesApi.reducerPath]: templatesApi.reducer,
 
   user: userSlice,
+  cart: cartSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,16 +1,49 @@
 import { FaOpencart } from "react-icons/fa6";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../app/store";
-
 import { NavLink } from "react-router";
+import { useState } from "react";
+import { MdClose, MdAdd, MdRemove } from "react-icons/md";
+import { removeFromCart, updateQuantity, clearCart } from "../../features/cart/cartSlice";
 
 export const Navbar = () => {
+  const dispatch = useDispatch();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  
   const isCustomerLoggedIn = useSelector(
     (state: RootState) => state.user.user?.role === "customer",
   );
   const isAdminLoggedIn = useSelector(
     (state: RootState) => state.user.user?.role === "admin",
   );
+  const cartItemsCount = useSelector(
+    (state: RootState) => state.cart.totalItems,
+  );
+  const cartItems = useSelector(
+    (state: RootState) => state.cart.items,
+  );
+  const totalPrice = useSelector(
+    (state: RootState) => state.cart.totalPrice,
+  );
+
+  const formatPrice = (price: number) =>
+    new Intl.NumberFormat("en-KE", {
+      style: "currency",
+      currency: "KES",
+      maximumFractionDigits: 0,
+    }).format(price);
+
+  const handleQuantityChange = (cakeId: number, newQuantity: number) => {
+    if (newQuantity < 1) {
+      dispatch(removeFromCart(cakeId));
+    } else {
+      dispatch(updateQuantity({ cakeId, quantity: newQuantity }));
+    }
+  };
+
+  const handleRemoveItem = (cakeId: number) => {
+    dispatch(removeFromCart(cakeId));
+  };
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
@@ -211,20 +244,144 @@ export const Navbar = () => {
 
         {/* Cart Icon */}
         <div className="navbar-end">
-          <div className="relative group">
-            <button className="relative p-3 rounded-full hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all duration-300 group">
-              <FaOpencart className="text-2xl md:text-3xl text-pink-600 dark:text-pink-400 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors duration-300" />
-              <span className="absolute top-1 right-1 w-5 h-5 bg-linear-to-r from-pink-500 to-rose-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
-                0
-              </span>
+          <div className="relative">
+            <button 
+              onClick={() => setIsCartOpen(!isCartOpen)}
+              className="relative p-3 rounded-full hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all duration-300"
+            >
+              <FaOpencart className="text-2xl md:text-3xl text-pink-600 dark:text-pink-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors duration-300" />
+              {cartItemsCount > 0 && (
+                <span className="absolute top-1 right-1 w-5 h-5 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
+                  {cartItemsCount > 99 ? "99+" : cartItemsCount}
+                </span>
+              )}
             </button>
 
-            <div className="absolute right-0 top-full mt-2 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
-              <div className="bg-gray-900 dark:bg-gray-700 text-white text-sm px-3 py-2 rounded-lg shadow-xl whitespace-nowrap">
-                View Cart
-                <div className="absolute -top-1 right-4 w-2 h-2 bg-gray-900 dark:bg-gray-700 rotate-45"></div>
-              </div>
-            </div>
+            {/* Cart Dropdown Dialog */}
+            {isCartOpen && (
+              <>
+                {/* Backdrop */}
+                <div 
+                  className="fixed inset-0 z-40" 
+                  onClick={() => setIsCartOpen(false)}
+                ></div>
+                
+                {/* Cart Dialog */}
+                <div className="absolute right-0 top-full mt-2 w-96 max-w-[calc(100vw-2rem)] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 z-50 max-h-[80vh] flex flex-col">
+                  {/* Header */}
+                  <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                      Shopping Cart ({cartItemsCount})
+                    </h3>
+                    <button
+                      onClick={() => setIsCartOpen(false)}
+                      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                    >
+                      <MdClose className="text-xl text-gray-600 dark:text-gray-300" />
+                    </button>
+                  </div>
+
+                  {/* Cart Items */}
+                  {cartItems.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-12 px-4">
+                      <FaOpencart className="text-6xl text-gray-300 dark:text-gray-600 mb-4" />
+                      <p className="text-gray-500 dark:text-gray-400 text-center">
+                        Your cart is empty
+                      </p>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="overflow-y-auto flex-1 p-4 space-y-3">
+                        {cartItems.map((item) => (
+                          <div
+                            key={item.cakeId}
+                            className="flex gap-3 bg-gray-50 dark:bg-gray-700/50 rounded-xl p-3 hover:shadow-md transition-shadow"
+                          >
+                            {/* Image */}
+                            <img
+                              src={item.imageURL}
+                              alt={item.cakeName}
+                              className="w-20 h-20 object-cover rounded-lg flex-shrink-0"
+                            />
+
+                            {/* Details */}
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-start justify-between gap-2 mb-2">
+                                <h4 className="font-semibold text-gray-900 dark:text-white text-sm truncate">
+                                  {item.cakeName}
+                                </h4>
+                                <button
+                                  onClick={() => handleRemoveItem(item.cakeId)}
+                                  className="p-1 hover:bg-red-100 dark:hover:bg-red-900/20 rounded transition-colors flex-shrink-0"
+                                  title="Remove"
+                                >
+                                  <MdClose className="text-red-600 dark:text-red-400" size={16} />
+                                </button>
+                              </div>
+
+                              <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
+                                {formatPrice(item.price)} each
+                              </p>
+
+                              <div className="flex items-center justify-between">
+                                {/* Quantity Controls */}
+                                <div className="flex items-center gap-1 bg-white dark:bg-gray-800 rounded-lg p-1">
+                                  <button
+                                    onClick={() => handleQuantityChange(item.cakeId, item.quantity - 1)}
+                                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
+                                  >
+                                    <MdRemove size={14} className="text-gray-700 dark:text-gray-300" />
+                                  </button>
+                                  <span className="w-8 text-center text-sm font-semibold text-gray-900 dark:text-white">
+                                    {item.quantity}
+                                  </span>
+                                  <button
+                                    onClick={() => handleQuantityChange(item.cakeId, item.quantity + 1)}
+                                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
+                                  >
+                                    <MdAdd size={14} className="text-gray-700 dark:text-gray-300" />
+                                  </button>
+                                </div>
+
+                                {/* Item Total */}
+                                <p className="text-sm font-bold text-purple-600 dark:text-purple-400">
+                                  {formatPrice(item.price * item.quantity)}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Footer */}
+                      <div className="border-t border-gray-200 dark:border-gray-700 p-4 space-y-3">
+                        <div className="flex items-center justify-between text-lg font-bold">
+                          <span className="text-gray-900 dark:text-white">Total</span>
+                          <span className="text-purple-600 dark:text-purple-400">
+                            {formatPrice(totalPrice)}
+                          </span>
+                        </div>
+                        
+                        <button className="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+                          Checkout
+                        </button>
+                        
+                        <button
+                          onClick={() => {
+                            if (window.confirm("Clear all items from cart?")) {
+                              dispatch(clearCart());
+                            }
+                          }}
+                          className="w-full text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 py-2 rounded-lg transition-colors"
+                        >
+                          Clear Cart
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -21,6 +21,7 @@ import { Cake } from "./Dashboards/userDashboards/content/Cakes/Cakes";
 import { MyOrders } from "./Dashboards/userDashboards/content/Orders/MyOrders";
 import { Profile } from "./Dashboards/userDashboards/content/Profile/Profile";
 import { UserTemplates } from "./Dashboards/userDashboards/content/Templates/UserTemplates";
+import { Cart } from "./pages/Cart";
 
 function App() {
   const isCustomerLoggedIn = useSelector(
@@ -98,6 +99,10 @@ function App() {
     {
       path: "/verify",
       element: <Verify />,
+    },
+    {
+      path: "/cart",
+      element: <Cart />,
     },
   ]);
 
