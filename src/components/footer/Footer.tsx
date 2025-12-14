@@ -6,14 +6,12 @@ export const Footer = () => {
         <a className="link link-hover">Baking</a>
         <a className="link link-hover">Designing</a>
         <a className="link link-hover">Marketing</a>
-        
       </nav>
       <nav>
         <h6 className="footer-title">Company</h6>
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>
         <a className="link link-hover">Testimonials</a>
-      
       </nav>
       <nav>
         <h6 className="footer-title">Social</h6>

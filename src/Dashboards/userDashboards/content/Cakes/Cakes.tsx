@@ -12,7 +12,7 @@ export const Cake = () => {
   //  const userId = useSelector((state: RootState) => state.user.user?.user_id as number);
   const dispatch = useDispatch();
   const [addedItems, setAddedItems] = useState<Set<number>>(new Set());
-  
+
   const {
     data: cakeDetails,
     isLoading: loading,
@@ -39,7 +39,7 @@ export const Cake = () => {
           className: "bg-rose-100 text-rose-700 border-rose-200",
         };
 
-  const handleAddToCart = (cake: typeof res[0]) => {
+  const handleAddToCart = (cake: (typeof res)[0]) => {
     dispatch(
       addToCart({
         cakeId: cake.cakeId,
@@ -48,11 +48,11 @@ export const Cake = () => {
         imageURL: cake.imageURL,
         size: cake.size,
         flavorsUsed: cake.flavorsUsed,
-      })
+      }),
     );
-    
+
     setAddedItems((prev) => new Set(prev).add(cake.cakeId));
-    
+
     setTimeout(() => {
       setAddedItems((prev) => {
         const newSet = new Set(prev);
@@ -168,18 +168,20 @@ export const Cake = () => {
                     </div>
                     <CreateOrder />
                     <div className="flex justify-between shadow-sm mt-2 px-4 gap-2 pb-2">
-                      <button 
+                      <button
                         onClick={() => handleAddToCart(cake)}
                         disabled={!cake.isactive}
                         className={`p-2 text-xs h-fit font-bold rounded-sm transition-colors duration-300 ${
                           addedItems.has(cake.cakeId)
                             ? "bg-green-500 text-white"
                             : cake.isactive
-                            ? "bg-red-500 hover:bg-rose-600 text-white"
-                            : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                              ? "bg-red-500 hover:bg-rose-600 text-white"
+                              : "bg-gray-300 text-gray-500 cursor-not-allowed"
                         }`}
                       >
-                        {addedItems.has(cake.cakeId) ? "ADDED ✓" : "ADD TO CART"}
+                        {addedItems.has(cake.cakeId)
+                          ? "ADDED ✓"
+                          : "ADD TO CART"}
                       </button>
                       <button className=" p-2 h-fit text-green-500 text-xs  rounded-sm hover:bg-green-600 font-bold transition-colors duration-300 bg-red-200">
                         BUY NOW

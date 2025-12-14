@@ -18,6 +18,5 @@ export const adminData = [
     id: "users",
     name: "Users",
     link: "users",
-  }
-  
+  },
 ];

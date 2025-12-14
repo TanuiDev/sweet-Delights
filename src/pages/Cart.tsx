@@ -13,7 +13,7 @@ import { Navbar } from "../components/navbar/Navbar";
 export const Cart = () => {
   const dispatch = useDispatch();
   const { items, totalItems, totalPrice } = useSelector(
-    (state: RootState) => state.cart
+    (state: RootState) => state.cart,
   );
 
   const formatPrice = (price: number) =>
@@ -123,7 +123,7 @@ export const Cart = () => {
                               onClick={() =>
                                 handleQuantityChange(
                                   item.cakeId,
-                                  item.quantity - 1
+                                  item.quantity - 1,
                                 )
                               }
                               className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors"
@@ -137,7 +137,7 @@ export const Cart = () => {
                               onClick={() =>
                                 handleQuantityChange(
                                   item.cakeId,
-                                  item.quantity + 1
+                                  item.quantity + 1,
                                 )
                               }
                               className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors"

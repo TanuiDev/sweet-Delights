@@ -61,10 +61,8 @@ export const Profile = () => {
               </p>
             </div>
 
-         
             <div className="mb-8 rounded-2xl border border-gray-200/60 bg-linear-to-br from-white to-purple-50/30 p-6 shadow-lg sm:p-8">
               <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
-                
                 <div className="relative">
                   <div className="absolute -inset-1 rounded-full bg-linear-to-r from-purple-400 via-pink-400 to-indigo-400 opacity-75 blur" />
                   <img

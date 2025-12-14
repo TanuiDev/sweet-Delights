@@ -4,12 +4,19 @@ import type { RootState } from "../../app/store";
 import { NavLink } from "react-router";
 import { useState } from "react";
 import { MdClose, MdAdd, MdRemove } from "react-icons/md";
-import { removeFromCart, updateQuantity, clearCart } from "../../features/cart/cartSlice";
+import {
+  removeFromCart,
+  updateQuantity,
+  clearCart,
+} from "../../features/cart/cartSlice";
+import { logout } from "../../features/Auth/userSlice";
+import { useNavigate } from "react-router";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
+
   const isCustomerLoggedIn = useSelector(
     (state: RootState) => state.user.user?.role === "customer",
   );
@@ -19,12 +26,8 @@ export const Navbar = () => {
   const cartItemsCount = useSelector(
     (state: RootState) => state.cart.totalItems,
   );
-  const cartItems = useSelector(
-    (state: RootState) => state.cart.items,
-  );
-  const totalPrice = useSelector(
-    (state: RootState) => state.cart.totalPrice,
-  );
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
 
   const formatPrice = (price: number) =>
     new Intl.NumberFormat("en-KE", {
@@ -154,34 +157,50 @@ export const Navbar = () => {
                   Contact
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    `rounded-lg transition-all ${
-                      isActive
-                        ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
-                        : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
-                    }`
-                  }
-                >
-                  Login
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/register"
-                  className={({ isActive }) =>
-                    `rounded-lg transition-all ${
-                      isActive
-                        ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
-                        : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
-                    }`
-                  }
-                >
-                  Register
-                </NavLink>
-              </li>
+              {!isCustomerLoggedIn && !isAdminLoggedIn ? (
+                <>
+                  <li>
+                    <NavLink
+                      to="/login"
+                      className={({ isActive }) =>
+                        `rounded-lg transition-all ${
+                          isActive
+                            ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
+                            : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
+                        }`
+                      }
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/register"
+                      className={({ isActive }) =>
+                        `rounded-lg transition-all ${
+                          isActive
+                            ? "text-white bg-linear-to-r from-pink-500 to-rose-500"
+                            : "text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
+                        }`
+                      }
+                    >
+                      Register
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <li>
+                  <button
+                    onClick={() => {
+                      dispatch(logout());
+                      navigate("/login");
+                    }}
+                    className="rounded-lg transition-all text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20 w-full text-left px-4 py-2"
+                  >
+                    Logout
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
           <NavLink
@@ -229,23 +248,39 @@ export const Navbar = () => {
                 Contact
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/login" className={navLinkClass}>
-                Login
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/register" className={navLinkClass}>
-                Register
-              </NavLink>
-            </li>
+            {!isCustomerLoggedIn && !isAdminLoggedIn ? (
+              <>
+                <li>
+                  <NavLink to="/login" className={navLinkClass}>
+                    Login
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/register" className={navLinkClass}>
+                    Register
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <li>
+                <button
+                  onClick={() => {
+                    dispatch(logout());
+                    navigate("/login");
+                  }}
+                  className="px-4 py-2 rounded-lg font-semibold transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 hover:bg-pink-50 dark:hover:bg-pink-900/20"
+                >
+                  Logout
+                </button>
+              </li>
+            )}
           </ul>
         </div>
 
         {/* Cart Icon */}
         <div className="navbar-end">
           <div className="relative">
-            <button 
+            <button
               onClick={() => setIsCartOpen(!isCartOpen)}
               className="relative p-3 rounded-full hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all duration-300"
             >
@@ -261,11 +296,11 @@ export const Navbar = () => {
             {isCartOpen && (
               <>
                 {/* Backdrop */}
-                <div 
-                  className="fixed inset-0 z-40" 
+                <div
+                  className="fixed inset-0 z-40"
                   onClick={() => setIsCartOpen(false)}
                 ></div>
-                
+
                 {/* Cart Dialog */}
                 <div className="absolute right-0 top-full mt-2 w-96 max-w-[calc(100vw-2rem)] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 z-50 max-h-[80vh] flex flex-col">
                   {/* Header */}
@@ -315,7 +350,10 @@ export const Navbar = () => {
                                   className="p-1 hover:bg-red-100 dark:hover:bg-red-900/20 rounded transition-colors flex-shrink-0"
                                   title="Remove"
                                 >
-                                  <MdClose className="text-red-600 dark:text-red-400" size={16} />
+                                  <MdClose
+                                    className="text-red-600 dark:text-red-400"
+                                    size={16}
+                                  />
                                 </button>
                               </div>
 
@@ -327,19 +365,35 @@ export const Navbar = () => {
                                 {/* Quantity Controls */}
                                 <div className="flex items-center gap-1 bg-white dark:bg-gray-800 rounded-lg p-1">
                                   <button
-                                    onClick={() => handleQuantityChange(item.cakeId, item.quantity - 1)}
+                                    onClick={() =>
+                                      handleQuantityChange(
+                                        item.cakeId,
+                                        item.quantity - 1,
+                                      )
+                                    }
                                     className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
                                   >
-                                    <MdRemove size={14} className="text-gray-700 dark:text-gray-300" />
+                                    <MdRemove
+                                      size={14}
+                                      className="text-gray-700 dark:text-gray-300"
+                                    />
                                   </button>
                                   <span className="w-8 text-center text-sm font-semibold text-gray-900 dark:text-white">
                                     {item.quantity}
                                   </span>
                                   <button
-                                    onClick={() => handleQuantityChange(item.cakeId, item.quantity + 1)}
+                                    onClick={() =>
+                                      handleQuantityChange(
+                                        item.cakeId,
+                                        item.quantity + 1,
+                                      )
+                                    }
                                     className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
                                   >
-                                    <MdAdd size={14} className="text-gray-700 dark:text-gray-300" />
+                                    <MdAdd
+                                      size={14}
+                                      className="text-gray-700 dark:text-gray-300"
+                                    />
                                   </button>
                                 </div>
 
@@ -356,16 +410,18 @@ export const Navbar = () => {
                       {/* Footer */}
                       <div className="border-t border-gray-200 dark:border-gray-700 p-4 space-y-3">
                         <div className="flex items-center justify-between text-lg font-bold">
-                          <span className="text-gray-900 dark:text-white">Total</span>
+                          <span className="text-gray-900 dark:text-white">
+                            Total
+                          </span>
                           <span className="text-purple-600 dark:text-purple-400">
                             {formatPrice(totalPrice)}
                           </span>
                         </div>
-                        
+
                         <button className="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl">
                           Checkout
                         </button>
-                        
+
                         <button
                           onClick={() => {
                             if (window.confirm("Clear all items from cart?")) {
