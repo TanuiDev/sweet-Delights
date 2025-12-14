@@ -286,7 +286,7 @@ export const Navbar = () => {
             >
               <FaOpencart className="text-2xl md:text-3xl text-pink-600 dark:text-pink-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors duration-300" />
               {cartItemsCount > 0 && (
-                <span className="absolute top-1 right-1 w-5 h-5 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
+                <span className="absolute top-1 right-1 w-5 h-5 bg-linear-to-r from-pink-500 to-rose-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
                   {cartItemsCount > 99 ? "99+" : cartItemsCount}
                 </span>
               )}
@@ -336,7 +336,7 @@ export const Navbar = () => {
                             <img
                               src={item.imageURL}
                               alt={item.cakeName}
-                              className="w-20 h-20 object-cover rounded-lg flex-shrink-0"
+                              className="w-20 h-20 object-cover rounded-lg shrink-0"
                             />
 
                             {/* Details */}
@@ -347,7 +347,7 @@ export const Navbar = () => {
                                 </h4>
                                 <button
                                   onClick={() => handleRemoveItem(item.cakeId)}
-                                  className="p-1 hover:bg-red-100 dark:hover:bg-red-900/20 rounded transition-colors flex-shrink-0"
+                                  className="p-1 hover:bg-red-100 dark:hover:bg-red-900/20 rounded transition-colors shrink-0"
                                   title="Remove"
                                 >
                                   <MdClose
@@ -418,7 +418,7 @@ export const Navbar = () => {
                           </span>
                         </div>
 
-                        <button className="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+                        <button className="w-full bg-linear-to-r from-pink-500 to-rose-500 text-white py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl">
                           Checkout
                         </button>
 
